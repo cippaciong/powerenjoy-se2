@@ -1,7 +1,7 @@
 \pagebreak
 \section{UML modeling}
 \subsection{Use Cases}
-%funziona
+
 \includegraphics{UseCaseDiagram.eps}
 
 % Definition of UseCase environment
@@ -100,8 +100,6 @@
 		\Event{The user receive the e-mail with the new password}
 	}
 	{This use case terminates when the user receive the new password by e-mail.}
-	\togglefalse{exception}
-	{No exceptions.}
 \end{UseCase}
 
 \subsubsection{Reserve a car}
@@ -171,7 +169,6 @@
 		\Event{The user receives the e-mail}
 	}
 	{This use case terminates when the user receives the e-mail containing the details of his last ride.}
-	{No exceptions}
 \end{UseCase}
 
 \subsubsection{Expired reservation}
@@ -183,7 +180,6 @@
 		\Event{The system impose a charge of 1€ to the user}
 	}
 	{This use case terminates when the status of the car in changed into ``\textit{available}''}
-	{No exceptions.}
 \end{UseCase}
 
 \subsubsection{Payment not successful}
@@ -197,8 +193,6 @@
 		\Event{The user receive the e-mail}
 	}
 	{This use case terminates when the user receive the e-mail.}
-	{}
-	No exceptions.
 \end{UseCase}
 
 \subsubsection{Update personal information}
