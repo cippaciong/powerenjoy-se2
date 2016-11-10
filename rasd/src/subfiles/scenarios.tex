@@ -1,53 +1,69 @@
 \pagebreak
 \section{Scenarios Identification}
+%\label{sec:req}
 
 \newcommand{\Scen}[2]{
-    \textbf{Partecipating actor}: #1 \\
-    \textbf{Flow of events}: \\ #2.
+    \paragraph{\\ Partecipating actor:} #1 
+    \paragraph{Flow of events:} #2
 }
 
 
-\subsection{Registration and log in}
+\subsection{Registration}
  
 \Scen{Guest (Tommaso)}{
-	Tommaso has seen an advertisement of “PowerEnJoy”, a new car-sharing service that exclusively employs electric cars. So he decides to sign up, because he think that this service could be useful for him.
-    He access the site and clicks on the “sign up” button and fills out the form with the information needed for the registration (name, surname, address, e-mail, mobile phone number, driving license number, credit card number), check the checkbox “I have read and agree to PowerEnJoy Terms of Use and Privacy Policy.” and he confirms.
-    However he makes a mistake in the credit card number, so an error message is displayed and Tommaso is brought back to the page where the registration form is shown. Tommaso insert all data for the second time and then clicks on “confirm”.
+	Tommaso has seen an advertisement of ``PowerEnJoy'', a new car-sharing service that exclusively employs electric cars. So he decides to sign up, because he think that this service could be useful for him.
+    He access the site and clicks on the ``\textit{Sign up}'' button and fills out the form with the information needed for the registration (name, surname, address, e-mail, mobile phone number, driving license number, credit card number), check the checkbox ``\textit{I have read and agree to PowerEnJoy Terms of Use and Privacy Policy.}'' and he confirms.
+    However he makes a mistake in the credit card number, so an error message is displayed and Tommaso is brought back to the page where the registration form is shown. Tommaso insert all data for the second time and then clicks on ``confirm''.
     The system confirms his registration, redirects Tommaso on the log in page and sends him an e-mail containing his credentials (username and password).
-    Tommaso inserts his credentials and the log in page is refreshed to the user personal profile page.
-    Now he wants to see the list of his previous rides, so he clicks on “My rides” on the top of the page: the list is obviously empty because he has just registered to the system.
 }
 
+
+\subsection{Log in}
+
+\Scen{Registered user (Tommaso)}{
+	Tommaso has received the e-mail containing his credentials and he wants to access his personal profile page.
+	He access the homepage of the website and clicks on the ``\textit{Log in}'' botton. 
+	Tommaso inserts his username and his password and the log in page is refreshed to the user personal profile page.
+}
 
 \subsection{Password recovery}
 
 \Scen{Registered user (Patrizia)}{
 	Patrizia needs to reserve a car, but she is a bit careless and she doesn’t remember the password.
-	She access the site and clicks on “Log in”. She tries to insert three different passwords, but every times an error message is displayed. So she clicks on “Send a new password” and the system sends her a new password by e-mail. After two minutes she receives the mail. Patrizia tries the log in again: she inserts her username and the new password received and confirms. Now she’s correctly authenticated.
+	She access the site and clicks on ``\textit{Log in}''. She tries to insert three different passwords, but every times an error message is displayed. So she clicks on ``\textit{Send a new password}'' and the system sends her a new password by e-mail. After two minutes she receives the e-mail. Patrizia tries the log in again: she inserts her username and the new password received and confirms. Now she’s correctly authenticated.
 }
 
 
 \subsection{Reserve a car}
 
 \Scen{Registered user (Patrizia)}{
-	Patrizia needs a car to arrive on time to a meeting on the other side of the city. So she decides to use the web application “PowerEnJoy”. This isn’t the first time she uses this service, so she has already registered.
-	She access the site and clicks on “Log in” button.  She inserts her credentials and confirms. 
-	After the authentication is completed, she is redirected on her personal profile page, where she can decide to visualize her personal information or the list of her previous reservations and rides clicking on the appropriate links at the top of the page.  She slicks on the button “Reserve a car” in order to complete her reservation.
-	At this point she has to choose among two options: use her current location or specify an address. She ticks the first one because she needs a car as near as possible to the place where she is. She inserts 100 meters as maximum distance and clicks on “Search cars”.
+	Patrizia needs a car to arrive on time to a meeting on the other side of the city. So she decides to use the web application ``PowerEnJoy''. This isn’t the first time she uses this service, so she has already registered.
+	She access the site and clicks on ``\textit{Log in}'' button.  She inserts her credentials and confirms. 
+	After the authentication is completed, she is redirected on her personal profile page, where she can decide to visualize her personal information or the list of her previous reservations and rides clicking on the appropriate links at the top of the page.  She clicks on the button ``\textit{Reserve a car}'' in order to complete her reservation.
+	At this point she has to choose among two options: use her current location or specify an address. She ticks the first one because she needs a car as near as possible to the place where she is. She inserts 100 meters as maximum distance and clicks on ``\textit{Search cars}''.
 	The system search for available cars within 100 meters from her current location.
 	Unluckily there are no available cars in the specified area, so an apologize message is displayed and she is redirected to the previous page (reservation page). 
-	She ticks “Use my current position” again and insert 500 meters as new maximum distance value and clicks on “Search cars”. 
+	She ticks ``\textit{Use my current position}'' again and insert 500 meters as new maximum distance value and clicks on ``\textit{Search cars}''. 
 	This time, the system shows a list of available cars specifying for each of them the license plate number, the make, the model and the location.
-	She selects the best car for her purposes and clicks on the “Reserve” button. A confirmation message appears. 
-	Now Patrizia walks quickly to the car and when she is at less than 3 meters of distance, the system unlocks the car automatically.
+	She selects the best car for her purposes and clicks on the ``\textit{Reserve}'' button. A confirmation message appears. 
+	Now Patrizia walks quickly to the car and when she is near, she opens the web application on her mobile phone, logs in and click on ``\textit{Unlock the reserved car}''. The system checks her location and, because of she's at less than 3 meters of distance, unlocks the car.
 	She gets in the car and carefully drive to her appointment.
+}
+
+\subsection{Unlock the reserved car}
+
+\Scen{Registered user (Patrizia)}{
+	Patrizia has already reserved a car and while she's walking to it she accesses the homepage of the ``PowerEnJoy'', logs in writing her credentials and she's redirected to the profile page.
+	From her personal profile page she clicks on ``\textit{Unlock the reserved car}'', but an error message is displayed: ``\textit{ERROR: you are too far from the car to unlock it!}''.
+	So Patrizia go on walking and when she's at less than 3 meters from the car, she tries again: accesses the homepage, logs in and clicks on ``\textit{Unlock the reserved car}''. The system checks her location and unlocks the car.
+	Patrizia get in the car and goes to work. 
 }
 
 \subsection{Ride}
 
 \Scen{Registered user (Tommaso)}{
 	Tommaso is driving a PoewrEnjoy car and his girlfriend, who sits next to him, is looking outside the window. In the seats behind there are two Tommaso’s friends, that are singing. They are going to a birthday party.
-	When they are close to the place of the party, Tommaso looks to the screen of the car, where there is displayed the cost of the ride within this moment, the level of the battery of the car and a map. In the map are highlighted the safe areas (PowerEnJoy parking areas) and the power grid stations (PowerEnJoy parking area where the car can be re-charged). Tommaso notices that there is only a power grid station at 5 minutes walking from the party place. 
+	When they are close to the place of the party, Tommaso looks to the screen of the car, where there are displayed the cost of the ride within this moment, the level of the battery of the car and a map. In the map are highlighted the safe areas (PowerEnJoy parking areas) and the power grid stations (PowerEnJoy parking area where the car can be re-charged). Tommaso notices that there is only a power grid station at 5 minutes walking from the party place. 
 	He could enter in the power grid station or park in the car parking in front of the party place, which is not owned by PowerEnJoy. Tommaso knows that if he parks in the power grid station he receive a 30\% discount on the cost of the ride, otherwise he will pay 80\% more. So he decides to park in the power grid station, although the protests of his friends .
 	As soon as Tommaso and his friends get off the car, it locks and Tommaso takes care of plugging the car into the power grid and they go to the party.
 	Five minutes later, Tommaso receives an e-mail with the details of his last ride: the amount is 12,60€ (1,26€), but the system applies a discount of 10\% of 12,60€ (3,78€) because he takes more than one passenger onto the car and a discount of 30\% of 12,60€ because he parks in a power grid station and he plugs the car into the power grid. So he has a total discount of 5,04€ and he pays 7,56€.
@@ -61,8 +77,8 @@
 	Patrizia is at the shopping center and she decides to return back home using PowerEnjoy car-sharing service. She needs to buy few things more so she believes to finish her shopping in more or less than an hour. So Patrizia opens the PowerEnJoy web application with her mobile phone, logs in and reserves a car near the shopping center and she goes on with her shopping.
 	Then she searches for the last item, but she doesn’t find it until asking the clerk. Without realizing she has lost a lot of time.
 	After founding all she needs, Patrizia gets in line to pay. There is a lot of people and the queue is long. 
-	When Patrizia manages to pay, she realizes that more than an hour has passed and her reservation has expired. Unfortunately she wastes 1€, but she need to go back home. 
-	She opens again the PowerEnJoy web application and makes a new reservation, then she reaches the selected car and returns home.
+	When Patrizia manages to pay, she realizes that more than an hour has passed and her reservation has expired. Unfortunately she wastes 1€, but she needs to go back home. 
+	She opens again the PowerEnJoy web application and makes a new reservation, then she reaches the selected car, unlocks it and returns home.
 }
 
 
@@ -79,18 +95,18 @@
 \subsection{Update personal information}
 
 \Scen{Registered user (Patrizia)}{
-	Few days ago Patrizia move to a new house, so she has to change her personal information on the web application “PowerEnJoy”.
+	Few days ago Patrizia move to a new house, so she has to change her personal information on the web application ``PowerEnJoy''.
 	She accesses the homepage and logs in the application with her credentials. She authenticates correctly, so she is on her profile page. 
-	She clicks on “Personal information” and she’s redirected on the page where she can visualize her information. Then she clicks on “Edit” and replace the old address with the new one and verifies that also the other fields are correct.
-	Now she has to click on “Save changes” in order to store the update. 
+	She clicks on ``\textit{Personal information}'' and she’s redirected on the page where she can visualize her information. Then she clicks on ``\textit{Edit}'' and replace the old address with the new one and verifies that also the other fields are correct.
+	Now she has to click on ``\textit{Save changes}'' in order to store the update. 
 }
 
 
 \subsection{Show the details of the ride}
 
 \Scen{Registered user (Tommaso)}{
-	Last week Tommaso went to a football match with his friends using a “PowerEnjoy” car.
-	Now he wants to know how much they spent for the ride in order to divide the cost with his friends. So he accesses the homepage and clicks on “Log in”, he inserts the correct credentials and he authenticates correclty.
-	In the personal profile page he clicks on “My rides” at the top of the page and he is redirected to a new page where he can see the list of all his reservations and rides. Clicking on the selected ride, Tommaso can see all the details about the ride (cost, discounts, starting point, number of passengers…).
+	Last week Tommaso went to a football match with his friends using a ``PowerEnjoy'' car.
+	Now he wants to know how much they spent for the ride in order to divide the cost with his friends. So he accesses the homepage and clicks on ``\textit{Log in}'', he inserts the correct credentials and he authenticates correclty.
+	In the personal profile page he clicks on ``\textit{My rides}'' at the top of the page and he is redirected to a new page where he can see the list of all his reservations and rides. Clicking on the selected ride, Tommaso can see all the details about the ride (cost, discounts, starting point, number of passengers \ldots).
 	Now he knows the total cost of the ride and his friends can repay him.
 }
