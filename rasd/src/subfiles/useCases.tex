@@ -6,7 +6,7 @@
 \newenvironment{UseCase}[5]{
 	\paragraph{Partecipating actors:} #1
 	\paragraph{Entry condition:} #2
-	\paragraph{Flow of events:}:
+	\paragraph{Flow of events:}
 		\begin{itemize} 
 			#3 
 		\end{itemize}
@@ -28,10 +28,9 @@
 
 
 \subsection{Registration}
- 
 \begin{UseCase}
 {Guest: a guest is whoever visits the website}
-{This use case starts when the guest access the homepage of the web application.}
+{This use case starts when the guest access the homepage of the web application and clicks on ``\textit{Sign up}''.}
 {
 	\Event{The guest clicks on ``\textit{Sign up}''}
 	\Event{The guest fills out the form entering all required information:
@@ -50,14 +49,75 @@
 	\Event{The system verifies that the user's driving license is valid}
 	\Event{The system stores the new data in the users database}
 	\Event{The system displays a confirmation message, informing the new user that the registration has been successfully completed}
-	\Event{The system shows the new user his personal profile}
+	\Event{The system shows the new user the log in page}
 	\Event{The system sends the user an e-mail containing his/her credentials (username and password)}
 }
-{This use case terminates when the registration is successfully completed and the new user access his/her personal area.}
+{This use case terminates when the registration is successfully completed and the new user receives the mail with his/her credentials.}
 {
 	\Exc{The guest is already a registered user}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are already registered!}'' and the application goes back to the homepage.}
-	\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes bac to the homepage.}
+	\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the homepage.}
 	\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
 	\Exc{The user doesn't fill all the fields in the registration form}{If this exception occurs, the system displays the error message: ``\textit{ERROR: all the fileds has to be filled!}'' and the application goes back to the page where the registration form is shown.}
 }
+\end{UseCase}
+
+
+\subsection{Log in}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when the registered user, that has already received the e-mail with his/her credentials, clicks on ``\textit{Log in}'' from the homepage of the website.}
+	{
+		\Event{The registered user clicks on ``\textit{Log in}''}
+		\Event{The registered user enters his/her username}
+		\Event{The registered user enters his/her password}
+		\Event{The registered user clicks on ``\textit{Confirm}''}
+		\Event{The system checks the inserted username}
+		\Event{The system checks the inserted password}
+		\Event{The system shows the user's personal profile page}
+	}
+	{This use case terminates when the log in is successfully completed and the new user access his/her personal area.}
+	{
+		\Exc{The inserted username is incorrect}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted username is wrong!}'' and the application goes back to the homepage.}
+		\Exc{The inserted password is incorrect}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted password is wrong!}'' and the application goes back to the log in page}
+	}
+\end{UseCase}
+
+\subsection{Password recovery}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when the user forgot the password and clicks on ``\textit{Send a new password}'' from the log in page}
+	{
+		\Event{The registered user is on the log in page and clicks on ``\textit{Send a new password}''}
+		\Event{The system sends the user an e-mail with a new password}
+		\Event{The system displays the log in page}
+		\Event{The user receive the e-mail with the new password}
+	}
+	{This use case terminates when the user receive the new password by e-mail.}
+	{No exceptions.}
+\end{UseCase}
+
+\subsection{Reserve a car}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when, after logging in, the registered user, clicks on ``\textit{Reserve a car}'' from his/her personal profile page.}
+	{
+		\Event{The registered user clicks on ``\textit{Reserve a car}''}
+		\Event{The system shows the reservation page}
+		\Event{The user selects where to search the car: choosing if use his/her current location or a specified address (in this case he/she also has to write an address)}
+		\Event{The user selects a maximum distance for the car research}
+		\Event{The user clicks on ``\textit{Search cars}''}
+		\Event{The system searches available cars within the maximum distance indicated from the given location}
+		\Event{The system shows the list of available cars}
+		\Event{The user selects one of the cars in the list}
+		\Event{The user clicks on ``\textit{Reserve}''}
+		\Event{The system displays a confirmation message containing the details of the reservation (time of the reservation, license plate, position, distance from the given location \ldots)}
+		\Event{The system displays the user's personal profile page}
+	}
+	{This use case terminates when the confirmation message is shown and the user is redirected on his/her profile page.}
+	{
+		\Exc{The user doesn't select a location for the car research}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you have to select a location for the car research!}'' and the application goes back to the reservation page.}
+		\Exc{The user writes an inexistent address}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted address doesn't exist!}'' and the application goes back to the reservation page.}
+		\Exc{The user writes an invalid value for the maximum distance}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted distance isn't valid!}'' and the application goes back to the reservation page.}
+		\Exc{There aren't cars in the selected area}{If this exception occurs, the system displays the error message: ``\textit{ERROR: there are no cars in the selected area! Please change the maximum distance or the selected location.}'' and the application goes back to the reservation page.}
+	}
 \end{UseCase}
