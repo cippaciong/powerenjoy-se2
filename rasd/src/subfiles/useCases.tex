@@ -1,5 +1,6 @@
 \pagebreak
-\section{Use Cases}
+\section{UML modeling}
+\subsection{Use Cases}
 %\label{sec:req}
 
 % Definition of UseCase environment
@@ -27,7 +28,7 @@
 }
 
 
-\subsection{Registration}
+\subsubsection{Registration}
 \begin{UseCase}
 {Guest: a guest is whoever visits the website}
 {This use case starts when the guest access the homepage of the web application and clicks on ``\textit{Sign up}''.}
@@ -57,12 +58,12 @@
 	\Exc{The guest is already a registered user}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are already registered!}'' and the application goes back to the homepage.}
 	\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the homepage.}
 	\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
-	\Exc{The user doesn't fill all the fields in the registration form}{If this exception occurs, the system displays the error message: ``\textit{ERROR: all the fileds has to be filled!}'' and the application goes back to the page where the registration form is shown.}
+	\Exc{The user doesn't fill all the fields in the registration form}{If this exception occurs, the system displays the error message: ``\textit{ERROR: all the fields has to be filled!}'' and the application goes back to the page where the registration form is shown.}
 }
 \end{UseCase}
 
 
-\subsection{Log in}
+\subsubsection{Log in}
 \begin{UseCase}
 	{Registered user: a registered user is a guest that has already sign up.}
 	{This use case starts when the registered user, that has already received the e-mail with his/her credentials, clicks on ``\textit{Log in}'' from the homepage of the website.}
@@ -82,7 +83,7 @@
 	}
 \end{UseCase}
 
-\subsection{Password recovery}
+\subsubsection{Password recovery}
 \begin{UseCase}
 	{Registered user: a registered user is a guest that has already sign up.}
 	{This use case starts when the user forgot the password and clicks on ``\textit{Send a new password}'' from the log in page}
@@ -93,10 +94,10 @@
 		\Event{The user receive the e-mail with the new password}
 	}
 	{This use case terminates when the user receive the new password by e-mail.}
-	{No exceptions.}
+	{}
 \end{UseCase}
 
-\subsection{Reserve a car}
+\subsubsection{Reserve a car}
 \begin{UseCase}
 	{Registered user: a registered user is a guest that has already sign up.}
 	{This use case starts when, after logging in, the registered user, clicks on ``\textit{Reserve a car}'' from his/her personal profile page.}
@@ -110,6 +111,7 @@
 		\Event{The system shows the list of available cars}
 		\Event{The user selects one of the cars in the list}
 		\Event{The user clicks on ``\textit{Reserve}''}
+		\Event{The system change the status of the car from ``\textit{available}'' to ``\textit{reserved}''}
 		\Event{The system displays a confirmation message containing the details of the reservation (time of the reservation, license plate, position, distance from the given location \ldots)}
 		\Event{The system displays the user's personal profile page}
 	}
@@ -119,5 +121,111 @@
 		\Exc{The user writes an inexistent address}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted address doesn't exist!}'' and the application goes back to the reservation page.}
 		\Exc{The user writes an invalid value for the maximum distance}{If this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted distance isn't valid!}'' and the application goes back to the reservation page.}
 		\Exc{There aren't cars in the selected area}{If this exception occurs, the system displays the error message: ``\textit{ERROR: there are no cars in the selected area! Please change the maximum distance or the selected location.}'' and the application goes back to the reservation page.}
+	}
+\end{UseCase}
+
+\subsubsection{Unlock the reserved car}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when a registered user who has already reserved a car wants to unlock it, so logs in the application.}
+	{
+		\Event{The registered user logs in}
+		\Event{The system displays the user's personal profile page}
+		\Event{The user clicks on ``\textit{Unlock the reserved car}''}
+		\Event{The system checks the distance between the user and the reserved car}
+		\Event{The system change the status of the car from ``\textit{reserved}'' to ``\textit{in use}''}
+		\Event{The system unlocks the car}
+		\Event{The user gets on the car in less than ten minutes}
+	}
+	{This use case terminates when the system unlocks the car and the user can get in.}
+	{
+		\Exc{The user is at more than 3 metres from the car}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are too far from the car to unlock it! Please go next to the reserved car.}'' and the application shows the user's personal profile page.}
+		\Exc{The user doesn't gets on the car in less than ten minutes}{If this exception occurs, the system locks the car and the ride is considered ended.}
+	}
+\end{UseCase}
+
+\subsubsection{End the ride}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when the car is parked and the user and all eventual passengers exit the car.}
+	{
+		\Event{The user and eventual passengers exit the car}
+		\Event{The system locks the car}
+		\Event{The system waits five minutes}
+		\Event{The system checks the location}
+		\Event{The system checks the level of the battery}
+		\Event{The system checks if the power grid is plugged}
+		\Event{The system changes the status of the car from ``\textit{in use}'' to ``\textit{available}'' or ``\textit{unavailable}'', based on  car conditions}
+		\Event{The system calculates the total to be paid}
+		\Event{The system charges the user the cost of the ride}
+		\Event{The system sends the user an e-mail containing all the details of the ride (total cost, discounts, fees, duration, starting location, ending location\ldots)}
+		\Event{The user receives the e-mail}
+	}
+	{This use case terminates when the user receives the e-mail containing the details of his last ride.}
+	{}
+\end{UseCase}
+
+\subsubsection{Expired reservation}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when an hour has passed from when the user reserved a car and he/she hasn't already unlocks the car.}
+	{
+		\Event{After an hour from the reservation, the system change the status of the car from ``\textit{reserved}'' to ``\textit{available}''}
+		\Event{The system impose a charge of 1€ to the user}
+	}
+	{This use case terminates when the status of the car in changed into ``\textit{available}''}
+	{}
+\end{UseCase}
+
+\subsubsection{Payment not successful}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use casse starts when the automatic payment fails.}
+	{
+		\Event{The automatic payment fails.}
+		\Event{The systam change the status of the user's account from ``\textit{active}'' to ``\textit{insolvent}''}
+		\Event{The system sends the user an e-mail telling to get in touch with the costumer care}
+		\Event{The user receive the e-mail}
+	}
+	{This use case terminates when the user receive the e-mail.}
+	{}
+	No exceptions.
+\end{UseCase}
+
+\subsubsection{Update personal information}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when a registered user is on his/her personal profile page and clicks on ``\textit{Personal information}''.}
+	{
+		\Event{The user clicks on ``\textit{Personal information}''}
+		\Event{The system shows the page where the user can visualize his/her personal information}
+		\Event{The user clicks on ``\textit{Edit}''}
+		\Event{The user update the information he/she wants in the specific input form}
+		\Event{The user clicks on ``\textit{Save changes}''}
+		\Event{The system verifies that the user's credit card is valid}
+		\Event{The system verifies that the user's driving license is valid}
+		\Event{The system stores the new data in the users database}
+		\Event{The system shows the page where the user can visualize his/her personal information}
+	}
+	{This use case terminates when the new data are stored in the users database.}
+	{
+		\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the homepage.}
+		\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
+	}
+\end{UseCase}
+
+\subsubsection{Show the details of the ride}
+\begin{UseCase}
+	{Registered user: a registered user is a guest that has already sign up.}
+	{This use case starts when a registered user clicks on ``\textit{My rides}''.}
+	{
+		\Event{The registered user clicks on ``\textit{My rides}''}
+		\Event{The system shows the page where the user can visualize the list of his/her rides and reservations}
+		\Event{The user clicks on the selected ride or reservation}
+		\Event{The system shows the specific page of the ride (or reservation) selected containing all the details}
+	}
+	{This use case terminates when the system visualize the details of the ride (or reservation) selected by the user.}
+	{
+		\Exc{The user is just registered to the application and he/she has never reserved nor used a ``PowerEnJoy'' electric car}{If this exception occurs, the system show an empty list.}
 	}
 \end{UseCase}
