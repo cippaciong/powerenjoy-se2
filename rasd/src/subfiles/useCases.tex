@@ -1,0 +1,63 @@
+\pagebreak
+\section{Use Cases}
+%\label{sec:req}
+
+% Definition of UseCase environment
+\newenvironment{UseCase}[5]{
+	\paragraph{Partecipating actors:} #1
+	\paragraph{Entry condition:} #2
+	\paragraph{Flow of events:}:
+		\begin{itemize} 
+			#3 
+		\end{itemize}
+	\paragraph{Exit condition:} #4
+	\paragraph{Exceptions:}
+		\begin{itemize}
+			#5
+		\end{itemize}
+	}{}
+
+\newcommand{\Event}[1]{
+	\item #1
+}
+
+\newcommand{\Exc}[2]{
+	\item \textbf{#1:} #2
+
+}
+
+
+\subsection{Registration}
+ 
+\begin{UseCase}
+{Guest: a guest is whoever visits the website}
+{This use case starts when the guest access the homepage of the web application.}
+{
+	\Event{The guest clicks on ``\textit{Sign up}''}
+	\Event{The guest fills out the form entering all required information:
+		\begin{itemize}
+			\item name
+			\item surname
+			\item address
+			\item e-mail
+			\item mobile phone number
+			\item driving license number
+			\item credit card number
+	\end{itemize}}
+	\Event{The guest checks the checkbox ``\textit{I have read and agree t PowerEnJoy Terms of Use and Privacy Policy}''}
+	\Event{The guest clicks on ``\textit{Confirm}''}
+	\Event{The system verifies that the user's credit card is valid}
+	\Event{The system verifies that the user's driving license is valid}
+	\Event{The system stores the new data in the users database}
+	\Event{The system displays a confirmation message, informing the new user that the registration has been successfully completed}
+	\Event{The system shows the new user his personal profile}
+	\Event{The system sends the user an e-mail containing his/her credentials (username and password)}
+}
+{This use case terminates when the registration is successfully completed and the new user access his/her personal area.}
+{
+	\Exc{The guest is already a registered user}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are already registered!}'' and the application goes back to the homepage.}
+	\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes bac to the homepage.}
+	\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
+	\Exc{The user doesn't fill all the fields in the registration form}{If this exception occurs, the system displays the error message: ``\textit{ERROR: all the fileds has to be filled!}'' and the application goes back to the page where the registration form is shown.}
+}
+\end{UseCase}
