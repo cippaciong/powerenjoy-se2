@@ -34,6 +34,7 @@
 
 
 \subsubsection{Registration}
+\toggletrue{exception}
 \begin{UseCase}
 	{Guest: a guest is whoever visits the website}
 	{This use case starts when the guest access the homepage of the web application and clicks on ``\textit{Sign up}''.}
@@ -99,7 +100,7 @@
 		\Event{The system displays the log in page}
 		\Event{The user receive the e-mail with the new password}
 	}
-	{This use case terminates when the user receive the new password by e-mail.}
+	{This use case terminates when the user receive the new password by e-mail.}{}
 \end{UseCase}
 
 \subsubsection{Reserve a car}
@@ -168,7 +169,7 @@
 		\Event{The system sends the user an e-mail containing all the details of the ride (total cost, discounts, fees, duration, starting location, ending location\ldots)}
 		\Event{The user receives the e-mail}
 	}
-	{This use case terminates when the user receives the e-mail containing the details of his last ride.}
+	{This use case terminates when the user receives the e-mail containing the details of his last ride.}{}
 \end{UseCase}
 
 \subsubsection{Expired reservation}
@@ -179,7 +180,7 @@
 		\Event{After an hour from the reservation, the system change the status of the car from ``\textit{reserved}'' to ``\textit{available}''}
 		\Event{The system impose a charge of 1€ to the user}
 	}
-	{This use case terminates when the status of the car in changed into ``\textit{available}''}
+	{This use case terminates when the status of the car in changed into ``\textit{available}''}{}
 \end{UseCase}
 
 \subsubsection{Payment not successful}
@@ -192,7 +193,7 @@
 		\Event{The system sends the user an e-mail telling to get in touch with the costumer care}
 		\Event{The user receive the e-mail}
 	}
-	{This use case terminates when the user receive the e-mail.}
+	{This use case terminates when the user receive the e-mail.}{}
 \end{UseCase}
 
 \subsubsection{Update personal information}
