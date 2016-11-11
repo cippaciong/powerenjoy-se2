@@ -155,7 +155,6 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	{Registered user: a registered user is a guest that has already sign up.}
 	{This use case starts when a registered user who has already reserved a car wants to unlock it, so logs in the application.}
 	{
-		\Event{The registered user logs in}
 		\Event{The system displays the user's personal profile page}
 		\Event{The user clicks on ``\textit{Unlock the reserved car}''}
 		\Event{The system checks the distance between the user and the reserved car}
@@ -165,7 +164,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	}
 	{This use case terminates when the system unlocks the car and the user can get in.}
 	{
-		\Exc{The user is at more than 3 metres from the car}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are too far from the car to unlock it! Please go next to the reserved car.}'' and the application shows the user's personal profile page.}
+		\Exc{The user is at more than 3 meters from the car}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are too far from the car to unlock it! Please go next to the reserved car.}'' and the application shows the user's personal profile page.}
 		\Exc{The user doesn't gets on the car in less than ten minutes}{If this exception occurs, the system locks the car and the ride is considered ended.}
 	}
 \end{UseCase}
