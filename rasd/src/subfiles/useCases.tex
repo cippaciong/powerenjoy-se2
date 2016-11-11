@@ -73,9 +73,9 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Event{The system verifies that the user's credit card is valid}
 		\Event{The system verifies that the user's driving license is valid}
 		\Event{The system stores the new data in the users database}
+		\Event{The system sends the user an e-mail containing his/her credentials (username and password)}
 		\Event{The system displays a confirmation message, informing the new user that the registration has been successfully completed}
 		\Event{The system shows the new user the log in page}
-		\Event{The system sends the user an e-mail containing his/her credentials (username and password)}
 	}
 	{This use case terminates when the registration is successfully completed and the new user receives the mail with his/her credentials.}
 	{
@@ -111,10 +111,11 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 \togglefalse{exception}
 \begin{UseCase}
 	{Registered user: a registered user is a guest that has already sign up.}
-	{This use case starts when the user forgot the password and clicks on ``\textit{Send a new password}'' from the log in page}
+	{This use case starts when the user forgot the password and clicks on ``\textit{Send a new password}'' from the log in page.}
 	{
 		\Event{The registered user is on the log in page and clicks on ``\textit{Send a new password}''}
-		\Event{The system sends the user an e-mail with a new password}
+		\Event{The system sends the user an e-mail with the new password}
+		\Event{The system displays a confirmation message}
 		\Event{The system displays the log in page}
 		\Event{The user receive the e-mail with the new password}
 	}
