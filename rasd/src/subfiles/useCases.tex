@@ -1,9 +1,13 @@
 \pagebreak
 \section{UML modeling}
 \subsection{Use Cases}
+\centerline{
+	\vspace{0.4in}
+		\includegraphics{UseCaseDiagram.eps}}
 
-\includegraphics{UseCaseDiagram.eps}
-\paragraph{ } In this paragraph we are going to identify and describe the most important use cases of PowerEnjoy web application.
+\pagebreak
+
+In this paragraph we are going to identify and describe the most important use cases of PowerEnjoy web application.
 Based on the scenarios defined in the previous chapter, we can derive some significant use cases:
 \begin{enumerate}
 	\item Registration
@@ -75,9 +79,9 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	}
 	{This use case terminates when the registration is successfully completed and the new user receives the mail with his/her credentials.}
 	{
-		\Exc{The guest is already a registered user}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are already registered!}'' and the application goes back to the homepage.}
-		\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the homepage.}
-		\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
+		\Exc{The guest is already a registered user}{If this exception occurs, the system displays the error message: ``\textit{ERROR: you are already registered!}'' and the application goes back to the page where the registration form is shown.}
+		\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the page where the registration form is shown.}
+		\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the page where the registration form is shown.}
 		\Exc{The user doesn't fill all the fields in the registration form}{If this exception occurs, the system displays the error message: ``\textit{ERROR: all the fields has to be filled!}'' and the application goes back to the page where the registration form is shown.}
 	}
 \end{UseCase}
