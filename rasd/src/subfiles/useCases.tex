@@ -224,6 +224,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Event{The user clicks on ``\textit{Personal information}''}
 		\Event{The system shows the page where the user can visualize his/her personal information}
 		\Event{The user clicks on ``\textit{Edit}''}
+		\Event{The system shows an input form where the user can make changes}
 		\Event{The user update the information he/she wants in the specific input form}
 		\Event{The user clicks on ``\textit{Save changes}''}
 		\Event{The system verifies that the user's credit card is valid}
@@ -231,10 +232,10 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Event{The system stores the new data in the users database}
 		\Event{The system shows the page where the user can visualize his/her personal information}
 	}
-	{This use case terminates when the new data are stored in the users database.}
+	{This use case terminates when the new data are stored in the users database and the personal information page is shown.}
 	{
-		\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the homepage.}
-		\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the homepage.}
+		\Exc{The user's credit car isn't valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your credit card is not valid!}'' and the application goes back to the page where the user can make changes.}
+		\Exc{The user's driving license is not valid}{If this exception occurs, the system displays the error message: ``\textit{ERROR: your driving license is not valid!}'' and the application goes back to the page where the user can make changes.}
 	}
 \end{UseCase}
 
