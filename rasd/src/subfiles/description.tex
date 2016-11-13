@@ -1,0 +1,32 @@
+\newcounter{MockupCounter}
+\newcommand{\mockup}[2]{
+    \refstepcounter{MockupCounter}
+    \begin{figure}[H]
+        %\includegraphics[scale=0.8]{#1.png}
+        \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1.pdf}
+        \caption*{Mockup \arabic{MockupCounter}: #2}
+        \label{mockup:#1}
+    \end{figure}
+}
+
+\pagebreak
+\subsection{Product perspective}
+As we said in the introduction of this document, we are not going to discuss the possibile
+implementations that could be adopted to solve the customer needings. Nontheless we think
+is important to provide some sketches showing how we think the user experience should be.
+Specifically, we want users to be able to access the platform from a mobile device and to 
+easly look for and reserve cars near the their location.
+For such purpose we show some mockups of a possibile application interface.
+ 
+\subsubsection{User interface}
+We are going to use a webapp interface as a sample of how the interaction should happen.
+Additionally we will show an example of the car screen displaying some useful informations.
+
+\pagebreak
+\mockup{homepage}{The home page.}
+\mockup{sign_up}{The registration page for a guest willing to become a customer.}
+\mockup{login}{The login screen for a customer.}
+\mockup{personal_info}{A page displaying the user information.}
+\mockup{profile_page}{The page to unlocked a reserved car or start a car research.}
+\mockup{reservation}{Insertion of information to performa a car research.}
+\mockup{screen}{The car screen displaying information about nearby safe areas and power grid stations.}
