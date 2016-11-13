@@ -3,13 +3,7 @@ sig RegisteredUser { position: Position }
 sig Car {
     position:       Position,
     passengers:     Int,
-    /*We need a hack for the status of the car. We have neither strings nor enums*/
-    /*so we will map statuses to integers*/
-    /*UNAVAILABLE:    0*/
-    /*AVAILABLE:      1*/
-    /*RESERVED:       2*/
-    /*IN_USE:         3*/
-    status:         one Int
+    status:         one CarStatus
     }
 
 sig ReservationTable {
@@ -21,38 +15,43 @@ sig Ride {
    endPosition:     Position,
    user:            one RegisteredUser,
    car:             one Car,
-   status:          one Int //0 inactive, 1 active
+   status:          one RideStatus
 }
 
 abstract sig Position {}
 sig CurrentPosition, SafeArea, PowerGridStation extends Position {}
 
-/* ------------------ FACTS ------------------ */
-// The status of the car can be either 0, 1, 2 or 3
-fact onlyFourStatusesForCars {
-    all c: Car | c.status >= 0 and c.status < 4
-}
-// The status of the ride can be either 0 or 1
-fact onlyTwoStatusForRide {
-    all r: Ride | r.status = 0 or r.status = 1
+/* ------------------ ENUMS ------------------ */
+
+enum CarStatus {
+        AVAILABLE,
+        UNAVAILABLE,
+        RESERVED,
+        IN_USE
 }
 
-// If the car has passangers it means that it's in use (status 3)
+enum RideStatus {
+        ACTIVE,
+        ENDED
+}
+
+/* ------------------ FACTS ------------------ */
+// If the car has passangers it means that it's in use
 fact onlyInUseCarsCanHavePassengers {
-    all c: Car | c.passengers > 0 implies c.status = 3
+    all c: Car | c.passengers > 0 implies c.status = IN_USE
 }
 
 // A user can be associated with just one acttive ride
 fact onlyOneActiveRidePerUser {
-    no u: RegisteredUser | some r1,r2: Ride | r1.status = 1 and r2.status = 1
+    no u: RegisteredUser | some r1,r2: Ride | r1.status = ACTIVE and r2.status = ACTIVE
         and r1.user = u and r2.user = u and r1!=r2
 }
 
 // Rides should start or ends in PowerGridStations or SafeAreas and not in
 // generic CurrentPosition
 fact rideStartPoint{
-    all r: Ride | all s: Position | s = r.startPosition implies s in PowerGridStation or s in SafeArea 
-        /*e = r.startPosition implies e in PowerGridStation or e in SafeArea*/
+    all r: Ride | all s: Position | s = r.startPosition implies
+        s in PowerGridStation or s in SafeArea 
 }
 fact rideEndPoint{
     all r: Ride | all e: Position | e = r.endPosition implies e in PowerGridStation or e in SafeArea 
@@ -60,7 +59,16 @@ fact rideEndPoint{
 
 // A car is associated with a ride iff is in use
 fact carInUseAreRelatedToActiveRides {
-    all c: Car, r: Ride | r.status = 1 and c.status = 3 implies (r.car = c)
+    all c: Car | all r:Ride | c.status = IN_USE implies (r.car = c and r.status = ACTIVE)
+    all c: Car | all r:Ride | (r.car = c and r.status = ACTIVE) implies c.status = IN_USE
+        /*and (r.status = ACTIVE and r.car = c) implies c.status = IN_USE*/
+    /*all c: Car, r: Ride | r.status = ACTIVE and c.status = IN_USE implies (r.car = c)*/
+    /*no c: Car | some r: Ride | c.status = IN_USE and c not in r.car*/
+}
+
+// A reserved car is associated to a ReservationTable
+fact allReservedCarsAreInTheReservationTable {
+    all c: Car | some u: RegisteredUser | c.status = RESERVED implies (c in u.( ReservationTable.reserve ))
 }
 
 // A car can be reserved only by one user
@@ -72,7 +80,7 @@ fact onlyOneUserReservesCar {
 // A reserved car has status 2
 fact reservedCarStatus {
     all c: Car, u: RegisteredUser | c in u.(ReservationTable.reserve)
-        implies c.status = 2    
+        implies c.status = RESERVED
 }
 
 // A car can be driven only by one user
@@ -110,6 +118,40 @@ fact noUnattendedPassengers {
    /*no c:Car | no u:RegisteredUser | c.passengers > 0 and c not in u.(Ride.drive)*/
    no c:Car | some r: Ride | c.passengers > 0 and r.car!=c
     }
+
+
+/* ------------------ ASSERTIONS ------------------ */
+// A1
+assert reservedStatusIfReallyReserved {
+    no c: Car | some u: RegisteredUser |
+        c in u.(ReservationTable.reserve) and c.status != RESERVED 
+}
+check reservedStatusIfReallyReserved for 10 but 1 ReservationTable
+
+// A2
+assert activeCarsAreInvolvedInAnActiveRide {
+    all r: Ride | all c: Car |
+        (r.car = c and r.status = ACTIVE) implies (c.status = IN_USE)
+}
+check activeCarsAreInvolvedInAnActiveRide for 10 but 1 ReservationTable
+
+//A3
+assert carsNotInUseDontHavePassengers {
+    no c: Car | c.status != IN_USE and c.passengers > 0
+}
+check carsNotInUseDontHavePassengers for 10 but 1 ReservationTable
+
+//A4
+assert carsInUseCanHavePassengers {
+    all c: Car | c.passengers > 0 implies ( c.status = IN_USE)
+}
+check carsInUseCanHavePassengers for 10 but 1 ReservationTable
+
+//A5
+assert carReservedAndAssociatedToRideMeansRideIsEnded {
+    all c: Car, r: Ride | (r.car = c and c.status = RESERVED) implies r.status = ENDED
+}
+check carReservedAndAssociatedToRideMeansRideIsEnded
 
 
 pred show() {}
