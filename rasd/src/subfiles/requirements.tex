@@ -1,5 +1,5 @@
 \pagebreak
-\section{Specific requirements}
+\section{Requirements}
 \label{sec:req}
 
 % Counter Goals
@@ -27,13 +27,26 @@
     \item[] \textbf{Domain Assumption \arabic{FunReqD}}: #1.
 }
 
+\subsection{Geneal Assumptions}
+This are some geneal assumptions that we considered to be always valid when defining our model.
+They are listed in this generic list beacause they are essential to fullful the majority
+of the goals described in the following section. For this reason we preferred to list all
+of them here rather then repeat them multiple times.
+
+\begin{itemize}
+    \item{All the cars and the users' devices are equipped with a GPS system}
+    \item{The GPS system provides accurate and correct informations}
+    \item{The devices used by the users have a mobile internet connection}
+    \item{Every car is connected to a network (internet or local)
+            and we can send or retrieve informations in any moment}
+    \item{We can control some phisical devices of the care remotely, like the locking system}
+\end{itemize}
+
 \subsection{Functional Requirements}
 
 \begin{Goal}{registration}{Allow guests can register to the platform receiving back
         a login password}{
     %REQUIREMENTS
-    \Req{\st{ The service shall prevent guests from accessing any service before
-        being registered or logged in }}
     \Req{The system shall validate any input by the guest}
     \Req{The system shall verify that the user's driving license is valid} 	
     \Req{The system shall verify that the user's credit card is valid}
@@ -50,20 +63,17 @@
 \begin{Goal}{search}{Registered users must be able to search available cars}{
 
     %REQUIREMENTS
-    \Req{\st{ The system shall prevent anyone to interact with the platform if not logged in }} 
     \Req{The system shall allow users to choose a maximum radius for the car research}
     \Req{The system shall allow the user to provide an address or the current position
             as the center of the research area}
     %ASSUMPTIONS
     \Dom{The user position is provided by the user's device GPS system}
-    \Dom{\st{ All cars have a GPS system to detect their current location }}
 }
 \end{Goal}
 	
 \begin{Goal}{reservation}{Registered users must be able to reserve a single car among
         all the available cars}{
     %REQUIREMENTS
-    \Req{\st{ The system shall prevent anyone to interact with the platform if not logged in }} 
     \Req{The system shall verify that the user is not reserving more than one car at a time} 
     \Req{The system shall verify that the user can select a car only among the list
             of cars marked as "available" in the search radius} 
@@ -97,7 +107,6 @@
     \Req{The system shall change the status of the car from "reserved" to "in use" when
             the car is unlocked}
     %ASSUMPTIONS
-    \Dom{\st{ All cars have a GPS system to detect their current location }}
 }
 \end{Goal}
     
@@ -121,7 +130,6 @@
     %ASSUMPTIONS
     \Dom{Every car has a display}
     \Dom{The car actually shows the informations received from the system}
-    \Dom{\st{ Every car has internet connection }}
 }
 \end{Goal}
 
