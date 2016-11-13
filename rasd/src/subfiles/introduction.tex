@@ -1,0 +1,48 @@
+\section{Introduction}
+
+\subsection{Purpose}
+    This is the Requirement Analysis and Specification Document (RASD from now on).
+    The aim of this document is to show the functional and non-functional requirements
+    of the system-to-be, based on several important aspects:
+    the needs expressed by the stakeholders, the constraints which it is subject to,
+    the typical scenarios that will happen after its deployment.
+    The targeted audience is mainly made of software engineers and developers who have
+    to actually develop the service here described.
+
+\subsection{Scope}
+    The task we are asked to complete is the definition of a software system to manage a car sharing
+    service composed by electric cars. This is going to be a brand new system without any
+    legacy software or data to deal with. The idea is that users can register to our platform
+    using an internet connected device (computer, smartphone, etc.) and then they are able to
+    look for available cars in a certain area. 
+    One of the available cars can be reserved and picked up in not more then one hour; at that
+    point the user is billed for the time he's using the car.
+    Finally, the system can apply discounts or penalties.
+
+\subsection{Stakeholders}
+    The main stakeholder is the \textbf{PowerEnJoy} company, whose aim is to provide a service
+    that is profitable for them but at the same time is useful for all the people living in the
+    city and helps reduce the pollution thanks to the electric engines.
+
+\subsection{Definitions}
+    \begin{itemize}
+        \item \textbf{Agents}
+        \begin{itemize}
+            \item \textbf{Guest}: A person who is not registered to the platform. He can either
+                register or browse the public website
+            \item \textbf{RegisteredUser}: A registered person that has full access to the platform.
+            \item \textbf{User}: See "RegisteredUser".
+            \item \textbf{Passenger}: A person that is taken by a RegisteredUser as his
+                his passenger during a ride. It doesn't matter if such person is registered or not.
+        \end{itemize}
+        \item \textbf{Car}: An electric car owned by PowerEnJoy.		
+        \item \textbf{Reservation}: A one hour lasting booking of a car performed by a 
+            single user.
+        \item \textbf{Ride}: A ride is what follows a reservation when the user picks up the
+            car in time. It begins with the car unlocking, it ends when the car is parked and
+            locked and it keeps track of the user who drove the car and the time of car usage.
+        \item \textbf{SafeArea}: A PowerEnJoy parking slot where the User can leave the car
+            at the end of the ride.
+        \item \textbf{PowerGridStation}: A special SafeArea with an electric outlet to charge
+            the car battery.
+    \end{itemize}
