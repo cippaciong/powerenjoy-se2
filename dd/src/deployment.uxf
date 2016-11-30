@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>4</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>224</x>
-      <y>204</y>
-      <w>168</w>
-      <h>112</h>
+      <x>252</x>
+      <y>234</y>
+      <w>252</w>
+      <h>168</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Web Server / Reverse Proxy / Cache&gt;&gt;
+    <panel_attributes>&lt;&lt;Reverse Proxy / Cache / SSL Termination&gt;&gt;
 *NGINX*
 transparency=0</panel_attributes>
     <additional_attributes/>
@@ -17,10 +17,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>736</x>
-      <y>204</y>
-      <w>168</w>
-      <h>112</h>
+      <x>1020</x>
+      <y>234</y>
+      <w>252</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Database&gt;&gt;
 *PostgreSQL*
@@ -31,22 +31,22 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>388</x>
-      <y>248</y>
-      <w>100</w>
-      <h>16</h>
+      <x>498</x>
+      <y>300</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
-*TCP*</panel_attributes>
+*HTTP*</panel_attributes>
     <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>644</x>
-      <y>248</y>
-      <w>100</w>
-      <h>16</h>
+      <x>882</x>
+      <y>300</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 *JDBC*</panel_attributes>
@@ -55,106 +55,244 @@ layer=1</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>480</x>
-      <y>204</y>
-      <w>168</w>
-      <h>112</h>
+      <x>636</x>
+      <y>234</y>
+      <w>252</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Application Server&gt;&gt;
 *GlassFish*
-transparency=0</panel_attributes>
+bg=white
+transparency=0
+layer=2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>204</x>
-      <y>180</y>
-      <w>716</w>
-      <h>152</h>
+      <x>222</x>
+      <y>198</y>
+      <w>1074</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>IaaS
 --
 bg=orange
-</panel_attributes>
+
+layer=-1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>184</x>
-      <y>152</y>
-      <w>756</w>
-      <h>308</h>
+      <x>192</x>
+      <y>156</y>
+      <w>1134</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>Deployment
---</panel_attributes>
+--
+layer=-2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>204</x>
-      <y>352</y>
-      <w>300</w>
-      <h>88</h>
+      <x>222</x>
+      <y>462</y>
+      <w>594</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>&lt;&lt;world&gt;&gt; Clients
 --
-bg=#c2d8ec</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>260</x>
-      <y>384</y>
-      <w>88</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-&lt;&lt;client&gt;&gt;
-Web Browser
-bg=white
-layer=1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>364</x>
-      <y>384</y>
-      <w>88</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-&lt;&lt;client&gt;&gt;
-Mobile Client
-bg=white
-layer=1</panel_attributes>
+bg=#c2d8ec
+layer=-1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>312</y>
-      <w>12</w>
-      <h>80</h>
+      <x>366</x>
+      <y>396</y>
+      <w>174</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;270.0;30.0;270.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>336</y>
-      <w>116</w>
-      <h>56</h>
+      <x>522</x>
+      <y>432</y>
+      <w>192</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 *HTTPS*</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0;270.0;120.0</additional_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0;300.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>348</x>
+      <y>432</y>
+      <w>192</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+*HTTPS*</panel_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>282</x>
+      <y>504</y>
+      <w>138</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+Web Browser
+bg=white
+transparency=0
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>276</x>
+      <y>516</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>270</x>
+      <y>522</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>636</x>
+      <y>504</y>
+      <w>138</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+Car Device
+bg=white
+transparency=0
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>630</x>
+      <y>516</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>624</x>
+      <y>522</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>462</x>
+      <y>504</y>
+      <w>138</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;device&gt;&gt;
+Mobile Client
+bg=white
+transparency=0
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>456</x>
+      <y>516</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>522</y>
+      <w>132</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>bg=white
+transparency=0
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>246</y>
+      <w>246</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=.
+bg=white
+transparency=50
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>252</y>
+      <w>246</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=.
+bg=white
+transparency=50
+layer=0</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
