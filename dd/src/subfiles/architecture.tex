@@ -2,31 +2,26 @@
 \section{Architectural Design}
  
 \subsection{High level components}
-According to the requirements described in RASD, we decided to design the architecture depicted
-in Figure~\ref{fig:h_l_comp} and Figure~\ref{fig:i_h_l_comp}. These two figures represents
-only a high level description of the components. In the first one we decided to focus on
-the somewhat physical representation of our application. By saying physical we mean that
-every component depicted there, will probably reside on separate machines (or is an external service).
-To be precise we should have added another component between clients and
-application server which is the reverse proxy/web server. The reason why we preferred to
-omit it is that at this stage we want to address only the aspects that are relevant to the
-application development and that layer can be considered quite transparent, the application
-does not have to deal with it explicitly. Of course this will not be the same in a context of deployment.
-The second figure instead is a high level overview of the application internals without all
-the external components. We are going to describe its architecture further in this document
-but we wanted nonetheless to give an initial idea of how it is internally structured.
-
-We can summarize the two main aspects of our architecture in: client-server and microservices.
+Based on the requirements described in the RASD, we designed an architecture which is based
+on two main principles: Client-Server and Microservices paradigms.
 
 \subsubsection{Client-Server}
-The architecture of the complete system will be a client-server one. We think this is the
-most natural (if not only) way to build a distributed application supporting different
-client technologies (mobile app, web app, etc.).
+The client-server aspect of our application can be seen in Figure~\ref{fig:h_l_comp}.
+There we focus on the "physical" representation of our application. By saying physical we mean that
+every component depicted there will probably reside on separate machines (or is an external service).
+To be precise we should have added another component between clients and
+application server which is the reverse proxy/web server. The reason why we preferred to
+omit it is that, at this stage, we want to address only the aspects that are relevant to the
+application development and that layer can be considered transparent with respect to the application.
+The application does not have to deal with it explicitly.
+Of course this will not be the same in a context of deployment.
 
 \subsubsection{Microservices}
-Internally the application will be structured as a service oriented architecture.
-More specifically we will try to build microservices that will deal with single, atomic, responsibilities.
-\pagebreak
+Figure~\ref{fig:i_h_l_comp} is a high level overview of the application internals stripped from all
+the external components. We are going to describe its architecture further in this document
+but we wanted nonetheless to give an initial idea.
+The internal structure of the application is going to be a service oriented architecture.
+We will try to build microservices that will deal with single, atomic, responsibilities.
 
 \begin{sidewaysfigure}
 \centering
@@ -34,8 +29,6 @@ More specifically we will try to build microservices that will deal with single,
 \caption{Component view: High Level Architecture}
 \label{fig:h_l_comp}
 \end{sidewaysfigure}
-
-\pagebreak
 
 \begin{sidewaysfigure}
 \centering
@@ -45,6 +38,30 @@ More specifically we will try to build microservices that will deal with single,
 \end{sidewaysfigure}
 
 \pagebreak
+\subsection{Low level components}
+In this section we are going to describe further the internal configuration of our server
+application. After giving a general overview, we will analyze each component separately.
+As we anticipated in the previous section, the application is going to follow the microservices
+architecture internally with some functions delegated to external services or components.
+We will start by describing the latter and then we will move on to the internal ones.
+To do so we will use Figure~\ref{fig:i_l_l_comp} as a reference.
+In that diagram you can see a more detailed example of what we have already seen
+in Figure~\ref{fig:i_h_l_comp}.
+
+\subsubsection{Map API}
+Starting from the latter, we assume that all functions related to the map (path finding,
+distance calculation, map representation, etc) will be delegated to the Google Maps API.
+All the classes that are going to use that API will provide an additional interface if they 
+need to expose some functionalities to the other components.
+\subsubsection{POS API}
+The other aspect that we are not going to develop internally is the Payment Service (POS).
+In this case we are going to use the simple an powerful Stripe service that have been chosen
+for its ease of use and of integration.
+\subsubsection{Database}
+Finally, the last component that will not be part of the application in a strict way is the database.
+It won't be an entirely external service since we are going to host and mange it in our infrastructure,
+but it's still something our application will user through its dedicated API. Regarding the
+database we will use the solid and well tested PostgreSQL relational database.
 
 \begin{sidewaysfigure}
 \centering
@@ -54,3 +71,24 @@ More specifically we will try to build microservices that will deal with single,
 \end{sidewaysfigure}
 
 \pagebreak
+\subsubsection{Router}
+The Router is the first of our internal component. The idea behind is that this is the component
+delegated to do the initial parsing of the request coming from the client. It will analyze
+the URI and the HTTP method following the REST principles and based on that informations,
+it will produce a message to be enqueued. Once it will get back a reply from the service
+corresponding to the initial request, it will send back that response to the client.
+
+\subsubsection{UserHandler}
+\subsubsection{CarHandler}
+\subsubsection{ReservationHandler}
+\subsubsection{RideHandler}
+\subsubsection{PaymentHandler}
+\subsubsection{AreaHandler}
+
+\subsection{Deployment}
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=\textwidth]{deployment}
+\caption{Component view: Internal Low Level Architecture}
+\label{fig:depl}
+\end{sidewaysfigure}
