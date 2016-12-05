@@ -1,0 +1,26 @@
+\newcounter{MockupCounter}
+\newcommand{\mockup}[2]{
+	\refstepcounter{MockupCounter}
+	\begin{figure}[H]
+		%\includegraphics[scale=0.8]{#1.png}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1.png}
+		\caption*{Mockup \arabic{MockupCounter}: #2}
+		\label{mockup:#1}
+	\end{figure}
+}
+
+\pagebreak
+\section{User Interface Design}
+
+\mockup{homepage}{The home page.}
+\mockup{registration}{The registration form.}
+\mockup{error}{An error message.}
+\mockup{confirmation}{A confirmation message.}
+\mockup{login}{The login page.}
+\mockup{profile}{The user's personal profile page.}
+\mockup{my_rides}{The list of rides and reservations.}
+\mockup{ride}{The page with the details of a specific ride.}
+\mockup{personal_info}{The page where user's personal information is shown.}
+\mockup{modify_info}{The page where the user can edit his/her information.}
+
+\pagebreak
