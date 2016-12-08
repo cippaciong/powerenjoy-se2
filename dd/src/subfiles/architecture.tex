@@ -2,26 +2,53 @@
 \section{Architectural Design}
  
 \subsection{High level components}
-Based on the requirements described in the RASD, we designed an architecture which is based
-on two main principles: Client-Server and Microservices paradigms.
+In this section we are going to introduce the architecture that will be used to develop
+the application. We based our decisions upon the requirements described in the RAS Document 
+and we choose three principles as the foundations of our structure: 
+\begin{itemize}
+    \item \textbf{Client-server} model.
+    \item \textbf{RESTful} API.
+    \item \textbf{Microservices} approach.
+\end{itemize}
 
 \subsubsection{Client-Server}
 The client-server aspect of our application can be seen in Figure~\ref{fig:h_l_comp}.
 There we focus on the "physical" representation of our application. By saying physical we mean that
-every component depicted there will probably reside on separate machines (or is an external service).
-To be precise we should have added another component between clients and
+every component depicted there will reside on separate machines (or is an external service).
+To be precise, we should have added another component between clients and
 application server which is the reverse proxy/web server. The reason why we preferred to
 omit it is that, at this stage, we want to address only the aspects that are relevant to the
 application development and that layer can be considered transparent with respect to the application.
 The application does not have to deal with it explicitly.
 Of course this will not be the same in a context of deployment.
+The interaction between client and server will be the usual one when dealing with web/mobile
+applications. Our client will make the initial request and the server will send back the
+information. In out case, such informations will be received as an XML or JSON document.
+
+\subsubsection{RESTful API}
+For the design of the API we decided to rely upon the REST principles. The reasons that moved
+this decision are diverse. To begin with, we decided that a generic API was better fitting
+in our context that is composed of different clients (web application, and different mobile
+clients). This way, we can serve a single format of document as respond containing all the 
+requested data and then the client can build the user interface using the most suitable
+technologies according to the specific case.
+Secondly, REST principles, when followed correctly, concur to gain desirable non-functional
+features, such as performance, scalability, simplicity and modifiability.
+Finally, messages exchanged in REST APIs are often self-descriptive and this is beneficial
+for the ease of development of web and mobile applications.
 
 \subsubsection{Microservices}
 Figure~\ref{fig:i_h_l_comp} is a high level overview of the application internals stripped from all
 the external components. We are going to describe its architecture further in this document
 but we wanted nonetheless to give an initial idea.
 The internal structure of the application is going to be a service oriented architecture.
-We will try to build microservices that will deal with single, atomic, responsibilities.
+Upon receiving a new request, the router (our entry point) will produce a new message,
+that will be dispatched to all the required services. The response to this message will
+be rendered and sent back to the client.
+The reason why we choose microservices is that they allow us to separate the code in
+atomic components, each of them dealing with a single responsibility.
+Furthermore, using queues to dispatch messages, ensure that our internal communications
+are asynchronous and non blocking.
 
 \begin{sidewaysfigure}
 \centering
@@ -112,10 +139,14 @@ This component is in charge of operations dealing with all the safe areas belong
 Safe areas are stored to know exactly their position and the type of the safe area, being it
 a normal area or a power grid station.
 
+\pagebreak
+
 \subsection{Deployment}
+
 \begin{sidewaysfigure}
 \centering
 \includegraphics[width=\textwidth]{deployment}
-\caption{Component view: Internal Low Level Architecture}
+\caption{Deployment view}
 \label{fig:depl}
 \end{sidewaysfigure}
+
