@@ -142,7 +142,38 @@ a normal area or a power grid station.
 \pagebreak
 
 \subsection{Deployment}
+This section will be dedicated to the deployment strategy adopted for our application. Figure~\ref{fig:depl}
+shows the physical structure of the system and we are going to describe it in greater detail.
 
+\paragraph{IaaS} The infrastructure for our deployments will not be based on bare metal servers
+but we preferred to adopt an approach based on IaaS. In this way we can benefit from the
+flexibility provided by this kind of services that will allow us to start small and scale
+up, when our user base will grow.  
+
+\paragraph{Servers} We choose to use a three-tier architecture with three different servers:
+\begin{itemize}
+    \item{Reverse Proxy}: This our first tier and has the main role to redirect users request to
+        the application server. Other jobs executed on this server are: caching, load balancing
+        and serving static files.
+        Load balancing is a function that maybe is not going to be exploited in the beginning,
+        but we expect it to become useful, when the load of out application server will increase.
+
+    \item{Application Server}: This is the server containing our application and is our second tier.
+        All requests will be redirected here in order to provide a response. Looking at
+        Figure~\ref{fig:depl}, this component is represented by a solid rectangle with additional
+        dashed rectangles around it. This kind of notation represent our idea that in the
+        beginning there will be only one application server but, when the load will increase,
+        this is the first component that will be affected by it. For this reason we want to
+        be able to add other instances of our application seamlessly. This is made possible
+        thanks to our previous decisions to use IaaS and a load balancer, while data consistency
+        will be granted by a stateless architecture and persistence delegated to the database.
+
+    \item{Database Server}: Our third layer is the database. In this case we adopted a
+        traditional approach and used a relational database. Since RDBMS are usually well
+        optimized to work even under heavy load, we don't expect to need any kind of
+        replication right now.
+
+\end{itemize}
 \begin{sidewaysfigure}
 \centering
 \includegraphics[width=\textwidth]{deployment}
