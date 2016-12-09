@@ -2,7 +2,6 @@
 \newcommand{\sequence}[2]{
 	\refstepcounter{SequenceCounter}
 	\begin{figure}[H]
-		%\includegraphics[scale=0.8]{#1.png}
 		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1.eps}
 		\caption*{Sequence Diagram \arabic{SequenceCounter}: #2}
 		\label{sequence:#1}
@@ -30,3 +29,9 @@ In order to enhance understanding, in these sequence diagrams we decided to omit
 
 \subsubsection{Unlock the reserved car}
 \sequence{unlock}{Unlock the reserved car}
+
+\subsubsection{Update personal information}
+\sequence{update}{Update personal information}
+
+\subsubsection{Show the details of the ride}
+\sequence{details}{Show the details of the ride}
