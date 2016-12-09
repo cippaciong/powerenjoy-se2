@@ -1,0 +1,40 @@
+\newcounter{SequenceCounter}
+\newcommand{\sequence}[2]{
+	\refstepcounter{SequenceCounter}
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1.eps}
+		\caption*{Sequence Diagram \arabic{SequenceCounter}: #2}
+		\label{sequence:#1}
+	\end{figure}
+}
+
+
+\pagebreak
+\subsection{Runtime view}
+In this paragraph we are going to show some sequence diagrams related to the use cases identified in the RASD document, in order to explain how the components of the system interacts with each other and with the actors.
+
+In order to enhance understanding, in these sequence diagrams we decided to omit the router component because its only task is to switch the request to the user handler or the car handler according to the request type.
+
+\subsubsection{Registration}
+\sequence{registration}{The registration}
+
+\subsubsection{Log in}
+\sequence{login}{The log in}
+
+\subsubsection{Recover the password}
+\sequence{password}{The recovery of the password}
+
+\subsubsection{Reserve a car}
+\sequence{reservation}{Reservation of a car}
+
+\subsubsection{Unlock the reserved car}
+\sequence{unlock}{Unlock the reserved car}
+
+\subsubsection{Update personal information}
+\sequence{update}{Update personal information}
+
+\subsubsection{Show the details of the ride}
+\sequence{details}{Show the details of the ride}
+
+\subsubsection{End of the ride}
+\sequence{end}{End of the ride}
