@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>6</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>252</x>
-      <y>234</y>
-      <w>252</w>
-      <h>168</h>
+      <x>80</x>
+      <y>312</y>
+      <w>264</w>
+      <h>144</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Reverse Proxy / Cache / SSL Termination&gt;&gt;
-*NGINX*
+    <panel_attributes>*Reverse Proxy / Cache / Load Balancer*
 transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>1020</x>
-      <y>234</y>
-      <w>252</w>
-      <h>168</h>
+      <x>1016</x>
+      <y>312</y>
+      <w>264</w>
+      <h>144</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Database&gt;&gt;
-*PostgreSQL*
+    <panel_attributes>*Database*
 transparency=0
 layer=1</panel_attributes>
     <additional_attributes/>
@@ -31,37 +29,36 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
-      <y>300</y>
-      <w>150</w>
-      <h>24</h>
+      <x>336</x>
+      <y>368</y>
+      <w>224</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 *HTTP*</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>300</y>
-      <w>150</w>
-      <h>24</h>
+      <x>808</x>
+      <y>360</y>
+      <w>224</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
-*JDBC*</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+*SQL*</panel_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>636</x>
-      <y>234</y>
-      <w>252</w>
-      <h>168</h>
+      <x>544</x>
+      <y>312</y>
+      <w>272</w>
+      <h>144</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Application Server&gt;&gt;
-*GlassFish*
+    <panel_attributes>*Application Server*
 bg=white
 transparency=0
 layer=2</panel_attributes>
@@ -70,10 +67,10 @@ layer=2</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>222</x>
-      <y>198</y>
-      <w>1074</w>
-      <h>228</h>
+      <x>40</x>
+      <y>232</y>
+      <w>1264</w>
+      <h>304</h>
     </coordinates>
     <panel_attributes>IaaS
 --
@@ -85,10 +82,10 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>192</x>
-      <y>156</y>
-      <w>1134</w>
-      <h>462</h>
+      <x>0</x>
+      <y>176</y>
+      <w>1328</w>
+      <h>616</h>
     </coordinates>
     <panel_attributes>Deployment
 --
@@ -98,10 +95,10 @@ layer=-2</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>222</x>
-      <y>462</y>
-      <w>594</w>
-      <h>132</h>
+      <x>40</x>
+      <y>584</y>
+      <w>792</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>&lt;&lt;world&gt;&gt; Clients
 --
@@ -112,21 +109,21 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>366</x>
-      <y>396</y>
-      <w>174</w>
-      <h>120</h>
+      <x>232</x>
+      <y>448</y>
+      <w>232</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;270.0;30.0;270.0;180.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;270.0;60.0;270.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>432</y>
-      <w>192</w>
-      <h>84</h>
+      <x>440</x>
+      <y>544</y>
+      <w>256</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 *HTTPS*</panel_attributes>
@@ -135,10 +132,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>348</x>
-      <y>432</y>
-      <w>192</w>
-      <h>84</h>
+      <x>208</x>
+      <y>544</y>
+      <w>256</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 *HTTPS*</panel_attributes>
@@ -147,13 +144,13 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>282</x>
-      <y>504</y>
-      <w>138</w>
-      <h>48</h>
+      <x>120</x>
+      <y>640</y>
+      <w>184</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;device&gt;&gt;
-Web Browser
+*Web Browser*
 bg=white
 transparency=0
 layer=2</panel_attributes>
@@ -162,10 +159,10 @@ layer=2</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>276</x>
-      <y>516</y>
-      <w>132</w>
-      <h>42</h>
+      <x>112</x>
+      <y>656</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -175,10 +172,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>270</x>
-      <y>522</y>
-      <w>132</w>
-      <h>42</h>
+      <x>104</x>
+      <y>664</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -188,13 +185,13 @@ layer=0</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>636</x>
-      <y>504</y>
-      <w>138</w>
-      <h>48</h>
+      <x>592</x>
+      <y>640</y>
+      <w>184</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;device&gt;&gt;
-Car Device
+*Car Device*
 bg=white
 transparency=0
 layer=2</panel_attributes>
@@ -203,10 +200,10 @@ layer=2</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>630</x>
-      <y>516</y>
-      <w>132</w>
-      <h>42</h>
+      <x>584</x>
+      <y>656</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -216,10 +213,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>624</x>
-      <y>522</y>
-      <w>132</w>
-      <h>42</h>
+      <x>576</x>
+      <y>664</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -229,13 +226,13 @@ layer=0</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>462</x>
-      <y>504</y>
-      <w>138</w>
-      <h>48</h>
+      <x>360</x>
+      <y>640</y>
+      <w>184</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;device&gt;&gt;
-Mobile Client
+*Mobile Client*
 bg=white
 transparency=0
 layer=2</panel_attributes>
@@ -244,10 +241,10 @@ layer=2</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>456</x>
-      <y>516</y>
-      <w>132</w>
-      <h>42</h>
+      <x>352</x>
+      <y>656</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -257,10 +254,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>450</x>
-      <y>522</y>
-      <w>132</w>
-      <h>42</h>
+      <x>344</x>
+      <y>664</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=white
 transparency=0
@@ -270,10 +267,10 @@ layer=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>246</y>
-      <w>246</w>
-      <h>162</h>
+      <x>536</x>
+      <y>320</y>
+      <w>272</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=.
 bg=white
@@ -284,10 +281,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>252</y>
-      <w>246</w>
-      <h>162</h>
+      <x>528</x>
+      <y>336</y>
+      <w>264</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>lt=.
 bg=white
