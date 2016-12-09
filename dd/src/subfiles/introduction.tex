@@ -15,11 +15,24 @@ but from a different point of view. For this reason, the Design Document and the
 document developed earlier have to be both considered in order to have a general view of our project 
 in all its aspects. 
 The intended audience of this specification include project managers, but above all software developers 
-that may use or extend our application in the future. 
+that are going to implement our application in the future. 
+Within the document we are going to examine architectural choices and technologies employed
+with different levels of details, but we opted to omit implementations details that looked 
+too specific to us. Examples of those details are programming languages or
+software to use across the system.
+We believe that the eventual implementer should (and should be able to) implement the devised
+architecture using the tools and languages he prefers or knows best.
  
 \subsection{Definitions, acronyms and abbreviations}
 The following are used throughout the document:
 \begin{description}
 \item[RASD] Requirements Analysis and Specification Document.
 \item[DD] Design Document.
+\item[REST] REpresentational State Transfer.
+\item[IaaS] Infrastructure as a Service.
+\item[RDBMS] Relational Database Management System.
+\item[Reverse Proxy] Proxy server that retrieves resources on behalf of a client
+    from one or more servers.
+\item[Load Balancer] Element handling the distribution of workloads across
+    multiple computing resources
 \end{description}
