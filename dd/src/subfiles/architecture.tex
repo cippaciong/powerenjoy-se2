@@ -98,43 +98,44 @@ database we will use the solid and well tested PostgreSQL relational database.
 \end{sidewaysfigure}
 
 \pagebreak
-\subsubsection{Router}
+\subsubsection{Microservices}
+\paragraph{Router}
 The Router is the first of our internal component. The idea behind is that this is the component
 delegated to do the initial parsing of the request coming from the client. It will analyze
 the URI and the HTTP method following the REST principles and based on that informations,
 it will produce a message to be enqueued. Once it will get back a reply from the service
 corresponding to the initial request, it will send back that response to the client.
 
-\subsubsection{UserHandler}
+\paragraph{UserHandler}
 This service deals with everything that concerns users. It's invoked to perform user creation
 and to deal with requests coming from users devices. All the informations involving users
 will be passed from the router to this component. In order to gather the required information
 it may invokes other services as well.
 
-\subsubsection{CarHandler}
+\paragraph{CarHandler}
 This is the car counterpart of what we have already discussed for users. This component will
 register new cars when they are added to the system and provide informations about cars
 position, charge status or availability.
 
-\subsubsection{ReservationHandler}
+\paragraph{ReservationHandler}
 ReservationHandler provides informations related to reservations. It is likely that it will
 respond to UserHandler messages when the list of reservations for a single user is requested.
 Alternatively, CarHandler can retrieve a list of all reserved cars. 
 
-\subsubsection{RideHandler}
+\paragraph{RideHandler}
 This is the component that handles all rides information. It can be queried in order to have
 a list of all rides, of the active ones, rides belonging to a specific user
 (they may be active or not) and is the link to payment and discount informations. All the informations
 displayed on the car monitor during the ride are gathered from this service.
 
-\subsubsection{PaymentHandler}
+\paragraph{PaymentHandler}
 The PaymentHandler has to main purposes. The first one is to manage the operations dealing
 with the external Payment service. The second one is to save information about users payments
 after it gets a reply from the external service. 
 This is done in order to provide a history of all payments or a list of pending payments.
 
 
-\subsubsection{AreaHandler}
+\paragraph{AreaHandler}
 This component is in charge of operations dealing with all the safe areas belonging to the company.
 Safe areas are stored to know exactly their position and the type of the safe area, being it
 a normal area or a power grid station.
