@@ -84,18 +84,18 @@ in Figure~\ref{fig:i_h_l_comp}.
 
 \subsubsection{Map API}
 Starting from the latter, we assume that all functions related to the map (path finding,
-distance calculation, map representation, etc) will be delegated to the Google Maps API.
+distance calculation, map representation, etc) will be delegated to an external service.
 All the classes that are going to use that API will provide an additional interface if they 
 need to expose some functionalities to the other components.
 \subsubsection{POS API}
 The other aspect that we are not going to develop internally is the Payment Service (POS).
-In this case we are going to use the simple an powerful Stripe service that have been chosen
-for its ease of use and of integration.
+In this case we suggest to use services like Paypal or Stripe that have been chosen
+for its ease of use and powerful API.
 \subsubsection{Database}
 Finally, the last component that will not be part of the application in a strict way is the database.
 It won't be an entirely external service since we are going to host and mange it in our infrastructure,
 but it's still something our application will user through its dedicated API. Regarding the
-database we will use the solid and well tested PostgreSQL relational database.
+database we will use the solid and well tested RDBMS system.
 
 \begin{sidewaysfigure}
 \centering
@@ -136,7 +136,7 @@ a list of all rides, of the active ones, rides belonging to a specific user
 displayed on the car monitor during the ride are gathered from this service.
 
 \paragraph{PaymentHandler}
-The PaymentHandler has to main purposes. The first one is to manage the operations dealing
+The PaymentHandler has two main purposes. The first one is to manage the operations dealing
 with the external Payment service. The second one is to save information about users payments
 after it gets a reply from the external service. 
 This is done in order to provide a history of all payments or a list of pending payments.

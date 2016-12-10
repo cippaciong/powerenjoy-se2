@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>273</x>
-      <y>78</y>
+      <x>364</x>
+      <y>104</y>
       <w>741</w>
       <h>403</h>
     </coordinates>
@@ -16,8 +16,8 @@ Application</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>169</x>
-      <y>247</y>
+      <x>260</x>
+      <y>273</y>
       <w>143</w>
       <h>65</h>
     </coordinates>
@@ -27,32 +27,32 @@ Application</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>988</x>
-      <y>195</y>
-      <w>156</w>
+      <x>1079</x>
+      <y>221</y>
+      <w>195</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=[POS].&gt;
 m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
-    <additional_attributes>20.0;10.0;100.0;10.0</additional_attributes>
+    <additional_attributes>20.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>988</x>
-      <y>312</y>
-      <w>156</w>
+      <x>1079</x>
+      <y>338</y>
+      <w>195</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=[MAP].&gt;
 m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
-    <additional_attributes>20.0;10.0;100.0;10.0</additional_attributes>
+    <additional_attributes>20.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>507</x>
-      <y>403</y>
+      <x>598</x>
+      <y>429</y>
       <w>260</w>
       <h>65</h>
     </coordinates>
@@ -64,8 +64,8 @@ Router
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>338</x>
-      <y>143</y>
+      <x>429</x>
+      <y>169</y>
       <w>156</w>
       <h>65</h>
     </coordinates>
@@ -77,8 +77,8 @@ Service 1
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>546</x>
-      <y>143</y>
+      <x>637</x>
+      <y>169</y>
       <w>182</w>
       <h>65</h>
     </coordinates>
@@ -90,8 +90,8 @@ Service ...
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>780</x>
-      <y>143</y>
+      <x>871</x>
+      <y>169</y>
       <w>169</w>
       <h>65</h>
     </coordinates>
@@ -103,8 +103,8 @@ Service n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>338</x>
-      <y>273</y>
+      <x>429</x>
+      <y>299</y>
       <w>611</w>
       <h>65</h>
     </coordinates>
@@ -116,8 +116,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>325</y>
+      <x>715</x>
+      <y>351</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -127,8 +127,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>325</y>
+      <x>741</x>
+      <y>351</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -138,8 +138,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>611</x>
-      <y>195</y>
+      <x>702</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -149,8 +149,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
-      <y>195</y>
+      <x>728</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -160,8 +160,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
-      <y>195</y>
+      <x>481</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -171,8 +171,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>195</y>
+      <x>507</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -182,8 +182,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>845</x>
-      <y>195</y>
+      <x>936</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
@@ -193,8 +193,8 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>871</x>
-      <y>195</y>
+      <x>962</x>
+      <y>221</y>
       <w>39</w>
       <h>104</h>
     </coordinates>
