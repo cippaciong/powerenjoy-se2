@@ -1,3 +1,49 @@
+\newcounter{goalCounter}
+\newcommand{\reqTrac}[2]{
+	\refstepcounter{goalCounter}
+	\item \textbf{Goal \arabic{goalCounter}:} \textit{#1} \\
+		#2
+}
+
 \pagebreak
 
 \section{Requirements traceability}
+Here we are going to describe and explain how the goals and requirements defined in the RASD document map the components defined in this document.
+
+\begin{itemize}
+	
+	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verify the validity of user's inputs (driving license, credit card number) and send a login password to the user who has signed up in less than five minutes.}
+	
+	\reqTrac{Registered users must be able to search available cars.}{The \textbf{UserHandler} provides the details for the car research chosen by the user (maximum radius and a specified address or the user's position). Than the \textbf{ReservationHandler} searches for available cars in the selected area according to the database where there is information about the position of each car.
+	The \textbf{CarHandler} should provide the location of the cars and update the database at the end of each ride.}
+
+	\reqTrac{Registered user must be able to reserve a single car among all the available cars.}{arg2}
+	
+	\reqTrac{Car reservation expires after one hour and a fee is charged to the user.}{arg2}
+	
+	\reqTrac{Unlock the car when the user  who reserved it is closer than a defined distance.}{arg2}
+	
+	\reqTrac{The user is charged on a per minute basis from the time when the ride begins.}{arg2}
+	
+	\reqTrac{The user is notified of the current charges through the car display.}{arg2}
+	
+	\reqTrac{At the end of the ride the car is locked automatically and the user is charged.}{arg2}
+	
+	\reqTrac{Suspend the account for insolvent users and redirect them to the customer service.}{arg2}
+	
+	\reqTrac{Discourage parking outside of safe areas by charginf 80\% more on the ride balance and if tha happens, mark the car as unavailable.}{arg2}
+	
+	\reqTrac{The car display provides information about the location of safe areas and power grid stations.}{arg2}
+	
+	\reqTrac{Cars with less then 20\% of battery left are marked as unavailable.}{arg2}
+	
+	\reqTrac{Apply a 30\% discount if there are more than 2 passengers.}{arg2}
+	
+	\reqTrac{Apply a 20\% discount if the car is left with no more than 50\% of battery empty.}{arg2}
+	
+	\reqTrac{Apply a 30\% discount if the car is plugged to the power grid at the end of the ride.}{arg2}
+	
+	\reqTrac{Charge an additional fee if the car is left more than 3km far from the nearest power grid station and with less then 20\% of battery left.}{arg2}
+	
+\end{itemize}
+ 
