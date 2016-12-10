@@ -1,3 +1,21 @@
+\newcounter{ReferencesCounter}
+\newcommand{\reference}[2]{
+	\refstepcounter{ReferencesCounter}
+	[\arabic{ReferencesCounter}] \textit{#1}  -  #2 \\}
+
 \pagebreak
 
 \section{References}
+Here are some references used to redact this document: \\
+
+\reference{PowerEnJoy - Requirement Analysis and Specification Document} {Patrizia Porati, Tommaso Sardelli}
+
+\reference{Onextrapixel - Web Design and Development: The Basics of Good Database Design in Web Development} {http://www.onextrapixel.com/2011/03/17/the-basics-of-good-database-design-in-web-development/}
+
+\reference{Web API Design: Crafting Interfaces that Developers Love} {https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf}
+
+\reference{Pattern: Database per service} {http://microservices.io/patterns/data/database-per-service.html}
+
+\reference{Microservice architecture patterns and best practices} {http://microservices.io/index.html}
+
+\reference{Capgemini - IS REST BEST IN A MICROSERVICES ARCHITECTURE?} {https://capgemini.github.io/architecture/is-rest-best-microservices/}
