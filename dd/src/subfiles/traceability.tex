@@ -12,7 +12,7 @@ Here we are going to describe and explain how the goals and requirements defined
 
 \begin{itemize}
 	
-	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verify the validity of user's inputs (driving license, credit card number) and send a login password to the user who has signed up in less than five minutes.}
+	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verifies the validity of user's inputs (driving license, credit card number) and sends a login password to the user who has signed up in less than five minutes.}
 	
 	\reqTrac{Registered users must be able to search available cars.}{The \textbf{UserHandler} provides the details chosen by the user for the car research (maximum radius and a specified address or the user's position). Then the \textbf{ReservationHandler} searches for available cars in the selected area according to the database, where there is information about the position of each car.
 	The \textbf{CarHandler} should provide the location of the cars and update the database at the end of each ride.}
@@ -25,13 +25,13 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{The user is charged on a per minute basis from the time when the ride begins.}{When the car is unlocked, the \textbf{RideHandler} starts keeping track of the time elapsed and updates the total cost of the ride on a per minute basis, using the current elapsed time.}
 	
-	\reqTrac{The user is notified of the current charges through the car display.}{The \textbf{CarHandler} send the current cost of the ride to the car. The current cost is shown on the car display.}
+	\reqTrac{The user is notified of the current charges through the car display.}{The \textbf{CarHandler} sends the current cost of the ride to the car. The current cost is shown on the car display.}
 	
 	\reqTrac{At the end of the ride the car is locked automatically and the user is charged.}{As soon as all passergers got out of the car, the \textbf{CarHandler} locks the car, the \textbf{RideHandler} waits five minutes and then checks possible discounts or additional fees and calculates the total amount. The \textbf{PaymentHandler} charges the user the total amount. At the end of the payment, the \textbf{UserHandler} sends the user an email containing the details of the payment.}
 	
-	\reqTrac{Suspend the account for insolvent users and redirect them to the customer service.}{arg2}
+	\reqTrac{Suspend the account for insolvent users and redirect them to the customer service.}{At the end of the ride, the \textbf{PaymentHanlder} charges the user and, if the payment fails, the \textbf{RideHandler} changes the user account status from `active' to `insolvent' and the \textbf{UserHandler} sends the user and email telling to get in touch with the customer service.}
 	
-	\reqTrac{Discourage parking outside of safe areas by charginf 80\% more on the ride balance and if tha happens, mark the car as unavailable.}{arg2}
+	\reqTrac{Discourage parking outside of safe areas by charginf 80\% more on the ride balance and if tha happens, mark the car as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the \textbf{AreaHandler} checks if the car is in a SafeArea. If the car isn't in a SafeArea, the \textbf{RideHandler} adds a fee of 80\% on the ride balance and changes the car status to `unavailable'.}
 	
 	\reqTrac{The car display provides information about the location of safe areas and power grid stations.}{arg2}
 	
