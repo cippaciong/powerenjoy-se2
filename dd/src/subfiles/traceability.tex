@@ -43,7 +43,7 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{Apply a 30\% discount if the car is plugged to the power grid at the end of the ride.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and specifying if the car is plugged to the powr grid, then the \textbf{AreaHandler} checks if the car is in a PowerGridStatiom. If the car is plugged in and is in a PowerGridStation, the \textbf{RideHandler} applies a 30\% discount on the cost of the ride.}
 	
-	\reqTrac{Charge an additional fee if the car is left more than 3km far from the nearest power grid station and with less then 20\% of battery left.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the level of battery, then the \textbf{AreaHandler} checks the distance between the car and the nearest PowerGridStation. If the car is at more than 3km far from the nearest PowerGridStation and with less than 20\% of battery left, the \textbf{RideHandler} applies an additional a fee of 30\% on the cost of the ride.}
+	\reqTrac{Charge an additional fee if the car is left more than 3km far from the nearest power grid station and with less then 20\% of battery left.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the level of battery, then the \textbf{AreaHandler} checks the distance between the car and the nearest PowerGridStation. If the car is at more than 3km far from the nearest PowerGridStation and with less than 20\% of battery left, the \textbf{RideHandler} changes the car status to `unavailable' and applies an additional a fee of 30\% on the cost of the ride.}
 	
 \end{itemize}
  
