@@ -33,9 +33,9 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{Discourage parking outside of safe areas by charginf 80\% more on the ride balance and if tha happens, mark the car as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the \textbf{AreaHandler} checks if the car is in a SafeArea. If the car isn't in a SafeArea, the \textbf{RideHandler} adds a fee of 80\% on the ride balance and changes the car status to `unavailable'.}
 	
-	\reqTrac{The car display provides information about the location of safe areas and power grid stations.}{arg2}
+	\reqTrac{The car display provides information about the location of safe areas and power grid stations.}{The \textbf{AreaHandler} searches for SafeAreas nearby the car location and the \textbf{CarHandler} displays them on the car screen map.}
 	
-	\reqTrac{Cars with less then 20\% of battery left are marked as unavailable.}{arg2}
+	\reqTrac{Cars with less then 20\% of battery left are marked as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the battery level of the car and, if it's less than 20\%, the \textbf{RideHandler} changes the car status to `unavailable'.}
 	
 	\reqTrac{Apply a 30\% discount if there are more than 2 passengers.}{arg2}
 	
