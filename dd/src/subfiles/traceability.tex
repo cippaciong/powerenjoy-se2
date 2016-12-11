@@ -37,9 +37,9 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{Cars with less then 20\% of battery left are marked as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the battery level of the car and, if it's less than 20\%, the \textbf{RideHandler} changes the car status to `unavailable'.}
 	
-	\reqTrac{Apply a 30\% discount if there are more than 2 passengers.}{arg2}
+	\reqTrac{Apply a 30\% discount if there are more than 2 passengers.}{At the end of the ride, the \textbf{CarHandler} updates the database with the number of passengers. If they are more than 2, the \textbf{RideHandler} applies a 10\% discount on the cost of the ride.}
 	
-	\reqTrac{Apply a 20\% discount if the car is left with no more than 50\% of battery empty.}{arg2}
+	\reqTrac{Apply a 20\% discount if the car is left with no more than 50\% of battery empty.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car battery level. If it's less than 50\%, the \textbf{RideHandler} applies a 20\% discount on the cost of the ride.}
 	
 	\reqTrac{Apply a 30\% discount if the car is plugged to the power grid at the end of the ride.}{arg2}
 	
