@@ -12,10 +12,9 @@ Here we are going to describe and explain how the goals and requirements defined
 
 \begin{itemize}
 	
-	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verifies the validity of user's inputs (driving license, credit card number) and sends a login password to the user who has signed up in less than five minutes.}
+	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verifies the validity of user's inputs (driving license, credit card number) and sends a login password in less than five minutes.}
 	
 	\reqTrac{Registered users must be able to search available cars.}{The \textbf{UserHandler} provides the details chosen by the user for the car research (maximum radius and a specified address or the user's position). Then the \textbf{ReservationHandler} searches for available cars in the selected area according to the database, where there is information about the position of each car.
-	The \textbf{CarHandler} should provide the location of the cars and update the database at the end of each ride.}
 
 	\reqTrac{Registered user must be able to reserve a single car among all the available cars.}{The \textbf{ReserveHandler} shall verify that the user is not reserving more than one car at a time, then it changes the car status from `available' to `reserved' and starts keeping track of the time elapsed.}
 	
@@ -31,11 +30,11 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{Suspend the account for insolvent users and redirect them to the customer service.}{At the end of the ride, the \textbf{PaymentHanlder} charges the user and, if the payment fails, the \textbf{RideHandler} changes the user account status from `active' to `insolvent' and the \textbf{UserHandler} sends the user and email telling to get in touch with the customer service.}
 	
-	\reqTrac{Discourage parking outside of safe areas by charginf 80\% more on the ride balance and if tha happens, mark the car as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the \textbf{AreaHandler} checks if the car is in a SafeArea. If the car isn't in a SafeArea, the \textbf{RideHandler} adds a fee of 80\% on the ride balance and changes the car status to `unavailable'.}
+	\reqTrac{Discourage parking outside of safe areas by charging 80\% more on the ride balance and if that happens, mark the car as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the car location and the \textbf{AreaHandler} checks if the car is in a SafeArea. If the car isn't in a SafeArea, the \textbf{RideHandler} adds a fee of 80\% on the ride balance and changes the car status to `unavailable'.}
 	
 	\reqTrac{The car display provides information about the location of safe areas and power grid stations.}{The \textbf{AreaHandler} searches for SafeAreas nearby the car location and the \textbf{CarHandler} displays them on the car screen map.}
 	
-	\reqTrac{Cars with less then 20\% of battery left are marked as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the battery level of the car and, if it's less than 20\%, the \textbf{RideHandler} changes the car status to `unavailable'.}
+	\reqTrac{Cars with less than 20\% of battery left are marked as unavailable.}{At the end of the ride, the \textbf{CarHandler} updates the database with the battery level of the car and, if it's less than 20\%, the \textbf{RideHandler} changes the car status to `unavailable'.}
 	
 	\reqTrac{Apply a 30\% discount if there are more than 2 passengers.}{At the end of the ride, the \textbf{CarHandler} updates the database with the number of passengers. If they are more than 2, the \textbf{RideHandler} applies a 10\% discount on the cost of the ride.}
 	
