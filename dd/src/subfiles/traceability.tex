@@ -14,12 +14,12 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{Guests can register to the platform receiving back a login password.}{The \textbf{UserHandler} should provide a `sign up' functionality: it verify the validity of user's inputs (driving license, credit card number) and send a login password to the user who has signed up in less than five minutes.}
 	
-	\reqTrac{Registered users must be able to search available cars.}{The \textbf{UserHandler} provides the details for the car research chosen by the user (maximum radius and a specified address or the user's position). Than the \textbf{ReservationHandler} searches for available cars in the selected area according to the database where there is information about the position of each car.
+	\reqTrac{Registered users must be able to search available cars.}{The \textbf{UserHandler} provides the details chosen by the user for the car research (maximum radius and a specified address or the user's position). Then the \textbf{ReservationHandler} searches for available cars in the selected area according to the database, where there is information about the position of each car.
 	The \textbf{CarHandler} should provide the location of the cars and update the database at the end of each ride.}
 
-	\reqTrac{Registered user must be able to reserve a single car among all the available cars.}{arg2}
+	\reqTrac{Registered user must be able to reserve a single car among all the available cars.}{The \textbf{ReserveHandler} shall verify that the user is not reserving more than one car at a time, then it changes the car status from `available' to `reserved' and starts keeping track of the time elapsed.}
 	
-	\reqTrac{Car reservation expires after one hour and a fee is charged to the user.}{arg2}
+	\reqTrac{Car reservation expires after one hour and a fee is charged to the user.}{After one hour from the reservation, the \textbf{ReservationHandler} changes the status of the car from `reserved' to `available' and the \textbf{PaymentHandler} charges the user 1 euro for the reservation expiration.}
 	
 	\reqTrac{Unlock the car when the user  who reserved it is closer than a defined distance.}{arg2}
 	
