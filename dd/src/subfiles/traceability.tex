@@ -25,9 +25,9 @@ Here we are going to describe and explain how the goals and requirements defined
 	
 	\reqTrac{The user is charged on a per minute basis from the time when the ride begins.}{When the car is unlocked, the \textbf{RideHandler} starts keeping track of the time elapsed and updates the total cost of the ride on a per minute basis, using the current elapsed time.}
 	
-	\reqTrac{The user is notified of the current charges through the car display.}{arg2}
+	\reqTrac{The user is notified of the current charges through the car display.}{The \textbf{CarHandler} send the current cost of the ride to the car. The current cost is shown on the car display.}
 	
-	\reqTrac{At the end of the ride the car is locked automatically and the user is charged.}{arg2}
+	\reqTrac{At the end of the ride the car is locked automatically and the user is charged.}{As soon as all passergers got out of the car, the \textbf{CarHandler} locks the car, the \textbf{RideHandler} waits five minutes and then checks possible discounts or additional fees and calculates the total amount. The \textbf{PaymentHandler} charges the user the total amount. At the end of the payment, the \textbf{UserHandler} sends the user an email containing the details of the payment.}
 	
 	\reqTrac{Suspend the account for insolvent users and redirect them to the customer service.}{arg2}
 	
