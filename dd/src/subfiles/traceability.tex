@@ -19,11 +19,11 @@ Here we are going to describe and explain how the goals and requirements defined
 
 	\reqTrac{Registered user must be able to reserve a single car among all the available cars.}{The \textbf{ReserveHandler} shall verify that the user is not reserving more than one car at a time, then it changes the car status from `available' to `reserved' and starts keeping track of the time elapsed.}
 	
-	\reqTrac{Car reservation expires after one hour and a fee is charged to the user.}{After one hour from the reservation, the \textbf{ReservationHandler} changes the status of the car from `reserved' to `available' and the \textbf{PaymentHandler} charges the user 1 euro for the reservation expiration.}
+	\reqTrac{Car reservation expires after one hour and a fee is charged to the user.}{After one hour from the reservation, the \textbf{ReservationHandler} changes the status of the car from `reserved' to `available' and the \textbf{Payment Handler} charges the user 1 euro for the reservation expiration.}
 	
-	\reqTrac{Unlock the car when the user  who reserved it is closer than a defined distance.}{arg2}
+	\reqTrac{Unlock the car when the user  who reserved it is closer than a defined distance.}{When the user clicks on the `unlock the reserved car' button, the \textbf{ReservationHandler} checks the distance between the car and the user, then changes the car status from `reserved' to `in use' while the \textbf{CarHandler} unlocks the car.}
 	
-	\reqTrac{The user is charged on a per minute basis from the time when the ride begins.}{arg2}
+	\reqTrac{The user is charged on a per minute basis from the time when the ride begins.}{When the car is unlocked, the \textbf{RideHandler} starts keeping track of the time elapsed and updates the total cost of the ride on a per minute basis, using the current elapsed time.}
 	
 	\reqTrac{The user is notified of the current charges through the car display.}{arg2}
 	
