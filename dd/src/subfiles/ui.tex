@@ -3,8 +3,9 @@
 \newcommand{\mockup}[2]{
 	\refstepcounter{MockupCounter}
 	\begin{figure}[H]
+		\centering
 		%\includegraphics[scale=0.8]{#1.png}
-		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{#1.png}
+		\includegraphics[width=\textwidth,height=0.95\textheight,keepaspectratio]{#1.png}
 		\caption*{Mockup \arabic{MockupCounter}: #2}
 		\label{mockup:#1}
 	\end{figure}
@@ -53,4 +54,11 @@ We represented the mobile application pages of the main opeations and the car sc
 \mockup{map}{The page where the car's location is shown on the map.}
 
 \subsection{Car screen}
-\mockup{screen}{The interface of the car screen.}
+	\refstepcounter{MockupCounter}
+	\begin{sidewaysfigure}
+		\centering
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{screen.png}
+		\caption*{Mockup \arabic{MockupCounter}: The interface of the car screen.}
+		\label{mockup:screen}
+	\end{sidewaysfigure}
+
