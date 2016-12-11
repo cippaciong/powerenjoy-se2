@@ -94,7 +94,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	{This use case starts when the registered user, that has already received the e-mail with his/her credentials, clicks on ``\textit{Log in}'' from the homepage of the website.}
 	{
 		\Event{The registered user clicks on ``\textit{Log in}''}
-		\Event{The registered user enters his/her username}
+		\Event{The registered user enters his/her email}
 		\Event{The registered user enters his/her password}
 		\Event{The registered user clicks on ``\textit{Confirm}''}
 		\Event{The system checks the inserted username}
@@ -103,7 +103,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	}
 	{This use case terminates when the log in is successfully completed and the new user access his/her personal area.}
 	{
-		\Exc{The inserted username is incorrect}{if this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted username is wrong!}'' and the application goes back to the log in page.}
+		\Exc{The inserted email is incorrect}{if this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted email is wrong!}'' and the application goes back to the log in page.}
 		\Exc{The inserted password is incorrect}{if this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted password is wrong!}'' and the application goes back to the log in page}
 	}
 \end{UseCase}
