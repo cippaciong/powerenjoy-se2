@@ -2,6 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 
+\usepackage[outdir=./]{epstopdf}
 \graphicspath{{../figures/}}
 
 %\title{PowerEnJoy}
@@ -129,6 +130,48 @@
 
 \begin{frame}{Deployment}
     \includegraphics[width=\textwidth]{deployment}
+\end{frame}
+
+%--------------
+% Goals
+%--------------
+\begin{frame}{Reserve a Car}
+    \textbf{Goal:} Registered user must be able to reserve a single car among
+        all the available cars.
+    \begin{itemize}
+        \item The ReserveHandler
+            \begin{itemize}
+                \item verifies that the user is not reserving more than one car at a time.
+                \item changes the car status from 'available' to 'reserved'.
+                \item starts keeping track of the time elapsed.
+            \end{itemize}
+        \item The UserHandler
+            \begin{itemize}
+                \item sends a confirmation of the reservation to the user.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Car Locking and Price Charging}
+    \textbf{Goal:} At the end of the ride the car is locked automatically
+        and the user is charged.
+    \begin{itemize}
+        \item The CarHandler
+            \begin{itemize}
+                \item locks the car as soon as the passengers got out.
+            \end{itemize}
+        \item The RideHandler
+            \begin{itemize}
+                \item waits five minutes.
+                \item checks possible discount or additional fees.
+                \item computes the total price.
+            \end{itemize}
+        \item The PaymentHandler
+            \begin{itemize}
+                \item charges the user of the total amount.
+                \item manages the communication with the external API.
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \end{document}
