@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>13</zoom_level>
+  <zoom_level>12</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>364</x>
-      <y>104</y>
-      <w>741</w>
-      <h>403</h>
+      <x>372</x>
+      <y>144</y>
+      <w>684</w>
+      <h>384</h>
     </coordinates>
     <panel_attributes>symbol=component
 Application</panel_attributes>
@@ -16,10 +16,10 @@ Application</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>273</y>
-      <w>143</w>
-      <h>65</h>
+      <x>276</x>
+      <y>300</y>
+      <w>132</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=)-[SQL]</panel_attributes>
     <additional_attributes>20.0;20.0;80.0;20.0</additional_attributes>
@@ -27,10 +27,10 @@ Application</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1079</x>
-      <y>221</y>
-      <w>195</w>
-      <h>52</h>
+      <x>1032</x>
+      <y>252</y>
+      <w>180</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=[POS].&gt;
 m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
@@ -39,10 +39,10 @@ m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1079</x>
-      <y>338</y>
-      <w>195</w>
-      <h>52</h>
+      <x>1032</x>
+      <y>360</y>
+      <w>180</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=[MAP].&gt;
 m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
@@ -51,23 +51,10 @@ m1=&lt;&lt;delegate&gt;&gt;</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>598</x>
-      <y>429</y>
-      <w>260</w>
-      <h>65</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-Router
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>429</x>
-      <y>169</y>
+      <x>432</x>
+      <y>204</y>
       <w>156</w>
-      <h>65</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>symbol=component
 Service 1
@@ -77,10 +64,10 @@ Service 1
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>637</x>
-      <y>169</y>
-      <w>182</w>
-      <h>65</h>
+      <x>624</x>
+      <y>204</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>symbol=component
 Service ...
@@ -90,10 +77,10 @@ Service ...
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>871</x>
-      <y>169</y>
-      <w>169</w>
-      <h>65</h>
+      <x>828</x>
+      <y>204</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>symbol=component
 Service n
@@ -103,10 +90,10 @@ Service n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>429</x>
-      <y>299</y>
-      <w>611</w>
-      <h>65</h>
+      <x>432</x>
+      <y>324</y>
+      <w>564</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
 MessageQueue
@@ -116,10 +103,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>715</x>
-      <y>351</y>
-      <w>39</w>
-      <h>104</h>
+      <x>528</x>
+      <y>372</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -127,10 +114,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>741</x>
-      <y>351</y>
-      <w>39</w>
-      <h>104</h>
+      <x>552</x>
+      <y>372</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -138,10 +125,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>684</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -149,10 +136,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>728</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>708</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -160,10 +147,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>481</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>480</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -171,10 +158,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>507</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>504</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -182,10 +169,10 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>936</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>888</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -193,12 +180,60 @@ MessageQueue
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>962</x>
-      <y>221</y>
-      <w>39</w>
-      <h>104</h>
+      <x>912</x>
+      <y>252</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>444</x>
+      <y>444</y>
+      <w>216</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+RESTful API
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>768</x>
+      <y>444</y>
+      <w>216</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Admin WebApp
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>372</y>
+      <w>36</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>852</x>
+      <y>372</y>
+      <w>36</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
