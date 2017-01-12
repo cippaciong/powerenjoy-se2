@@ -20,6 +20,8 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	\item Payment not successful
 	\item Update personal information
 	\item Show the details of the ride
+	\item Add new cars
+	\item Delete a safe area
 \end{enumerate}
 
 % Definition of UseCase environment
@@ -254,4 +256,39 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	{
 		\Exc{The user is just registered to the application and he/she has never reserved nor used a ``PowerEnJoy'' electric car}{if this exception occurs, the system show an empty list.}
 	}
+\end{UseCase}
+
+\subsubsection{Add new cars}
+\togglefalse{exception}
+\begin{UseCase}
+	{Admin: an admin is a person whose task is to manage cars, safe areas, users and other administratos.}
+	{This use case starts when an admin logs in.}
+	{
+		\Event{The admin logs in with his/her credentials}
+		\Event{The system shows the administrators page}
+		\Event{The administrator clicks on the button ``\textit{Cars}''}
+		\Event{The system show the list of all ``PowerEnJoy'' cars}
+		\Event{The administrator clicks on ``\textit{Add a new car}''}
+		\Event{The system shows the form where the admin can visualize the list of his/her rides and reservations}
+		\Event{The system checks and sets the information provided by sensors on the car}
+		\Event{The system add the car to the database and show a confirmation message}
+	}
+	{This use case terminates when the system shows the confirmation message.}{}
+\end{UseCase}
+
+\subsubsection{Delete a safe area}
+\begin{UseCase}
+	{Admin: an admin is a person whose task is to manage cars, safe areas, users and other administratos.}
+	{This use case starts when an admin logs in.}
+	{
+		\Event{The admin logs in with his/her credentials}
+		\Event{The system shows the administrators page}
+		\Event{The administrator clicks on the button ``\textit{Safe areas}''}
+		\Event{The system shows the list of all ``PowerEnJoy'' safe areas and power grid stations}
+		\Event{The administrator selects the safe area that has to be deleted and clicks on it}
+		\Event{The system shows the details about the selected safe area}
+		\Event{The administrator clicks on ``\textit{Delete}''}
+		\Event{The system delete the selected safe area from the database and shows a confirmation message}
+	}
+	{This use case terminates when the system shows the confirmation message.}{}
 \end{UseCase}
