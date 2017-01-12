@@ -132,6 +132,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 	{This use case starts when, after logging in, the registered user clicks on ``\textit{Reserve a car}'' from his/her personal profile page.}
 	{
 		\Event{The registered user clicks on ``\textit{Reserve a car}''}
+		\Event{The system checks that the status of the user is `active'}
 		\Event{The system shows the reservation form}
 		\Event{The user selects where to search the car: choosing if use his/her current location or a specified address (in this case he/she also has to write an address)}
 		\Event{The user selects a maximum distance for the car research}
@@ -150,6 +151,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Exc{The user writes an inexistent address}{if this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted address doesn't exist!}'' and the application goes back to the page where the reservation form is shown.}
 		\Exc{The user writes an invalid value for the maximum distance}{if this exception occurs, the system displays the error message: ``\textit{ERROR: the inserted distance isn't valid!}'' and the application goes back to the page where the reservation form is shown.}
 		\Exc{There aren't cars in the selected area}{if this exception occurs, the system displays the error message: ``\textit{ERROR: there are no cars in the selected area! Please change the maximum distance or the selected location.}'' and the application goes back to the page where the reservation form is shown.}
+		\Exc{The status of the user isn't `active'}{if this exception occurs, the system displays the error message: ``\textit{ERROR: your status is not active, there is a problem with your account! Contact the customer care.}'' and the application goes back to the personal profile page.}
 	}
 \end{UseCase}
 
@@ -269,9 +271,11 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Event{The administrator clicks on the button ``\textit{Cars}''}
 		\Event{The system show the list of all ``PowerEnJoy'' cars}
 		\Event{The administrator clicks on ``\textit{Add a new car}''}
-		\Event{The system shows the form where the admin can visualize the list of his/her rides and reservations}
-		\Event{The system checks and sets the information provided by sensors on the car}
-		\Event{The system add the car to the database and show a confirmation message}
+		\Event{The system shows the form for the registration of a new car}
+		\Event{The administrator fills the form with electric car details (plate number)}
+		\Event{The system checks and sets the information provided by sensors on the car (position, battery level...)}
+		\Event{The system change the status of the car to ``available''}
+		\Event{The system adds the car to the database and show a confirmation message}
 	}
 	{This use case terminates when the system shows the confirmation message.}{}
 \end{UseCase}
@@ -288,7 +292,7 @@ Based on the scenarios defined in the previous chapter, we can derive some signi
 		\Event{The administrator selects the safe area that has to be deleted and clicks on it}
 		\Event{The system shows the details about the selected safe area}
 		\Event{The administrator clicks on ``\textit{Delete}''}
-		\Event{The system delete the selected safe area from the database and shows a confirmation message}
+		\Event{The system deletes the selected safe area from the database and shows a confirmation message}
 	}
 	{This use case terminates when the system shows the confirmation message.}{}
 \end{UseCase}
