@@ -1,17 +1,49 @@
 \pagebreak
 \section{Architectural Design}
   
-\subsection{Overview }
+\subsection{Overview}
 In this chapter we are going to describe the architectural choices that we made for our system. 
 Starting from a general description of the high level components and their interactions,
 we will describe through a deeper analysis all the components of our system.
 The subject of the analysis will be the backend of our platform that will be used by
 our mobile and web applications, as well as by the devices installed on the cars.
 
+\subsection{Analysis}
+The starting point will be an analysis of the environment in which the system will operate
+in order to come up with an architecture that satisfy all the possible needs.
+In the first place, thinking about the agents that will interact with the system,
+we can isolate three groups:
+\begin{itemize}
+    \item \textbf{User Clients}.
+    \item \textbf{Cars}.
+    \item \textbf{Administrators}.
+\end{itemize}
+Elements of these groups will access the system in a very heterogeneous way. From
+a point of view of connection methods we have customers that will typically connect
+from a mobile application, administrators that will use a web applications and finally
+cars that are equipped with the embedded display.
+This means that we should expect a diversified set of clients, each of them with
+its own features and limitation. The simpler but probably more relevant example 
+would be the difference between the admin web application and the car client.
+While the first one can be a thin client using the rich set of functionalities
+provided in real-time by the web server using a flat connection, the latter would
+face stricter constraint being an embedded system served by a mobile connection.
+The other big difference among these clients is the set of functionalities that they
+expose to the end user. Each client let perform a specific set of actions that is rarely
+shared with other clients.
+
+The other aspect to take into account are the internal components of our system
+and their interaction. If we think about them for a moment we will realize that
+there exist some clear boundaries between them. For example Cars will never have
+to deal with payment informations, or users are not going to interact with safe areas directly.
+This examples suggests a possible separations of elements from the perspective
+of internal architecture.
+
 \subsection{High level components}
-This first section is dedicated to the description of our architecture from a high level
-point of view. We based our decisions upon the requirements described in the RAS Document 
-and we choose three principles as the foundations of our structure: 
+This section is dedicated to the description of our architecture from a high level
+point of view. Based on our previous analysis and on the requirements described
+in the RAS Document, we will now describe the principles that we have chosen for our
+architecture, that are: 
 \begin{itemize}
     \item \textbf{Client-server} model.
     \item \textbf{RESTful} API.
@@ -19,8 +51,10 @@ and we choose three principles as the foundations of our structure:
 \end{itemize}
 
 \subsubsection{Client-Server}
-The client-server aspect of our application can be seen in Figure~\ref{fig:h_l_comp}.
-There we focus on the "physical" representation of our application. By saying physical we mean that
+Considering the different clients that needs to connect to our system remotely,
+a client-server approach seemed the most sensible choice.
+The client-server structure of our application can be seen in Figure~\ref{fig:h_l_comp}.
+There we focus a "physical" representation where by saying physical we mean that
 every component depicted there will reside on separate machines (or is an external service).
 To be precise, we should have added another component between clients and
 application server which is the reverse proxy/web server. The reason why we preferred to
@@ -28,20 +62,20 @@ omit it is that, at this stage, we want to address only the aspects that are rel
 application development and that layer can be considered transparent with respect to the application.
 The application does not have to deal with it explicitly.
 Of course this will not be the same in a context of deployment.
-The interaction between client and server will be the usual one when dealing with web/mobile
-applications. Our client will make the initial request and the server will send back the
-information. In out case, such informations will be received as an XML or JSON document.
 
 \subsubsection{RESTful API}
-For the design of the API we decided to rely upon the REST principles. The reasons that moved
-this decision are diverse. To begin with, we decided that a generic API was better fitting
-in our context that is composed of different clients (web application, and different mobile
-clients). This way, we can serve a single format of document as respond containing all the 
-requested data and then the client can build the user interface using the most suitable
-technologies according to the specific case.
-Secondly, REST principles, when followed correctly, concur to gain desirable non-functional
+As we anticipated in the preliminary analysis, we expect our clients to be significantly different.
+Our mobile applications will use the tools provided by the various platform to receive
+and render data from our server. The same will do the embedded display in cars although its
+case we would like to have a fat client to minimize network usage. Finally the web application
+can use modern technologies to render pages directly on the server or in the browser.
+In the end, we considered a JSON API as the wiser choice for our use case. It will
+allow us to send only relevant data to clients in plain text and let each client
+render content in the most suitable way. 
+For the design of the API we decided to rely upon the REST principles.
+REST principles, when followed correctly, concur to gain desirable non-functional
 features, such as performance, scalability, simplicity and modifiability.
-Finally, messages exchanged in REST APIs are often self-descriptive and this is beneficial
+Secondly, messages exchanged in REST APIs are often self-descriptive and this is beneficial
 for the ease of development of web and mobile applications.
 
 \subsubsection{Microservices}
