@@ -66,8 +66,8 @@ Of course this will not be the same in a context of deployment.
 \subsubsection{RESTful API}
 As we anticipated in the preliminary analysis, we expect our clients to be significantly different.
 Our mobile applications will use the tools provided by the various platform to receive
-and render data from our server. The same will do the embedded display in cars although its
-case we would like to have a fat client to minimize network usage. Finally the web application
+and render data from our server. The same will do the embedded display in cars although in its
+case, we would like to have a fat client to minimize network usage. Finally the web application
 can use modern technologies to render pages directly on the server or in the browser.
 In the end, we considered a JSON API as the wiser choice for our use case. It will
 allow us to send only relevant data to clients in plain text and let each client
@@ -79,17 +79,22 @@ Secondly, messages exchanged in REST APIs are often self-descriptive and this is
 for the ease of development of web and mobile applications.
 
 \subsubsection{Microservices}
+The final concept we extracted from our analysis was the presence of a clear separation
+between some of the internal component of the system from a point of view of interaction
+and shared functionalities.
+We think this should be reflected in code as well. Of course there are several ways
+to achieve this goal, what we choose in the end is to use microservices.
+The rationale behind this choice is that microservices will guarantee the separation of code in
+atomic components, each of them dealing with a single responsibility.
+In this way we can make sure that each component will interact only with the other
+components it is supposed to interact with and nothing more.
+Additionally we will use queues to dispatch dispatch internal messages,
+this is to ensure that our internal communications are asynchronous and non blocking.
+Additionally it allows us to create higher preference queues to serve critical responses first,
+for example the ones coming from cars.
 Figure~\ref{fig:i_h_l_comp} is a high level overview of the application internals stripped from all
 the external components. We are going to describe its architecture further in this document
 but we wanted nonetheless to give an initial idea.
-The internal structure of the application is going to be a service oriented architecture.
-Upon receiving a new request, the router (our entry point) will produce a new message,
-that will be dispatched to all the required services. The response to this message will
-be rendered and sent back to the client.
-The reason why we choose microservices is that they allow us to separate the code in
-atomic components, each of them dealing with a single responsibility.
-Furthermore, using queues to dispatch messages, ensure that our internal communications
-are asynchronous and non blocking.
 
 \begin{sidewaysfigure}
 \centering
