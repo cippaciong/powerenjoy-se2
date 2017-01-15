@@ -13,8 +13,62 @@ There are some conditions on the project development that must be met before sta
 
 
 \subsection{Elements to be Integrated}
-% Identify the components to be integrated, refer to your design document to identify such components in a way that is consistent with your design
-
+    \begin{tabular}{ c }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{UserHandler}} \\
+      \hline
+      UserHandler \rightarrow Database \\ \hline
+      UserHandler \rightarrow Map API \\ \hline
+      UserHandler \rightarrow PaymentHandler \\ \hline
+      Router \rightarrow UserHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ c }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{CarHandler}} \\
+      \hline
+      CarHandler \rightarrow Database \\ \hline
+      CarHandler \rightarrow Map API \\ \hline
+      Router \rightarrow CarHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ c }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{PaymentHandler}} \\
+      \hline
+      PaymentHandler \rightarrow Database \\ \hline
+      PaymentHandler \rightarrow Payment API \\ \hline
+      Router \rightarrow PaymentHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ c }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{ReservationHandler}} \\
+      \hline
+      ReservationHandler \rightarrow Database \\ \hline
+      ReservationHandler \rightarrow Payment API \\ \hline
+      Router \rightarrow ReservationHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ c }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{RideHandlerHandler}} \\
+      \hline
+      RideHandler \rightarrow Database \\ \hline
+      RideHandler \rightarrow Payment API \\ \hline
+      RideHandler \rightarrow CarHandler \\ \hline
+      Router \rightarrow RideHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
 
 \subsection{Integration Testing Strategy}
 % Describe the integration testing approach (top-down, bottom-up, functional groupings, etc.) and the rationale for the choosing that approach.
