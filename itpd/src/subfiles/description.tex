@@ -12,7 +12,7 @@
 \newcommand{\Test}[4]{
 	\stepcounter{TestNum}
 	\begin{center}
-		\begin{tabular}{|l l|}
+		\begin{tabular}{|l p{9 cm}|}
 			\hline
 			\textbf{Test Case Identifier} & I\arabic{IntegrationNum}T\arabic{TestNum}\\
 			\textbf{Test Items} & #1\\
@@ -40,10 +40,57 @@
 
 In this chapter...
 
+% UserHandler
 \refstepcounter{IntegrationNum}
-\Test{uno}{due}{tre}{quattro}
-\Test{arg1}{arg2}{arg3}{arg4}
 
+%uno per tutti i componenti
+\Test{CUDCommands (in UserHandler) $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information (input already existent, valid input)}{Check if information is correctly update in the database}{PersistenceLibrary}
+
+\Test{Validator $ \rightarrow $ CUDCommands}{Invalid email, email already existent, invalid credit card number, invalid driving licence number, null input, valid input}{Check if the correct functions are called in CUDCommands.}{}
+
+% uno per tutti i componenti
+\Test{SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database}{Check if requested information is returned correctly}{PersistenceLibrary}
+
+% uno per tutti i componenti
+\Test{CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations}{Check if requested information is returned correctly}{}
+
+
+\Test{RESTful API $ \rightarrow $ UserHandler}{Add an administrator, add a user, add an existing user, delete a user, update user information, change user status, get users list}{Check if correct functions are called in UserHandler }{}
+
+%%
+
+% PaymentHandler
+\Test{CUDCommands $ \rightarrow $ PaymentAdapter}{Typical input for inserting, modify and getting payment information}{Check if correct functions are called in PaymentAdapter}{}
+
+\Test{Validator $ \rightarrow $ CUDCOmmands}{Invalid credit card number, valid inputs}{Check if correct functions are called in CarHandler}{}
+
+\Test{RESTfull API $ \rightarrow $ PaymentHandler}{Update payment information with valid inputs, update payment information with invalid inputs, get payment information}{Check if correct functions are called in PaymentHandler}{}
+
+%%
+
+% CarHandler
+\Test{Validator $ \rightarrow $ CUDCommands}{Invalid plate number, lock the car, unlock the car}{Check if correct functions are called in CUDCommands}{}
+
+\Test{RESTfull API $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car, delete a car, update car information with valid inputs, update car information with invalid inputs, get cars list, get car details, set car details, end of the ride}{Check if correct functions are called in CarHandler}{}
+
+
+%% 
+
+%AreaHandler
+\Test{Validator $ \rightarrow $ CUDCommands}{safe area with cars, empty safe area, safe area already existent}{Check if correct functions are called in CUDCommands}{}
+
+\Test{RESTfull API $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area, delete a safe area with cars, delete an empty safe area, update safe area information with valid input, update safe area information with invalid input}{Check if correct functions are called in AreaHandler}{}
+
+%%
+
+% RideHandler
+\Test{Validator $ \rightarrow $ CUDCommands}{Apply possible discounts (check all different cases as input), calculate ride total cost}{Check if correct functions are called in CUDCommands}{}
+
+\Test{RESTfull API $ \rightarrow $ RideHandler}{End of a ride}{Check if correct functions are called in RideHandler}{}
+
+
+
+%%
 
 Here...
 
