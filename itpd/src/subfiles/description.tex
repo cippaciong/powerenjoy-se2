@@ -30,7 +30,7 @@
 	\begin{center}
 		\begin{tabular}{|l l|}
 			\hline
-			\textbf{Test Procedure Identifier} & P\arabic{ProcNum}\\
+			\textbf{Test Procedure Identifier} & TP\arabic{ProcNum}\\
 			\textbf{Purpose} & #1\\
 			\textbf{Procedure Steps} & #2\\
 			\hline
@@ -38,10 +38,15 @@
 	\end{center}
 }
 
-In this chapter...
+\subsection{Test Cases}
+
+In this section we are going to provide a description of the tests on each pair of components/subcomponents that have to be integrated. 
+Each subsection contains tests concerning a specific component: there are tests on the relations between its subcomponents and finally the tests on the relation between the components itself and the RESTful API component.
+
 
 %%
 % USER HANDLER
+\subsubsection{UserHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{(UserHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get user list, get user details, get user position}{Check if requested information is returned correctly}{PersistenceLibrary}
@@ -53,6 +58,7 @@ In this chapter...
 \Test{RESTful API $ \rightarrow $ UserHandler}{Add an administrator (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs),get administrators list, add a user (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs), delete a user, update user information (valid information, invalid information), change user status, get users list, get user information, get user details, get user position, set user position}{Check if correct functions are called in UserHandler}{}
 
 % PAYMENT HANDLER
+\subsubsection{PaymentHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{(PaymentHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: update payment information (valid information, invalid information), insert payment (valid input, input already existent), change user status to `insolvent'}{Check if information is correctly update in the database}{PersistenceLibrary}
@@ -64,6 +70,7 @@ In this chapter...
 \Test{RESTfull API $ \rightarrow $ PaymentHandler}{Update payment information (valid inputs, invalid credit card number, payment not successful (not enough money to spend), get payment information}{Check if correct functions are called in PaymentHandler}{}
 
 % CAR HANDLER
+\subsubsection{CarHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{(CarHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: add a car (already existing plate number, valid information), delete a car(car status `in use', car status `reserved', car status `available', car status `unavailable'), update car information (valid information, invalid information), change car status, set car position}{Check if information is correctly update in the database}{PersistenceLibrary}
@@ -75,6 +82,7 @@ In this chapter...
 \Test{RESTfull API $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car (valid inputs, invalid plate number), update car information (valid inputs, invalid inputs), get cars list, get car details, set car details (valid inputs, invalid inputs), end the ride, unlock the car (valid user position, invalid user position), lock the car}{Check if correct functions are called in CarHandler}{}
 
 % AREA HANDLER
+\subsubsection{AreaHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{(AreaHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: add a safe area (already existent, valid input), delete a safe area (with some cars, with no cars), update safe area details (valid inputs, invalid inputs)}{Check if information is correctly update in the database}{PersistenceLibrary}
@@ -86,6 +94,7 @@ In this chapter...
 \Test{RESTfull API $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area (valid inputs, invalid inputs), delete a safe area (with cars, with no cars), update safe area information (valid input, invalid input)}{Check if correct functions are called in AreaHandler}{}
 
 % RIDE HANDLER
+\subsubsection{RideHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{(RideHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: set ride details (valid inputs, invalid inputs), set ride current cost}{Check if information is correctly update in the database}{PersistenceLibrary}
@@ -95,6 +104,7 @@ In this chapter...
 \Test{RESTfull API $ \rightarrow $ RideHandler}{Apply possible discounts (check all different cases as input), calculate total ride cost, charge the user, calculate the current cost, set ride details, sent user email containing ride details, end of a ride}{Check if correct functions are called in RideHandler}{}
 
 % RESERVATION HANDLER
+\subsubsection{ReservationHandler}
 \refstepcounter{IntegrationNum}
 
 \Test{CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: set reservation details}{Check if information is correctly update in the database}{PersistenceLibrary}
@@ -105,8 +115,13 @@ In this chapter...
 
 %%
 
-Here...
+\pagebreak
+% PROCEDURES
+\subsection{Test Procedures}
 
-
-\Procedure{arg1}{arg2}
-\Procedure{arg1}{arg2}
+\Procedure{arg1}{Excecute I1}
+\Procedure{arg1}{Excecute I2}
+\Procedure{arg1}{Excecute I3}
+\Procedure{arg1}{Excecute I4}
+\Procedure{arg1}{Excecute I5}
+\Procedure{arg1}{Excecute I6}
