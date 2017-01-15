@@ -1,0 +1,30 @@
+\pagebreak
+\section{Individual Steps and Test Desription}
+
+% Numero integrazione
+\newcounter{IntegrationNum}
+% Numero test
+\newcounter{TestNum}[IntegrationNum]
+
+% Tabella\
+\newcommand{\Test}[4]{
+	\stepcounter{TestNum}
+\begin{center}
+	\begin{tabular}{|l l|}
+		\hline
+		\textbf{Test Case Identifier} & I\arabic{IntegrationNum}T\arabic{TestNum}\\
+		\textbf{Test Items} & #1\\
+		\textbf{Input Specification} & #2\\
+		\textbf{Output Specification} & #3\\
+		\textbf{Environmental Needs} & #4\\
+		\hline
+	\end{tabular}
+\end{center}
+}
+
+In this chapter...
+
+\refstepcounter{IntegrationNum}
+\Test{uno}{due}{tre}{quattro}
+\Test{arg1}{arg2}{arg3}{arg4}
+
