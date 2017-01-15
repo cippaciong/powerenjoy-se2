@@ -30,7 +30,7 @@
 	\begin{center}
 		\begin{tabular}{|l l|}
 			\hline
-			\textbf{Test Procedure Identifier} & \arabic{ProcNum}\\
+			\textbf{Test Procedure Identifier} & P\arabic{ProcNum}\\
 			\textbf{Purpose} & #1\\
 			\textbf{Procedure Steps} & #2\\
 			\hline
@@ -40,60 +40,68 @@
 
 In this chapter...
 
-% uno per tutti i componenti
-
-\refstepcounter{IntegrationNum}
-\Test{SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database}{Check if requested information is returned correctly}{PersistenceLibrary}
-
-\refstepcounter{IntegrationNum}
-\Test{CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information (input already existent, valid input)}{Check if information is correctly update in the database}{PersistenceLibrary}
-
-\refstepcounter{IntegrationNum}
-\Test{CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations}{Check if requested information is returned correctly}{}
-
-% UserHandler
-\refstepcounter{IntegrationNum}
-
-\Test{(UserHandler)Validator $ \rightarrow $ CUDCommands}{Invalid email, email already existent, invalid credit card number, invalid driving licence number, null input, valid input}{Check if the correct functions are called in CUDCommands.}{}
-
-\Test{RESTful API $ \rightarrow $ UserHandler}{Add an administrator, add a user, add an existing user, delete a user, update user information, change user status, get users list}{Check if correct functions are called in UserHandler }{}
-
 %%
-
-% PaymentHandler
+% USER HANDLER
 \refstepcounter{IntegrationNum}
-\Test{CUDCommands $ \rightarrow $ PaymentAdapter}{Typical input for inserting, modify and getting payment information}{Check if correct functions are called in PaymentAdapter}{}
 
-\Test{(PaymentHandler)Validator $ \rightarrow $ CUDCOmmands}{Invalid credit card number, valid inputs}{Check if correct functions are called in CarHandler}{}
+\Test{(UserHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get user list, get user details, get user position}{Check if requested information is returned correctly}{PersistenceLibrary}
 
-\Test{RESTfull API $ \rightarrow $ PaymentHandler}{Update payment information with valid inputs, update payment information with invalid inputs, get payment information}{Check if correct functions are called in PaymentHandler}{}
+\Test{(UserHandler) CUDCommands $ \rightarrow $ Database}{Inputs for inserting, modifying and deleting database information: add administrator (email already existent, valid input), add user (email already existent, valid input), delete user, modify user information, modify user status, set user position}{Check if information is correctly update in the database}{PersistenceLibrary}
 
-%%
+\Test{(UserHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get user position, get distance}{Check if requested information is returned correctly}{}
 
-% CarHandler
+\Test{RESTful API $ \rightarrow $ UserHandler}{Add an administrator (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs),get administrators list, add a user (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs), delete a user, update user information (valid information, invalid information), change user status, get users list, get user information, get user details, get user position, set user position}{Check if correct functions are called in UserHandler}{}
+
+% PAYMENT HANDLER
 \refstepcounter{IntegrationNum}
-\Test{(CarHandler)Validator $ \rightarrow $ CUDCommands}{Invalid plate number, lock the car, unlock the car}{Check if correct functions are called in CUDCommands}{}
 
-\Test{RESTfull API $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car, delete a car, update car information with valid inputs, update car information with invalid inputs, get cars list, get car details, set car details, end of the ride}{Check if correct functions are called in CarHandler}{}
+\Test{(PaymentHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: update payment information (valid information, invalid information), insert payment (valid input, input already existent), change user status to `insolvent'}{Check if information is correctly update in the database}{PersistenceLibrary}
 
+\Test{(PaymentHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get user payment information}{Check if requested information is returned correctly}{PersistenceLibrary}
 
-%% 
+\Test{CUDCommands $ \rightarrow $ PaymentAdapter}{Valid inputs, invalid credit card number, tpayment not successful (not enough money to spend)}{Check if correct functions are called in PaymentAdapter}{}
 
-%AreaHandler
+\Test{RESTfull API $ \rightarrow $ PaymentHandler}{Update payment information (valid inputs, invalid credit card number, payment not successful (not enough money to spend), get payment information}{Check if correct functions are called in PaymentHandler}{}
+
+% CAR HANDLER
 \refstepcounter{IntegrationNum}
-\Test{(AreaHandler)Validator $ \rightarrow $ CUDCommands}{safe area with cars, empty safe area, safe area already existent}{Check if correct functions are called in CUDCommands}{}
 
-\Test{RESTfull API $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area, delete a safe area with cars, delete an empty safe area, update safe area information with valid input, update safe area information with invalid input}{Check if correct functions are called in AreaHandler}{}
+\Test{(CarHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: add a car (already existing plate number, valid information), delete a car(car status `in use', car status `reserved', car status `available', car status `unavailable'), update car information (valid information, invalid information), change car status, set car position}{Check if information is correctly update in the database}{PersistenceLibrary}
 
-%%
+\Test{(CarHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get car list, get car details, get car position, get car status}{Check if requested information is returned correctly}{PersistenceLibrary}
 
-% RideHandler
+\Test{(CarHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get car position, get distance from power grid}{Check if requested information is returned correctly}{}
+
+\Test{RESTfull API $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car (valid inputs, invalid plate number), update car information (valid inputs, invalid inputs), get cars list, get car details, set car details (valid inputs, invalid inputs), end the ride, unlock the car (valid user position, invalid user position), lock the car}{Check if correct functions are called in CarHandler}{}
+
+% AREA HANDLER
 \refstepcounter{IntegrationNum}
-\Test{(RideHandler)Validator $ \rightarrow $ CUDCommands}{Apply possible discounts (check all different cases as input), calculate ride total cost}{Check if correct functions are called in CUDCommands}{}
 
-\Test{RESTfull API $ \rightarrow $ RideHandler}{End of a ride}{Check if correct functions are called in RideHandler}{}
+\Test{(AreaHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: add a safe area (already existent, valid input), delete a safe area (with some cars, with no cars), update safe area details (valid inputs, invalid inputs)}{Check if information is correctly update in the database}{PersistenceLibrary}
 
+\Test{(AreaHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get areas list, get area details, get areas by position}{Check if requested information is returned correctly}{PersistenceLibrary}
 
+\Test{(AreaHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get distances, get area position}{Check if requested information is returned correctly}{}
+
+\Test{RESTfull API $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area (valid inputs, invalid inputs), delete a safe area (with cars, with no cars), update safe area information (valid input, invalid input)}{Check if correct functions are called in AreaHandler}{}
+
+% RIDE HANDLER
+\refstepcounter{IntegrationNum}
+
+\Test{(RideHandler) CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: set ride details (valid inputs, invalid inputs), set ride current cost}{Check if information is correctly update in the database}{PersistenceLibrary}
+
+\Test{(RideHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get car details, get ride details}{Check if requested information is returned correctly}{PersistenceLibrary}
+
+\Test{RESTfull API $ \rightarrow $ RideHandler}{Apply possible discounts (check all different cases as input), calculate total ride cost, charge the user, calculate the current cost, set ride details, sent user email containing ride details, end of a ride}{Check if correct functions are called in RideHandler}{}
+
+% RESERVATION HANDLER
+\refstepcounter{IntegrationNum}
+
+\Test{CUDCommands $ \rightarrow $ Database}{Inputs for interting, modifying and deleting database information: set reservation details}{Check if information is correctly update in the database}{PersistenceLibrary}
+
+\Test{SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get reservation details, get available cars, get user active reservations, get user status, get user position, get car position}{Check if requested information is returned correctly}{PersistenceLibrary}
+
+\Test{RESTfull API $ \rightarrow $ ReservationHandler}{Reserve more than one car at the same time, reserve only one car, user status isn't `active', user status is `active', reservation expiration, get available cars (no available car, some available cars)}{Check if correct functions are called in Reservation}{}
 
 %%
 
