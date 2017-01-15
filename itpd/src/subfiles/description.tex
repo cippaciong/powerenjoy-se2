@@ -28,10 +28,12 @@
 \newcommand{\Procedure}[2]{
 	\stepcounter{ProcNum}
 	\begin{center}
-		\begin{tabular}{|l l|}
+		\begin{tabular}{|l p{10 cm}|}
 			\hline
 			\textbf{Test Procedure Identifier} & TP\arabic{ProcNum}\\
+			\hline
 			\textbf{Purpose} & #1\\
+			\hline
 			\textbf{Procedure Steps} & #2\\
 			\hline
 		\end{tabular}
@@ -102,7 +104,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 \Test{(RideHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get car details, get ride details}{Check if requested information is returned correctly}{PersistenceLibrary}
 
 \Test{RESTfull API $ \rightarrow $ RideHandler}{Apply possible discounts (check all different cases as input), calculate total ride cost, charge the user, calculate the current cost, set ride details, sent user email containing ride details, end of a ride}{Check if correct functions are called in RideHandler}{}
-
+\pagebreak
 % RESERVATION HANDLER
 \subsubsection{ReservationHandler}
 \refstepcounter{IntegrationNum}
@@ -119,9 +121,175 @@ Each subsection contains tests concerning a specific component: there are tests 
 % PROCEDURES
 \subsection{Test Procedures}
 
-\Procedure{arg1}{Excecute I1}
-\Procedure{arg1}{Excecute I2}
-\Procedure{arg1}{Excecute I3}
-\Procedure{arg1}{Excecute I4}
-\Procedure{arg1}{Excecute I5}
-\Procedure{arg1}{Excecute I6}
+\subsubsection{UserHandler}
+\Procedure{
+	This test procedure verifies whether the MapAdapter subcomponent in the UserHandler component:
+	\begin{itemize}
+		\item can handle CUDCommands inputs
+		\item can output requested information to the CUDCommands subcomponent
+	\end{itemize}
+
+	This test procedure verifies whether the CUDCommands subcomponent in the UserHandler component:
+	\begin{itemize}
+		\item can handle Validator inputs
+		\item can handle MapAdapter inputs
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can output requested information to the Validator subcomponent
+	\end{itemize} 
+
+	This test procedure verifies whether the Validator subcomponent in the UserHandler component:
+	\begin{itemize}
+		\item can handle CUDCommands inputs
+		\item can handle RESTful API inputs
+		\item can output requested information to the RESTful API component
+	\end{itemize}
+
+	This test procedure verifies whether the SearchFilters subcomponent in the UserHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle RESTful API inputs
+		\item can output requested information to the RESTful API component
+	\end{itemize} %
+}{Excecute I1}
+
+\subsubsection{PaymentHandler}
+\Procedure{
+	This test procedure verifies whether the PaymentAdapter subcomponent in the PaymentHandler component:
+	\begin{itemize}
+		\item can handle CUDCommands inputs
+		\item can output requested information to CUDCommands subcomponent
+	\end{itemize}
+
+	This test procedure verifies whether the CUDCommands subcomponent in the PaymentHandler component:
+	\begin{itemize}
+		\item can handle Validator inputs
+		\item can handle PaymentHandler inputs
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can output requested information to Validator subcomponent
+	\end{itemize}
+
+	This test procedure verifies whether the Validator subcomponent in the PaymentHandler component:
+	\begin{itemize}
+		\item can handle RESTful API inputs
+		\item can handle CUDCommands inputs
+		\item can output requested information to RESTful API component
+	\end{itemize}
+
+	This test procedure verifies whether the SearchFilters subcomponent in the PaymentHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLIbrary)
+		\item can handle RESTful API inputs
+		\item can output requested information to the RESTful API component
+	\end{itemize}
+}{Excecute I3}
+
+\subsubsection{CarHandler}
+\Procedure{
+	This test procedure verifies whether the MapAdapter subcomponent in the CarHandler component:
+\begin{itemize}
+	\item can handle CUDCommands inputs
+	\item can output requested information to the CUDCommands subcomponent
+\end{itemize}
+
+This test procedure verifies whether the CUDCommands subcomponent in the CarHandler component:
+\begin{itemize}
+	\item can handle Validator inputs
+	\item can handle MapAdapter inputs
+	\item can handle database inputs (through PersistenceLibrary)
+	\item can output requested information to the Validator subcomponent
+\end{itemize} 
+
+This test procedure verifies whether the Validator subcomponent in the CarHandler component:
+\begin{itemize}
+	\item can handle CUDCommands inputs
+	\item can handle RESTful API inputs
+	\item can output requested information to the RESTful API component
+\end{itemize}
+
+This test procedure verifies whether the SearchFilters subcomponent in the CarHandler component:
+\begin{itemize}
+	\item can handle database inputs (through PersistenceLibrary)
+	\item can handle RESTful API inputs
+	\item can output requested information to the RESTful API component
+\end{itemize} %
+}{Excecute I3}
+
+\subsubsection{AreaHandler}
+\Procedure{
+		This test procedure verifies whether the MapAdapter subcomponent in the AreaHandler component:
+	\begin{itemize}
+		\item can handle CUDCommands inputs
+		\item can output requested information to the CUDCommands subcomponent
+	\end{itemize}
+	
+	This test procedure verifies whether the CUDCommands subcomponent in the AreaHandler component:
+	\begin{itemize}
+		\item can handle Validator inputs
+		\item can handle MapAdapter inputs
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can output requested information to the Validator subcomponent
+	\end{itemize} 
+	
+	This test procedure verifies whether the Validator subcomponent in the AreaHandler component:
+	\begin{itemize}
+		\item can handle CUDCommands inputs
+		\item can handle RESTful API inputs
+		\item can output requested information to the RESTful API component
+	\end{itemize}
+	
+	This test procedure verifies whether the SearchFilters subcomponent in the AreaHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle RESTful API inputs
+		\item can output requested information to the RESTful API component
+	\end{itemize} %
+}{Excecute I4}
+
+\subsubsection{RideHandler}
+\Procedure{
+	This test procedure verifies whether the CUDCommands subcomponent in the RideHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle Validator inputs
+		\item can output requested information to Validator subcomponent
+	\end{itemize}
+
+	This test procedure verifies whether the Validator subcomponent in the RideHandler component:
+	\begin{itemize}
+		\item can handle RESTful API inputs
+		\item can handle CUDComponents inputs
+		\item can output requested information to RESTful API component
+	\end{itemize}
+
+	This test procedure verifies whether the SearchFilters subcomponent in the RideHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle RESTful API inputs
+		\item can output requested information to RESTful API component
+	\end{itemize}
+}{Excecute I5}
+
+\pagebreak
+\subsubsection{ReservationHandler}
+\Procedure{
+	This test procedure verifies whether the CUDCommands subcomponent in the ReservationHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle Validator inputs
+		\item can output requested information to Validator subcomponent
+	\end{itemize}
+	
+	This test procedure verifies whether the Validator subcomponent in the ReservationHandler component:
+	\begin{itemize}
+		\item can handle RESTful API inputs
+		\item can handle CUDComponents inputs
+		\item can output requested information to RESTful API component
+	\end{itemize}
+	
+	This test procedure verifies whether the SearchFilters subcomponent in the ReservationHandler component:
+	\begin{itemize}
+		\item can handle database inputs (through PersistenceLibrary)
+		\item can handle RESTful API inputs
+		\item can output requested information to RESTful API component
+	\end{itemize}
+}{Excecute I6}
