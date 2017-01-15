@@ -13,8 +13,113 @@ There are some conditions on the project development that must be met before sta
 
 
 \subsection{Elements to be Integrated}
-% Identify the components to be integrated, refer to your design document to identify such components in a way that is consistent with your design
-
+    \begin{tabular}{ p{7 cm} }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{UserHandler}} \\
+      \hline
+      UserHandler  $ \rightarrow $  Database \\ \hline
+      UserHandler $ \rightarrow $ Map API \\ \hline
+      UserHandler $ \rightarrow  $ PaymentHandler \\ \hline
+      Router $ \rightarrow $ UserHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ p{7 cm} }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{CarHandler}} \\
+      \hline
+      CarHandler $ \rightarrow $ Database \\ \hline
+      CarHandler $ \rightarrow $ Map API \\ \hline
+      Router $ \rightarrow $ CarHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ p{7 cm} }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{PaymentHandler}} \\
+      \hline
+      PaymentHandler $ \rightarrow $ Database \\ \hline
+      PaymentHandler $ \rightarrow $ Payment API \\ \hline
+      Router $ \rightarrow $ PaymentHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ p{7 cm} }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{ReservationHandler}} \\
+      \hline
+      ReservationHandler $ \rightarrow $ Database \\ \hline
+      ReservationHandler $ \rightarrow $ Payment API \\ \hline
+      Router $ \rightarrow $ ReservationHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
+    \\
+    \begin{tabular}{ p{7 cm} }
+      \hline
+      \multicolumn{1}{ |c| }{\textbf{RideHandlerHandler}} \\
+      \hline
+      RideHandler $ \rightarrow $ Database \\ \hline
+      RideHandler $ \rightarrow $ Payment API \\ \hline
+      RideHandler $ \rightarrow $ CarHandler \\ \hline
+      Router $ \rightarrow $ RideHandler \\
+      \hline
+      \vspace{1mm}
+    \end{tabular}
 
 \subsection{Integration Testing Strategy}
 % Describe the integration testing approach (top-down, bottom-up, functional groupings, etc.) and the rationale for the choosing that approach.
+The strategy that will be adopted is the so-called \textbf{bottom-up} approach.
+This approach comes natural with the structure of our components. They have been
+designed with the clear scope in mind to make them atomic and as decoupled as possible.
+We can take advantage of these design choices now and start our integration tests
+on the single component. Once we are confident that the component behaves
+well within its subcomponents and with the external services, we can proceed testing
+it's integration with another component and so on.
+As a short example we can consider one of the simplest use cases, the creation of a new user.
+The full sequence of actions that should be performed in order tu fulfill the request
+would be something like this:
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\begin{lstlisting}
+HTTP Request
+    |
+    v
+    API Gateway
+        |
+        v
+        Dispatch Message
+                |
+                v 
+                User Handler
+                     |
+                     v
+                     Validate
+                         |
+                         v
+                         Insert in the DB.
+\end{lstlisting}
+The whole operation can be seen as a sort of pipeline where each subcomponents
+receive the input from the previous one and passes its output to the next.
+Following the bottom-up approach we can start testing the integration between the
+database and the code whose responsibility is to interact with it. Once we are sure
+that everything is working as expected we move up one step and test the previous integration.
+In the end we should be able to test the whole "pipeline" and make sure that the
+goal of creating a user is achieved.
+
+These simple test operations will be iterated over every single component and then
+over groups of components interacting with each other.
+
+\subsection{Sequence of Component/Function Integration}
+Thanks to the fact that our architecture is loosely coupled, we have a certain flexibility
+choosing the order in which tests should be performed.
+We start testing the integration of subcomponents in a depth-first manner and
+move upward in the stack until we find a dependency with another component.
+Alternatively following what we could call a breadth-first approach,
+we can decide to complete the integration tests of every component and
+move up in the stack only when all of them are done.
+We will prefer the first choice because we think it provides a higher degree of
+flexibility. During the development process we can start testing and prototype
+some functionalities even if we have not yet developed the other components.
