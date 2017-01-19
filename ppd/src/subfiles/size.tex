@@ -25,31 +25,69 @@ We use this table to evaluate the weight for every function: \\
 	\hline
 \end{tabular}
 
-\subsubsection{Internal Logic Files (ILFs)}
+\subsubsection{Internal Logic Files (ILFs) (\textit{entities of the system})}
 ``PowerEnJoy'' application relies on a number of ILFs to store the information it needs to offer the required functionalities. \\
-The system has to store information about registered users data: name, surname, email, password, address, user status (active, insolvent, inactive), phone number, credit card number and driving license number. \\
-It also stores administrators information: email and password. \\
-Reservation are stored in a dedicated table ... \todo{Continuare descrizione}
+The system has to store information about \textit{Registered Users} data: id, name, surname, email, password, address, user status (active, insolvent, inactive), phone number, credit card number and driving license number. \\
+It also stores \textit{Administrators} information: email and password. \\
+\textit{Reservations} are stored in a dedicated table to store an id, the email of the user who reserved the car, the identifier of the reserved car (license plate number) and the date and the time of the reservation. \\
+An other table containing information that the applications needs is the table of the \textit{Cars}, where for each car are stored an id, the license plate number, the level of the battery, the position, the status (available, unavailable, reserved, in use), locked (boolean: true if the car is locked, false otherwise), charging status (boolean: true if the car is plugged to the power grid, false otherwise). \\
+Then there is the \textit{Ride} table, where data concerning the ride is stored: id, start position, end position, duration, number of passengers, total price and the identifier of the related reservation. \\ 
+There is also a table for \textit{Discounts} types containing an identifier, the name, the percentage and a description. \\ 
+Each ride can be related to zero or more discounts and each discount can be related to zero or more ride, so we need a table where store this information (\textit{Discounts Applied}): this table only contains the ride identifier and the ride identifier. \\
+\textit{Payments} information is also stored in a dedicated table containing the identifier number, the price, the time and the date, the registered user's identifier, the identifier of the related ride. \\
+The system needs to know where and which are the safe areas, so this information is stored in a dedicated table, that contains: id number, address, longitude, latitude, total places, free places and power grid (boolean: true if it's a PowerGridStation, false if it's a simple SafeArea). \\
 
-\todo{Tommy sostituisci i ``boh'' ;)  \textless 3} 
-\begin{tabular}{|l|l|l|}
-	\hline
-	\textbf{ILFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
-	\hline
-	Registered Users 	& boh 	& boh \\
-	Administrators 	& boh 	& boh \\
-	Payments 	& boh	& boh \\
-	Cars 	& boh	& boh \\
-	Rides 	& boh 	& boh \\
-	Reservations 	& boh	& boh \\
-	Safe Areas  	& boh	& boh \\
-	\hline \hline
-	\textbf{Total} 	& boh	& boh \\
-	\hline
-\end{tabular}
+\todo{Sostituire i ``boh'' con valori} 
+\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{ILFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registered Users 	& boh 	& boh \\
+		Administrators 	& boh 	& boh \\
+		Reservations 	& boh 	& boh \\
+		Cars 	& boh	& boh \\
+		Rides 	& boh 	& boh \\
+		Discounts 	& boh 	& boh \\
+		Discounts Applied 	& boh 	& boh \\
+		Payments 	& boh	& boh \\
+		Safe Areas  	& boh	& boh \\
+		\hline \hline
+		\textbf{Total} 	& 	& boh \\
+		\hline
+	\end{tabular}
+\end{center}
 
-\subsubsection{External Logic Files (ELFs)}
+\subsubsection{External Logic Files (ELFs) (\textit{communication between different software})}
+
+	\todo{Tommy \textless 3}
+	
+\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{ELFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Boh 	& boh 	& boh \\
+
+		\hline \hline
+		\textbf{Total} 	& 	& boh \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
 \subsubsection{External Inputs (EIs)}
+
+	\todo{}
+
 \subsubsection{External Inquiries (EQs)}
+
+	\todo{}
+
 \subsubsection{External Outputs (EOs)}
+
+	\todo{}
+
 \subsubsection{Overall estimation}
+
+	\todo{}
