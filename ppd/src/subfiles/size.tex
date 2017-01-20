@@ -127,8 +127,55 @@ Here we summarize the EIs grouping them by actor's category:
 \end{center}
 
 \subsubsection{External Inquiries (EQs) (\textit{actions that required data retrieval from the database})}
+\begin{itemize}
+	\item The ``PowerEnJoy'' application allows \underline{RegisteredUsers} to request:
+		\begin{itemize}
+			\item to visualize their personal information;
+			\item the list of all rides and reservation; 
+			\item details of a selected ride or reservation;
+			\item the list of all available cars.
+			\todo{car screen??????}
+			%\item the ride and the safe areas in order to show them on the car screen
+		\end{itemize}
+	\item The application also allows the \underline{Administrators} to request:
+		\begin{itemize}
+			\item the list of all users
+			\item information of a selected user (personal information, status);
+			\item the list of all payments of a selected user;
+			\item the list of all the rides and reservations of a selected user;
+			\item the list of all cars;
+			\item details of a selected car;
+			\item the list of all unavailable cars;
+			\item the list of all safe areas;
+			\item the list of a selected safe area.
+		\end{itemize}
+\end{itemize}
 
-	\todo{}
+All of these external enquiries can be considered as operation with a \textit{simple} complexity. 
+
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EQs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Visualize personal information 	& simple 	& 3 \\
+		Get the list of rides and reservations 	& simple 	& 3 \\
+		Get ride and reservation details 	& simple 	& 3 \\
+		Get the list of available cars 	& simple 	& 3 \\
+		Get the list of users 	& simple 	& 3 \\
+		Get user personal information 	& simple 	& 3 \\
+		Get the list of payments of a selected user 	& simple 	& 3\\
+		Get the list of rides and reservations of a selected user 	& simple 	& 3 \\
+		Get the list of cars 	& simple 	& 3 \\
+		Get car details 	& simple 	& 3 \\
+		Get the list of unavailable cars 	& simple 	& 3 \\
+		Get the list of safe areas 	& simple 	& 3 \\
+		Get safe area details 	& simple 	& 3 \\
+		\hline \hline
+		\textbf{Total} 	& 	& 39 \\
+		\hline
+	\end{tabular}
+\end{center}
 
 \subsubsection{External Outputs (EOs) (\textit{things that are created from the system for the user})}
 
