@@ -29,7 +29,7 @@
 
 \subsection{Geneal Assumptions}
 This are some geneal assumptions that we considered to be always valid when defining our model.
-They are listed in this generic list beacause they are essential to fullful the majority
+They are listed in this generic list beacause they are essential to fulfill the majority
 of the goals described in the following section. For this reason we preferred to list all
 of them here rather then repeat them multiple times.
 
@@ -39,24 +39,24 @@ of them here rather then repeat them multiple times.
     \item{The devices used by the users have a mobile internet connection}
     \item{Every car is connected to a network (internet or local)
             and we can send or retrieve informations in any moment}
-    \item{We can control some phisical devices of the care remotely, like the locking system}
+    \item{We can control some physical devices of the car remotely, like the locking system}
 \end{itemize}
 
 \subsection{Functional Requirements}
 
-\begin{Goal}{registration}{Allow guests can register to the platform receiving back
+\begin{Goal}{registration}{Guests must be able to register to the platform receiving back
         a login password}{
     %REQUIREMENTS
     \Req{The system shall validate any input by the guest}
-    \Req{The system shall verify that the user's driving license is valid} 	
-    \Req{The system shall verify that the user's credit card is valid}
+    % We can't verify them, becaouse we haven't external system that do that.
+    %\Req{The system shall verify that the user's driving license is valid} 	
+    %\Req{The system shall verify that the user's credit card is valid}
     \Req{The system shall send a login password to the user who has just signed
             up in less than 5 minutes}
     %ASSUMPTIONS
-    \Dom{There is an external system able to tell if a driving license is valid 
-            based on its id number}
-    \Dom{There is an external system able to tell if a credit card is valid
-            based on its id number}
+    % No, because we haven't the external systems to check them.
+    %\Dom{There is an external system able to tell if a driving license is valid based on its id number}
+    %\Dom{There is an external system able to tell if a credit card is valid based on its id number}
 }
 \end{Goal}
 
@@ -66,7 +66,7 @@ of them here rather then repeat them multiple times.
     \Req{The system shall allow users to choose a maximum radius for the car research}
     \Req{The system shall allow the user to provide an address or the current position
             as the center of the research area}
-    \Req{The system shall check that the user's status is `active'}
+    \Req{Before the reservation, the system shall check that the user's status is `active'.}
     %ASSUMPTIONS
     \Dom{The user position is provided by the user's device GPS system}
 }
@@ -77,23 +77,23 @@ of them here rather then repeat them multiple times.
     %REQUIREMENTS
     \Req{The system shall verify that the user is not reserving more than one car at a time} 
     \Req{The system shall verify that the user can select a car only among the list
-            of cars marked as "available" in the search radius} 
-    \Req{The system shall change the status of the car from "available" to "reserved"
+            of cars marked as ``available'' in the search radius} 
+    \Req{The system shall change the status of the car from ``available'' to ``reserved''
             once the car is selected} 
     \Req{The system shall keep track of the time elapsed as soon as the reservation is completed} 
-	\Req{The system shall check that the user's status is `active'}
+	\Req{Before the reservation, the system shall check that the user's status is `active'}
 }
 \end{Goal}
 
 \begin{Goal}{expiration}{Car reservation expires after one hour and a fee
         is charged to the user}{
     %REQUIREMENTS
-    \Req{The system shall change the status of the car from "reserved" to "unavailable"
+    \Req{The system shall change the status of the car from ``reserved'' to ``available''
             if the car is not picked up within one hour from the reservation}
-    \Req{The system shall impose a charge of 1 euro to the user
+    \Req{The system shall impose a charge of 1\euro\ to the user
             for the reservation expiration}
     %ASSUMPTIONS
-    \Dom{Payments are withdrew automatically from the user's credit cart
+    \Dom{Payments are withdrew automatically from the user's credit card
             without any user interaction}
     \Dom{The system doesn't manage payments directly since we rely on an external
             service who is exposing some specific APIs}
@@ -101,12 +101,11 @@ of them here rather then repeat them multiple times.
 }
 \end{Goal}
 
-\begin{Goal}{unlocking}{Unlock the car when the user who reserved it is closer than
-        a defined distance}{
+\begin{Goal}{unlocking}{The user must be able to unlock the reserved car.}{
     %REQUIREMENTS
-    \Req{The system shall not unlock the distance between the user and the car is
+    \Req{The system shall not unlock if the distance between the user and the car is
             greater than the defined disance}
-    \Req{The system shall change the status of the car from "reserved" to "in use" when
+    \Req{The system shall change the status of the car from ``reserved'' to ``in use'' when
             the car is unlocked}
     %ASSUMPTIONS
 }
@@ -116,9 +115,9 @@ of them here rather then repeat them multiple times.
     %REQUIREMENTS
     \Req{The system shall keep track of the time elapsed from the car unlock}
     \Req{The system shall update the total cost of the ride on a per minute basis,
-            using the current elapsed time.}
+            using the current elapsed time}
     %ASSUMPTIONS
-    \Dom{Payments are withdrew automatically from the user's credit cart
+    \Dom{Payments are withdrew automatically from the user's credit card
             without any user interaction}
     \Dom{The system doesn't manage payments directly since we rely on an external
             service who is exposing some specific APIs}
@@ -128,25 +127,25 @@ of them here rather then repeat them multiple times.
     
 \begin{Goal}{screen_information}{The user is notified of the current charges throgh the car display}{
     %REQUIREMENTS
-    \Req{The system shall send the current charges to the car on a per minute basis}
+    \Req{During the ride, the system shall send the current charges to the car on a per minute basis}
     %ASSUMPTIONS
     \Dom{Every car has a display}
-    \Dom{The car actually shows the informations received from the system}
+    \Dom{The car actually shows the information received from the system}
 }
 \end{Goal}
 
 \begin{Goal}{end_ride}{At the end of the ride the car is locked automatically
         and the user is charged}{
     %REQUIREMENTS
-    \Req{The system shall lock the care automatically when the car is turned off and
+    \Req{The system shall lock the car automatically when the car is turned off and
             there are no more passengers inside}
     \Req{The system shall wait five minutes before charging the user with the final cost
-            in order to consider possibile discounts or additional fees}
+            in order to consider possible discounts or additional fees}
     \Req{The system shall send a notification to the user with information about the
             ride details and the final cost}
     %ASSUMPTIONS
     \Dom{The ride ends when the car is locked}
-    \Dom{Payments are withdrew automatically from the user's credit cart
+    \Dom{Payments are withdrew automatically from the user's credit card
             without any user interaction}
     \Dom{The system doesn't manage payments directly since we rely on an external
             service who is exposing some specific APIs}
@@ -161,39 +160,41 @@ of them here rather then repeat them multiple times.
     \Req{The system shall send a notification to the insolvent user telling him/her to
             get in touch with the customer service}
     %ASSUMPTIONS
-    \Dom{The information about insolvent users is provide by the external payment system}
+    \Dom{The information about insolvent users is provided by the external payment system}
 }
 \end{Goal}
 
-\begin{Goal}{safe_areas}{Discourage parking outside of safe areas by charing 80\%
+\begin{Goal}{safe_areas}{Discourage parking outside of safe areas by charging 80\%
         more on the ride balance and if that happens, mark the car as unavailable}{
     %REQUIREMENTS
     \Req{The system shall know in advance what are the safe areas and their precise location}
     \Req{The system shall charge the user by 80\% more if the car is parked outside of a safe area}
-    \Req{The system shall change the status of the car to "unavailable"
+    \Req{The system shall change the status of the car to ``unavailable''
             if the car is parked outside of a safe area}
     %ASSUMPTIONS
+    \Dom{Unavailable cars are managed by a ``PowerEnJoy'' employee}
 }
 \end{Goal}
 
-\begin{Goal}{poi}{The car display provides informations about the location of
-        safe areas and power grid stations}{
+\begin{Goal}{poi}{The car display provides information about the location of
+        SafeAreas and PowerGridStations}{
     %REQUIREMENTS
-    \Req{The system shall send informations to the car about the nearest safe areas and
-            power grid stations based on the current position of the car}
+    \Req{The system shall send information to the car about the nearest SafeAreas and
+            PowerGridStations based on the current position of the car}
     %ASSUMPTIONS
-    \Dom{The car display integrates a GPS navigator and shows the informations received 
-            from the system about the nearest safe areas and power grid stations}
+    \Dom{The car display integrates a GPS navigator and shows the information received 
+            from the system about the nearest SafeAreas and PowerGridStations}
 }
 \end{Goal}
 
 \begin{Goal}{out_of_battery}{Cars with less then 20\% of battery left are marked as unavailable}{
     %REQUIREMENTS
-    \Req{The system shall change the status of to car to "unavailable" if the car is
+    \Req{The system shall change the status of to car the ``unavailable'' if the car is
             turned off and the battery level is below 20\%}
     %ASSUMPTIONS
     \Dom{The battery level detected by the car is accurate}
     \Dom{The car is able to send updated information to the system with respect to the battery level}
+    \Dom{Unavailable cars are managed by a ``PowerEnJoy'' employee}
 }
 \end{Goal}
 
@@ -202,7 +203,7 @@ of them here rather then repeat them multiple times.
     \Req{The system shall apply a 10\% discount on the last ride if the car reports
             the presence of more than 2 passengers}
     %ASSUMPTIONS
-    \Dom{The car is equipped with sensors to the detect if there are passengers on the seats}
+    \Dom{The car is equipped with sensors to detect if there are passengers on the seats}
 }
 \end{Goal}
 
@@ -225,43 +226,44 @@ of them here rather then repeat them multiple times.
     \Req{The system shall apply a 30\% discount if the car is plugged to the
             power grid within that time frame}
     %ASSUMPTIONS
-    \Dom{The car is able to detect if the power cord is plugged in and informs the system about it}
+    \Dom{The car is able to detect if the power cord is plugged in and inform the system about it}
 }
 \end{Goal}
 
 \begin{Goal}{out_of_battery_fee}{Charge an additional fee if the car is left more than 3km
-        far from the nearest power grid stations and with less then 20\% of battery left}{
+        far from the nearest PowerGridStations or with less then 20\% of battery left}{
     %REQUIREMENTS
     \Req{The system shall detect if the car is left in a location that is more than 3km far
-            from the nearest power grid station}
+            from the nearest PowerGridStation}
     \Req{The system shall detect if the battery level is less than 20\%}
     \Req{The system shall apply a 30\% additional fee on the cost if these events occur}
-    \Req{The system shall change the status of the car to "unavailable"}
+    \Req{The system shall change the status of the car to ``unavailable''}
     %ASSUMPTIONS
     \Dom{The battery level detected by the car is accurate}
     \Dom{The car is able to send updated information to the system with respect to the battery level}
 }
 \end{Goal}
 
-\begin{Goal}{admin_new_safeareas}{An admin must be able to add and delete safe areas and power grid stations}
+\begin{Goal}{admin_new_safeareas}{An admin must be able to add and delete SafeAreas and PowerGridStations}
 	%REQUIREMENTS
 	\Req{The system shall verify that the safe area that the admin wants to add isn't already inserted}
 	\Dom{In the safe area that the admin wants to delete from the system there are no cars}
 \end{Goal}
 
-\begin{Goal}{car_management}{An administrator must be able to manage cars: add a new car and delete an existing one, see and change the details of a selected car}
+\begin{Goal}{car_management}{An administrator must be able to manage cars: add a new car and delete an existing one, see and change the status and the details of a selected car}
 	%REQUIREMENTS
 	\Req{The system shall verify that the car that the admin wants to add isn't already inserted}
+	\Req{An administrator must be able to get the list of cars whose status is ``unavailable'' in order to fix the car problem}
 	\Req{The system shall verify that the status of the car that the admin wants to delete or modify isn't `reserved' or `in use'}
 \end{Goal}
 
-\begin{Goal}{user_management}{An admin must be able to manage users: add a new user and delete an existing one; see and update details, payment information and status of a selected user}
+\begin{Goal}{user_management}{An admin must be able to manage users: add a new user and delete an existing one; see and update details, payment information and the status of a selected user}
 	\Req{The system shall verify that the user that the administrator wants to add isn't already registered}
 	\Req{The system shall verify that the inserted or modified information is correct}
 	\Req{The system shall send a notification to the user if his/her information is updated}
 \end{Goal}
 
-\begin{Goal}{admin_management}{An administrator must be able to add new administrator providing an email, a name and a passowrd}
+\begin{Goal}{admin_management}{An administrator must be able to add new administrators providing an email, a name and a passowrd}
 	\Req{The system shall verify that the new admin isn't already registered}
 	\Req{The system shall verify that the inserted email is valid}
 \end{Goal}
