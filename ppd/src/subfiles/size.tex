@@ -7,23 +7,25 @@ In this chapter we provide the the expected size, the cost and effort estimation
 
 We apply the \textbf{Function Points} approach, based on the main functionalities of the application, to evaluate the size of the project and estimate the line of code to be written. Then  we can proceed with the estimation of the effort and the duration applying the rules defined by the COCOMO II approach. \\
 \\
-We use this table to evaluate the weight for every function: \\
+We use this table to evaluate the weight for every function:
 
-\begin{tabular}{|l|l|l|l|}
-	\hline
-	\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex} \\
-	\hline \hline
-	N. Internal Files 	& 7 	& 10 	& 15 \\
-	\hline
-	N. External Files 	& 5 	& 7 	& 10 \\
-	\hline
-	N. Inputs 	& 3 	& 4 	& 6 \\
-	\hline
-	N. Output 	& 4 	& 5 	& 7 \\
-	\hline
-	N. Inquiries 	& 3 	& 4 	& 6 \\	
-	\hline
-\end{tabular}
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex} \\
+		\hline \hline
+		N. Internal Files 	& 7 	& 10 	& 15 \\
+		\hline
+		N. External Files 	& 5 	& 7 	& 10 \\
+		\hline
+		N. Inputs 	& 3 	& 4 	& 6 \\
+		\hline
+		N. Output 	& 4 	& 5 	& 7 \\
+		\hline
+		N. Inquiries 	& 3 	& 4 	& 6 \\	
+		\hline
+	\end{tabular}
+\end{center}
 
 \subsubsection{Internal Logic Files (ILFs) (\textit{entities of the system})}
 ``PowerEnJoy'' application relies on a number of ILFs to store the information it needs to offer the required functionalities. \\
@@ -35,7 +37,7 @@ Then there is the \textit{Ride} table, where data concerning the ride is stored:
 There is also a table for \textit{Discounts} types containing an identifier, the name, the percentage and a description. \\ 
 Each ride can be related to zero or more discounts and each discount can be related to zero or more ride, so we need a table where store this information (\textit{Discounts Applied}): this table only contains the ride identifier and the ride identifier. \\
 \textit{Payments} information is also stored in a dedicated table containing the identifier number, the price, the time and the date, the registered user's identifier, the identifier of the related ride. \\
-The system needs to know where and which are the safe areas, so this information is stored in a dedicated table, that contains: id number, address, longitude, latitude, total places, free places and power grid (boolean: true if it's a PowerGridStation, false if it's a simple SafeArea). \\
+The system needs to know where and which are the safe areas, so this information is stored in a dedicated table, that contains: id number, address, longitude, latitude, total places, free places and power grid (boolean: true if it's a PowerGridStation, false if it's a simple SafeArea).
 
 \todo{Sostituire i ``boh'' con valori} 
 \begin{center}
