@@ -54,7 +54,7 @@ The system needs to know where and which are the \textit{safe areas}, so this in
 		Payments 	& high	& 15 \\
 		Safe Areas  	& medium	& 10 \\
 		\hline \hline
-		\textbf{Total} 	& 	& 99 \\
+		\textbf{Total} 	& 	& \textbf{99} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -71,7 +71,7 @@ The system needs to know where and which are the \textit{safe areas}, so this in
 		Boh 	& boh 	& boh \\
 
 		\hline \hline
-		\textbf{Total} 	& 	& boh \\
+		\textbf{Total} 	& 	& \textbf{boh} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -121,7 +121,7 @@ Here we summarize the EIs grouping them by actor's category:
 		Insert, delete and update cars 	& high 	& 3 x 6 \\
 		Insert, delete and update users 	& medium 	& 3 x 4 \\		
 		\hline \hline
-		\textbf{Total} 	& 	& 76 \\
+		\textbf{Total} 	& 	& \textbf{76} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -172,7 +172,7 @@ All of these external enquiries can be considered as operation with a \textit{si
 		Get the list of safe areas 	& simple 	& 3 \\
 		Get safe area details 	& simple 	& 3 \\
 		\hline \hline
-		\textbf{Total} 	& 	& 39 \\
+		\textbf{Total} 	& 	& \textbf{39} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -200,11 +200,39 @@ Sometimes the ``PowerEnJoy'' application needs to interact with the users outsid
 		Notification confirming status changes 	& simple 	& 4 \\
 		Notification for payment failure 	& medium 	& 5 \\
 		\hline \hline
-		\textbf{Total} 	& 	& 24 \\
+		\textbf{Total} 	& 	& \textbf{24} \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \subsubsection{Overall estimation}
 
-	\todo{}
+This table is a summary of the number of function points that we have found in our project, each multiplied by its own weight:
+
+\begin{center}
+	\begin{tabular}{|l|c|c|c||c|}
+		\hline
+		\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex}	& \textbf{FPs} \\
+		\hline
+		N. Internal Files 	& 2 * \textbf{7} 	& 4 * \textbf{10} 	& 3 * \textbf{15} & 99 \\
+		\hline
+		N. External Files 	& n * \textbf{5} 	& n * \textbf{7} 	& n * \textbf{10} & tot \\
+		\hline
+		N. Inputs 	& 2 * \textbf{3} 	& 10 * \textbf{4} 	& 5 * \textbf{6} & 76  \\
+		\hline
+		N. Output 	& 3 * \textbf{4} 	& 1 * \textbf{5} 	& 1 * \textbf{7} & 24 \\
+		\hline
+		N. Inquiries 	& 13 * \textbf{3} 	& 0 * \textbf{4} 	& 0 * \textbf{6}  & 39\\	
+		\hline \hline
+		\textbf{TOTAL} 	&  	& 	& 	& \textbf{239+tot} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+The value obtained, representing the total number of Function Points, can be used to estimate the size of the project in terms of Source Lines of Code. \\
+\begin{center}
+	\textbf{LOC = AVG * FPs}
+\end{center}
+AVG is a language-dependent factor.
+
+\todo{dobbiamo scegliere un linguaggio??}
