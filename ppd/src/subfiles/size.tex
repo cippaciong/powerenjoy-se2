@@ -179,7 +179,31 @@ All of these external enquiries can be considered as operation with a \textit{si
 
 \subsubsection{External Outputs (EOs) (\textit{things that are created from the system for the user})}
 
-	\todo{}
+Sometimes the ``PowerEnJoy'' application needs to interact with the users outside the context of an inquiry.
+
+\begin{itemize}
+	\item \textbf{Registration}: this is an operation with \textit{simple} complexity because the system only sends a password to the new registered user through an email notification;
+	\item \textbf{Password recovery}: this is an operation with \textit{simple} complexity because the system only sends a new password to the registered user through an email notification;
+	\item \textbf{Notification at the end of the ride}: the system sends an email to the user containing all the details of his/her last ride and successful payment (total cost, applied discounts and fees, confirmation of successful payment, ride duration, starting location, ending location... ), then this operation has a \textit{high} complexity because it requires four entities: User, Payment, Discounts, Ride;
+	\item \textbf{Notification confirming status changes}: the system sends to the user a notification email when his/her status changes (automatically for insolvent payments or by an administrator's operation), then this is a \textit{simple} complexity operation because requires only the status of the user. 
+	\item \textbf{Notification for payment failure}: the system sends a notification email to the user if the payment is not successful, then this is an operation with \textit{medium} complexity because it requires two entities: User and Payment.
+\end{itemize}
+\todo{car screen???}
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EOs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registration 	& simple 	& 4 \\
+		Password recovery 	& simple 	& 4 \\
+		Notification at the end of the ride 	& high 	& 7 \\
+		Notification confirming status changes 	& simple 	& 4 \\
+		Notification for payment failure 	& medium 	& 5 \\
+		\hline \hline
+		\textbf{Total} 	& 	& 24 \\
+		\hline
+	\end{tabular}
+\end{center}
 
 \subsubsection{Overall estimation}
 
