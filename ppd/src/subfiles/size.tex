@@ -1,0 +1,238 @@
+\pagebreak
+\section{Project size, cost and effort estimation}
+
+In this chapter we provide the the expected size, the cost and effort estimation of the ``PowerEnJoy'' application.
+
+\subsection{Size estimation: Function Points}
+
+We apply the \textbf{Function Points} approach, based on the main functionalities of the application, to evaluate the size of the project and estimate the line of code to be written. Then  we can proceed with the estimation of the effort and the duration applying the rules defined by the COCOMO II approach. \\
+\\
+We use this table to evaluate the weight for every function:
+
+\begin{center}
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex} \\
+		\hline \hline
+		N. Internal Files 	& 7 	& 10 	& 15 \\
+		\hline
+		N. External Files 	& 5 	& 7 	& 10 \\
+		\hline
+		N. Inputs 	& 3 	& 4 	& 6 \\
+		\hline
+		N. Output 	& 4 	& 5 	& 7 \\
+		\hline
+		N. Inquiries 	& 3 	& 4 	& 6 \\	
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Internal Logic Files (ILFs) (\textit{entities of the system})}
+``PowerEnJoy'' application relies on a number of ILFs to store the information it needs to offer the required functionalities. \\
+The system has to store information about \textit{Registered Users} data: id, name, surname, email, password, address, user status (active, insolvent, inactive), phone number, credit card number and driving license number. \\
+It also stores \textit{Administrators} information: name, email and password. \\
+\textit{Reservations} are stored in a dedicated table to store an id, the id of the user who reserved the car, the identifier of the reserved car and the date and the time of the reservation. \\
+An other table containing information that the applications needs is the table of the \textit{Cars}, where for each car are stored an id, the license plate number, the level of the battery, the position, the status (available, unavailable, reserved, in use), locked (boolean: true if the car is locked, false otherwise), charging status (boolean: true if the car is plugged to the power grid, false otherwise). \\
+Then there is the \textit{Ride} table, where data concerning the ride is stored: id, start position, end position, duration, number of passengers, total price and the identifier of the related reservation. \\ 
+There is also a table for \textit{Discounts} types containing an identifier, the name, the percentage and a description. \\ 
+Each ride can be related to zero or more discounts and each discount can be related to zero or more ride, so we need a table where store this information (\textit{Discounts Applied}): this table only contains the ride identifier and the ride identifier. \\
+\textit{Payments} information is also stored in a dedicated table containing the identifier number, the price, the time and the date, the registered user's identifier, the identifier of the related ride. \\
+The system needs to know where and which are the \textit{safe areas}, so this information is stored in a dedicated table, that contains: id number, address, longitude, latitude, total places, free places and power grid (boolean: true if it's a PowerGridStation, false if it's a simple SafeArea).
+
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{ILFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registered Users 	& high 	& 15 \\
+		Administrators 	& simple 	& 7 \\
+		Reservations 	& medium 	& 10 \\
+		Cars 	& medium	& 10 \\
+		Rides 	& high 	& 15 \\
+		Discounts 	& simple 	& 7 \\
+		Discounts Applied 	& medium 	& 10 \\
+		Payments 	& high	& 15 \\
+		Safe Areas  	& medium	& 10 \\
+		\hline \hline
+		\textbf{Total} 	& 	& \textbf{99} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{External Logic Files (ELFs) (\textit{communication between different software})}
+
+	\todo{Tommy \textless 3}
+	
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{ELFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Boh 	& boh 	& boh \\
+
+		\hline \hline
+		\textbf{Total} 	& 	& \textbf{boh} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\subsubsection{External Inputs (EIs)}
+
+``PowerEnJoy'' web application supports many kind of interactions with different actors.
+Here we summarize the EIs grouping them by actor's category:
+\begin{itemize}
+	\item The application interacts with \underline{Guests}:
+		\begin{itemize}
+			\item \textbf{registration}: this operation has a \textit{medium} complexity because it requires some checks on the validity of the inputs (it contributes 4 FPs).
+		\end{itemize}
+	\item The application interacts with \underline{RegisteredUsers}:
+		\begin{itemize}
+			\item \textbf{login}: it is a \textit{simple} operation that requires only email and password (it contributes 3 FPs);
+			\item \textbf{logout}: this is a \textit{simple} operation that involve only the UserHandler component, so we adopt the simple weight for it (it contributes 3 FPs);
+			\item \textbf{password recovery}: this operation requires some steps in order to create a new password and update the database, so we adopt the \textit{medium} weight for it (it contributes 4 FPs);
+			\item \textbf{update personal information}: this is a \textit{medium} complexity operation because it requires to update some fields and check their validity (it contributes 4 FPs);
+			\item \textbf{reserve a car}: this operation requires a some difficult steps (like `search available cars', `check that the user hasn't already an active reservation') to reach the goal, so it's an operation with \textit{high} complexity (it contributes 6 FPs);
+			\item \textbf{unlock the reserved car}: this operation requires some steps (like `check user distance from the car' and `change car status'), so it is an \textit{high} complexity operation (it contributes 6 FPs).
+		\end{itemize}
+	\item The application interacts also with \underline{Administrators}:
+		\begin{itemize}
+			\item \textbf{insert, delete and update PowerEnJoy areas (SafeAreas and PowerGridStations)}: these operations require to check the validity of the inputs and to update the database, so we adopt the \textit{medium} weight for them (it contributes 4 FPs each);
+			\item \textbf{create new administrators}: this operation has a \textit{medium} complexity because it requires to check the inputs and to update the database (it contributes 4 FPs);
+			\item \textbf{insert, delete and update electric cars}: these operations require to check the validity of the input, check and sometimes change the status of the car, provide some car information (like the actual position) and update the database, so we adopt the \textit{high} weight for them (it contributes 6 FPs each);
+			\item \textbf{insert, delete and update users}: this operation has a \textit{medium} complexity because it requires to check the inputs and to update the database (it contributes 4 FPs each);
+		\end{itemize}
+\end{itemize}
+
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EIs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registration 	& medium 	& 4 \\
+		Login 	& simple 	& 3 \\
+		Logout 	& simple 	& 3 \\
+		Password recovery 	& medium 	& 4 \\
+		Update personal information 	& medium 	& 4 \\
+		Reserve a car 	& high 	& 6 \\
+		Unlock the reserved car 	& high 	& 6 \\
+		Insert, delete and update areas 	& medium 	& 3 * 4 \\
+		Add a new admin 	& medium 	& 4 \\
+		Insert, delete and update cars 	& high 	& 3 * 6 \\
+		Insert, delete and update users 	& medium 	& 3 * 4 \\		
+		\hline \hline
+		\textbf{Total} 	& 	& \textbf{76} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{External Inquiries (EQs) (\textit{actions that required data retrieval from the database})}
+\begin{itemize}
+	\item The ``PowerEnJoy'' application allows \underline{RegisteredUsers} to request:
+		\begin{itemize}
+			\item to visualize their personal information;
+			\item the list of all rides and reservation; 
+			\item details of a selected ride or reservation;
+			\item the list of all available cars.
+			\todo{car screen??????}
+			%\item the ride and the safe areas in order to show them on the car screen
+		\end{itemize}
+	\item The application also allows the \underline{Administrators} to request:
+		\begin{itemize}
+			\item the list of all users
+			\item information of a selected user (personal information, status);
+			\item the list of all payments of a selected user;
+			\item the list of all the rides and reservations of a selected user;
+			\item the list of all cars;
+			\item details of a selected car;
+			\item the list of all unavailable cars;
+			\item the list of all safe areas;
+			\item the list of a selected safe area.
+		\end{itemize}
+\end{itemize}
+
+All of these external enquiries can be considered as operation with a \textit{simple} complexity. 
+
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EQs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Visualize personal information 	& simple 	& 3 \\
+		Get the list of rides and reservations 	& simple 	& 3 \\
+		Get ride and reservation details 	& simple 	& 3 \\
+		Get the list of available cars 	& simple 	& 3 \\
+		Get the list of users 	& simple 	& 3 \\
+		Get user personal information 	& simple 	& 3 \\
+		Get the list of payments of a selected user 	& simple 	& 3\\
+		Get the list of rides and reservations of a selected user 	& simple 	& 3 \\
+		Get the list of cars 	& simple 	& 3 \\
+		Get car details 	& simple 	& 3 \\
+		Get the list of unavailable cars 	& simple 	& 3 \\
+		Get the list of safe areas 	& simple 	& 3 \\
+		Get safe area details 	& simple 	& 3 \\
+		\hline \hline
+		\textbf{Total} 	& 	& \textbf{39} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{External Outputs (EOs) (\textit{things that are created from the system for the user})}
+
+Sometimes the ``PowerEnJoy'' application needs to interact with the users outside the context of an inquiry.
+
+\begin{itemize}
+	\item \textbf{Registration}: this is an operation with \textit{simple} complexity because the system only sends a password to the new registered user through an email notification;
+	\item \textbf{Password recovery}: this is an operation with \textit{simple} complexity because the system only sends a new password to the registered user through an email notification;
+	\item \textbf{Notification at the end of the ride}: the system sends an email to the user containing all the details of his/her last ride and successful payment (total cost, applied discounts and fees, confirmation of successful payment, ride duration, starting location, ending location... ), then this operation has a \textit{high} complexity because it requires four entities: User, Payment, Discounts, Ride;
+	\item \textbf{Notification confirming status changes}: the system sends to the user a notification email when his/her status changes (automatically for insolvent payments or by an administrator's operation), then this is a \textit{simple} complexity operation because requires only the status of the user. 
+	\item \textbf{Notification for payment failure}: the system sends a notification email to the user if the payment is not successful, then this is an operation with \textit{medium} complexity because it requires two entities: User and Payment.
+\end{itemize}
+\todo{car screen???}
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EOs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registration 	& simple 	& 4 \\
+		Password recovery 	& simple 	& 4 \\
+		Notification at the end of the ride 	& high 	& 7 \\
+		Notification confirming status changes 	& simple 	& 4 \\
+		Notification for payment failure 	& medium 	& 5 \\
+		\hline \hline
+		\textbf{Total} 	& 	& \textbf{24} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Overall estimation}
+
+This table is a summary of the number of function points that we have found in our project, each multiplied by its own weight:
+
+\begin{center}
+	\begin{tabular}{|l|c|c|c||c|}
+		\hline
+		\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex}	& \textbf{FPs} \\
+		\hline
+		N. Internal Files 	& 2 * \textbf{7} 	& 4 * \textbf{10} 	& 3 * \textbf{15} & 99 \\
+		\hline
+		N. External Files 	& n * \textbf{5} 	& n * \textbf{7} 	& n * \textbf{10} & tot \\
+		\hline
+		N. Inputs 	& 2 * \textbf{3} 	& 10 * \textbf{4} 	& 5 * \textbf{6} & 76  \\
+		\hline
+		N. Output 	& 3 * \textbf{4} 	& 1 * \textbf{5} 	& 1 * \textbf{7} & 24 \\
+		\hline
+		N. Inquiries 	& 13 * \textbf{3} 	& 0 * \textbf{4} 	& 0 * \textbf{6}  & 39\\	
+		\hline \hline
+		\textbf{TOTAL} 	&  	& 	& 	& \textbf{239+tot} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+The value obtained, representing the total number of Function Points, can be used to estimate the size of the project in terms of Source Lines of Code. \\
+\begin{center}
+	\textbf{LOC = AVG * FPs}
+\end{center}
+AVG is a language-dependent factor.
+
+\todo{dobbiamo scegliere un linguaggio??}
