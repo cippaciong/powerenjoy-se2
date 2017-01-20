@@ -10,7 +10,7 @@ We apply the \textbf{Function Points} approach, based on the main functionalitie
 We use this table to evaluate the weight for every function:
 
 \begin{center}
-	\begin{tabular}{|l|l|l|l|}
+	\begin{tabular}{|l|c|c|c|}
 		\hline
 		\textbf{Function types} 	& \textbf{Simple} 	& \textbf{Medium} 	& \textbf{Complex} \\
 		\hline \hline
@@ -41,7 +41,7 @@ The system needs to know where and which are the safe areas, so this information
 
 \todo{Sostituire i ``boh'' con valori} 
 \begin{center}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|c|}
 		\hline
 		\textbf{ILFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
 		\hline
@@ -65,7 +65,7 @@ The system needs to know where and which are the safe areas, so this information
 	\todo{Tommy \textless 3}
 	
 \begin{center}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|c|}
 		\hline
 		\textbf{ELFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
 		\hline
@@ -80,13 +80,58 @@ The system needs to know where and which are the safe areas, so this information
 
 \subsubsection{External Inputs (EIs)}
 
+``PowerEnJoy'' web application supports many kind of interactions with different actors.
+Here we summarize the EIs grouping them by actor's category:
+\begin{itemize}
+	\item The application interacts with \underline{Guests}:
+		\begin{itemize}
+			\item \textbf{registration}: this operation has a \textit{medium} complexity because it requires some checks on the validity of the inputs (it contributes 4 FPs).
+		\end{itemize}
+	\item The application interacts with \underline{RegisteredUsers}:
+		\begin{itemize}
+			\item \textbf{login}: it is a \textit{simple} operation that requires only email and password (it contributes 3 FPs);
+			\item \textbf{logout}: this is a \textit{simple} operation that involve only the UserHandler component, so we adopt the simple weight for it (it contributes 3 FPs);
+			\item \textbf{password recovery}: this operation requires some steps in order to create a new password and update the database, so we adopt the \textit{medium} weight for it (it contributes 4 FPs);
+			\item \textbf{update personal information}: this is a \textit{medium} complexity operation because it requires to update some fields and check their validity (it contributes 4 FPs);
+			\item \textbf{reserve a car}: this operation requires a some difficult steps (like `search available cars', `check that the user hasn't already an active reservation') to reach the goal, so it's an operation with \textit{high} complexity (it contributes 6 FPs);
+			\item \textbf{unlock the reserved car}: this operation requires some steps (like `check user distance from the car' and `change car status'), so it is an \textit{high} complexity operation (it contributes 6 FPs).
+		\end{itemize}
+	\item The application interacts also with \underline{Administrators}:
+		\begin{itemize}
+			\item \textbf{insert, delete and update PowerEnJoy areas (SafeAreas and PowerGridStations)}: these operations require to check the validity of the inputs and to update the database, so we adopt the \textit{medium} weight for them (it contributes 4 FPs);
+			\item \textbf{create new administrators}: this operation has a \textit{medium} complexity because it requires to check the inputs and to update the database (it contributes 4 FPs);
+			\item \textbf{insert, delete and update electric cars}: these operations require to check the validity of the input, check and sometimes change the status of the car, provide some car information (like the actual position) and update the database, so we adopt the \textit{high} weight for them (it contributes 6 FPs);
+			\item \textbf{insert, delete and update users}: this operation has a \textit{medium} complexity because it requires to check the inputs and to update the database (it contributes 4 FPs);
+		\end{itemize}
+\end{itemize}
+
+\begin{center}
+	\begin{tabular}{|l|l|c|}
+		\hline
+		\textbf{EIs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
+		\hline
+		Registration 	& medium 	& 4 \\
+		Login 	& simple 	& 3 \\
+		Logout 	& simple 	& 3 \\
+		Password recovery 	& medium 	& 4 \\
+		Update personal information 	& medium 	& 4 \\
+		Reserve a car 	& high 	& 6 \\
+		Unlock the reserved car 	& high 	& 6 \\
+		Insert, delete and update areas 	& medium 	& 3 x 4 \\
+		Add a new admin 	& medium 	& 4 \\
+		Insert, delete and update cars 	& high 	& 3 x 6 \\
+		Insert, delete and update users 	& medium 	& 3 x 4 \\		
+		\hline \hline
+		\textbf{Total} 	& 	& 76 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{External Inquiries (EQs) (\textit{actions that required data retrieval from the database})}
+
 	\todo{}
 
-\subsubsection{External Inquiries (EQs)}
-
-	\todo{}
-
-\subsubsection{External Outputs (EOs)}
+\subsubsection{External Outputs (EOs) (\textit{things that are created from the system for the user})}
 
 	\todo{}
 
