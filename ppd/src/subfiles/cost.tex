@@ -205,16 +205,19 @@ Here are our results:
 		\hline
 		\textbf{Scale Driver} & \textbf{Factor} & \textbf{Value} \\
 		\hline \hline
+		\underline{Product Factors} & & \\
 		Required Software Reliability (RELY) & factor & value \\
 		Data Base Size (DATA) & factor & value \\
 		Product Complexity (CPLX) & factor & value \\
 		Developed for Reusability (RUSE) & factor & value \\
 		Documentation Match to Life-Cycle Needs (DOCU) & factor & value \\
 		\hline
+		\underline{Platform Factors} & & \\
 		Execution Time Constraint (TIME) & factor & value \\
 		Main Storage Constraint (STOR) & factor & value \\
 		Platform Volatility (PVOL) & factor & value \\
 		\hline
+		\underline{Personnel Factors} & & \\
 		Analyst Capability (ACAP) & factor & value \\
 		Programmer Capability (PCAP) & factor & value \\
 		Personnel Continuity (PCON) & factor & value \\
@@ -222,9 +225,11 @@ Here are our results:
 		Platform Experience (PLEX) & factor & value \\
 		Language and Tool Experience (LTEX) & factor & value \\
 		\hline
+		\underline{Project Factors} & & \\
 		Use of Software Tools (TOOL) & factor & value \\
 		Multisite Development (SITE) & factor & value \\
 		\hline
+		\underline{General Factors} & & \\
 		Required Development Schedule (SCED) & factor & value \\
 		\hline \hline
 		\textbf{Total} & & \textbf{total} \\
@@ -232,8 +237,48 @@ Here are our results:
 	\end{tabular}
 \end{center}
 
+\pagebreak
 %EFFORT EQUATION
 \subsubsection{Effort Equation}
 
+This equation gives us the effort estimation measured in Person-Months:
+\begin{center}
+	$ Effort := A * EAF * (KSLOC)^{E} $
+\end{center}
+where:
+\begin{description}
+	\item [A:] {2.94 (for COCOMO.2000) }
+	\item [EAF:] {product of all the Cost Drivers, that in our case is: \textbf{product}} 
+	\item [E:] {exponent derived from Scale Drivers. It's calculated as:
+		\begin{center}
+			$ E := B + 0.01 * \sum_{j} SF_{j} $
+		\end{center}
+		that in our case is: 0.91 + 0.01 + \textbf{total} = \textbf{total} }
+	\item [KLOC:] {estimated lines of code using the FP analysis, in our case are: \textbf{kloc}}
+\end{description}
+With thes parameters we can compute the \underline{Effort} value, that is equal to:
+\begin{center}
+	$ Effort = 2.94 * total * total^{tot} = \textbf{total} $
+\end{center}
+
+\vfill
 %SCHEDULE ESTIMATION
 \subsubsection{Schedule Estimation}
+
+This equation gives us the schedule estimation measured in Month:
+\begin{center}
+	$ Duration = 3.67 * (Effort)^{SE}$ 
+\end{center}
+where: 
+\begin{description}
+	\item [Effort:] {the result of the Effort Equation, that in our case is \textbf{total} }
+	\item [SE:] {schedule equation exponent derived from the values of the Scale Driver. It's calculated as:
+		\begin{center}
+			$ SE := 0.28 + 0.2 * (E - B) $
+		\end{center}
+	that in our case is: 0.28 + 0.2 * total = \textbf{total} }
+\end{description}
+With these parameters we can compute the \underline{Duration} value, that is equal to:
+\begin{center}
+	$ Duration = 3.67 * (total)^{total} = \textbf{total month} $ \\
+\end{center}
