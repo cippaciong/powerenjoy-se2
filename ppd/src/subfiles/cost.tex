@@ -1,0 +1,239 @@
+\pagebreak
+\subsection{Cost and effort estimation: COCOMO II}
+
+In this section we are going to estimate the effort (expressed in person-months), the number of people and the total time (expressed in months) required to complete the ``PowerEnJoy'' project.
+We can do this using COCOMO II approach, which is a software cost estimation model used for estimating effort, cost and schedule of software projects. \\
+
+COCOMO II is based on: 
+\begin{itemize}
+	\item \textbf{Source Line Of Code (SLOC)}
+	\item \textbf{Scale Drivers (SD)}: their values determine the exponent used in the Effort Equation.
+	\item \textbf{Cost Drivers (CD)}: their values determine the multiplicative factor used in the Effort Equation.
+	\item \textbf{Effort Equation}: it estimates the effort measured in person-months
+	\begin{center}
+		 Effort = 2.94 * EAF * (KSLOC)$^{E}$
+	\end{center}
+	where: \\
+	\textbf{EAF}: Effort Adjustment Factor derived from the Cost Drivers \\
+	\textbf{E}: exponent derived from the values of the Scale Drivers
+	
+	\item \textbf{Schedule Equation}: it predicts the number of months that are required to complete the software project 
+	\begin{center}
+		Duration = 3.67 * (Effort)$^{SE}$ \\
+	\end{center}
+	where: \\
+	\textbf{Effort}: the result of the Effort Equation \\
+	\textbf{SE}: schedule equation exponent derived from the values of the Scale Drivers
+\end{itemize}
+
+%SCALE DRIVERS
+\subsubsection{Scale Drivers}
+
+Description of Scale Drivers:
+\begin{itemize}
+	\item \textbf{Precedentedness}: if a product is similar to several previously developed projects, then the precedentedness	is high. Since we haven't any previous expirience with this kind of projects, this value will be \textit{low}.
+	\item \textbf{Development Flexibility}: if there are no specific constraints to conform to pre-established requirements and external interface specifications, then the development flexibility is high. Since for this project there are requirements not too much detailed and no specification for the technology to be used, this value will be \textit{nominal}.
+	\item \textbf{Architecture / Risk Resolution}: if we have a good risk management plan, clear definition of budget and schedule, focus on architectural definition, then the risk resolution is high. Since ... \todo{}
+	\item \textbf{Team Cohesion}: if all stakeholders are able to work in a team and share the same vision and commitment, then the team cohesion is high. Since in our team all the group members know each other and work together in a cooperative way, this value is \textit{high}.
+	\item \textbf{Process Maturity}: refers to a well known method for assessing the maturity of a software organization. Since... \todo{}
+\end{itemize}
+
+In order to evaluate the values of the scale drivers, we refer to the following official COCOMO II table:
+\begin{center}
+	\includegraphics[width=\textwidth]{ScaleDriver.png}
+\end{center}
+
+The results of our evaluation are:
+\begin{center}
+	\begin{tabular}{l l c}
+		\hline
+		\textbf{Scale Driver} & \textbf{Factor} & \textbf{Value} \\
+		\hline
+		Precedentedness (PREC) & low & 4.96 \\
+		Development Flexibility (FLEX) & nominal & 3.04 \\
+		Risk Resolution (RESL) & nominal & 4.24 \\
+		Team Cohesion (TEAM) & high & 2.19 \\
+		Process Maturity (PMAT) & nominal & 2.68 \\
+		\hline
+		\textbf{Total} & & \textbf{17.11} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%COST DRIVERS
+\subsubsection{Cost Drivers}
+
+The selection of used cost drivers depend on whether we are in the case of post-architecture or early design. For post-architecture 16 different factors grouped in five categories: Product Factors, Platform factors, Personnel Factors, Project Factors and General Factor.\\
+
+\textbf{\underline{Product Factors:}}
+
+\begin{itemize}
+	\item \textbf{Required Software Reliability (RELY)}: this is the measure of the extent to which the software must perform its intended function over a period of time. If the effect of a software failure is only slight inconvenience then RELY is very low. If a failure would risk human life then RELY is very high. Since ... \todo{}
+\end{itemize}
+	\begin{center}
+		\includegraphics[width=\textwidth]{RELY.png}
+	\end{center}
+
+\begin{itemize}
+	\item \textbf{Data Base Size (DATA)}: this cost driver attempts to capture the effect large test data requirements have on product development. The rating is determined by calculating D/P, the ratio of bytes in the testing database to SLOC in the program. The reason the size of the database is important to
+	consider is because of the effort required to generate the test data that will be used to exercise the
+	program. In other words, DATA is capturing the effort needed to assemble and maintain the data.  Since ... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{DATA.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Product Complexity (CPLX)}: set to \textit{high} according to the new COCOMO II CPLEX rating scale.
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{CPLX.png}
+\end{center}	
+
+\begin{itemize}
+	\item \textbf{Developed for Reusability (RUSE)}: This cost driver accounts for the additional effort needed to construct components intended for reuse on current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications. Since ... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{RUSE.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Documentation Match to Life-Cycle Needs (DOCU)}: in COCOMO II, the rating scale for the DOCU cost driver is evaluated in terms of the suitability of the project’s documentation to its life-cycle needs. The rating scale goes from Very Low (many life-cycle needs uncovered) to Very High (very excessive for life-cycle needs). In our case each aspect of the system os already described in the RASD, in the DD and in the ITPD, so the DOCU cost driver is set to \textit{nominal}.
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{DOCU.png}
+\end{center}
+
+\textbf{\underline{Platform factors:}}
+
+\begin{itemize}
+	\item \textbf{Execution Time Constraint (TIME)}: this is a measure of the execution time constraint imposed upon a software system. The	rating is expressed in terms of the percentage of available execution time expected to be used by	the system or subsystem consuming the execution time resource. The rating ranges from	nominal, less than 50\% of the execution time resource used, to extra high, 95\% of the execution time resource is consumed. Since ... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{TIME.png}
+\end{center}	
+
+\begin{itemize}
+	\item \textbf{Main Storage Constraint (STOR)}: this rating represents the degree of main storage constraint imposed on a software system or subsystem. Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{STOR.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Platform Volatility (PVOL)}: ``Platform'' is used here to mean the complex of hardware and software (OS, DBMS, etc.) the software product calls on to perform its tasks. If the software to be developed is an operating system then the platform is the computer hardware. If a database management system is to be	developed then the platform is the hardware and the operating system. If a network text browser	is to be developed then the platform is the network, computer hardware, the operating system, and the distributed information repositories. The platform includes any compilers or assemblers	supporting the development of the software system. This rating ranges from low, where there is	a major change every 12 months, to very high, where there is a major change every two weeks. Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{PVOL.png}
+\end{center}
+
+\textbf{\underline{Personnel Factors:}}
+
+\begin{itemize}
+	\item \textbf{Analyst Capability (ACAP)}: analysts are personnel who work on requirements, high-level design and detailed design.	The major attributes that should be considered in this rating are analysis and design ability,	efficiency and thoroughness, and the ability to communicate and cooperate.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{ACAP.png}
+\end{center}	
+
+\begin{itemize}
+	\item \textbf{Programmer Capability (PCAP)}: evaluation should be based on the capability of the programmers as a team rather than as individuals. Major factors which should be considered in the rating are ability, efficiency and thoroughness, and the ability to communicate and cooperate.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{PCAP.png}
+\end{center}	
+
+\begin{itemize}
+	\item \textbf{Personnel Continuity (PCON)}: the rating scale for PCON is in terms of the project’s annual personnel turnover: from 3\%, very high continuity, to 48\%, very low continuity.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{PCON.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Applications Experience (APEX)}: the rating for this cost driver (formerly labeled AEXP) is dependent on the level of applications experience of the project team developing the software system or subsystem. The ratings are defined in terms of the project team’s equivalent level of experience with this type of application. A very low rating is for application experience of less than 2 months. A very high rating is for experience of 6 years or more.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{APEX.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Platform Experience (PLEX)}: the Post-Architecture model broadens the productivity influence of platform experience, PLEX (formerly labeled PEXP), by recognizing the importance of understanding the use of more powerful platforms, including more graphic user interface, database, networking, and distributed	middleware capabilities.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{PLEX.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Language and Tool Experience (LTEX)}:tThis is a measure of the level of programming language and software tool experience of the project team developing the software system or subsystem. Software development includes the use of tools that perform requirements and design representation and analysis, configuration management, document extraction, library management, program style and formatting,
+	consistency checking, planning and control, etc. In addition to experience in the project’s	programming language, experience on the project’s supporting tool set also affects development effort. A low rating is given for experience of less than 2 months. A very high rating is given for experience of 6 or more years.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{LTEX.png}
+\end{center}
+
+\textbf{\underline{Project Factors:}}
+
+\begin{itemize}
+	\item \textbf{Use of Software Tools (TOOL)}: the tool rating ranges from simple edit and code, very low, to integrated life-cycle management tools, very high.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{TOOL.png}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Multisite Development (SITE)}: because of multisite development effects are significant, it's important to consider the SITE cost driver. Determining SITE cost driver rating involves the assessment and judgement-based averaging of two factors: site collocation (from fully collocated to international distribution) and communication	support (from surface mail and some phone access to full interactive multimedia).  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{SITE.png}
+\end{center}
+
+\textbf{\underline{General Factors:}}
+
+\begin{itemize}
+	\item \textbf{Required Development Schedule (SCED)}: this rating measures the schedule constraint imposed on the project team developing the software. The ratings are defined in terms of the percentage of schedule stretch-out or acceleration with respect to a nominal schedule for a project requiring a given amount of effort. Accelerated schedules tend to produce more effort in the earlier phases to eliminate risks and refine the architecture, more effort in the later phases to accomplish more testing and
+	documentation in parallel.  Since... \todo{}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=\textwidth]{SCED.png}
+\end{center}
+
+\pagebreak
+Here are our results:
+\begin{center}
+	\begin{tabular}{l l c}
+		\hline
+		\textbf{Scale Driver} & \textbf{Factor} & \textbf{Value} \\
+		\hline \hline
+		Required Software Reliability (RELY) & factor & value \\
+		Data Base Size (DATA) & factor & value \\
+		Product Complexity (CPLX) & factor & value \\
+		Developed for Reusability (RUSE) & factor & value \\
+		Documentation Match to Life-Cycle Needs (DOCU) & factor & value \\
+		\hline
+		Execution Time Constraint (TIME) & factor & value \\
+		Main Storage Constraint (STOR) & factor & value \\
+		Platform Volatility (PVOL) & factor & value \\
+		\hline
+		Analyst Capability (ACAP) & factor & value \\
+		Programmer Capability (PCAP) & factor & value \\
+		Personnel Continuity (PCON) & factor & value \\
+		Applications Experience (APEX) & factor & value \\
+		Platform Experience (PLEX) & factor & value \\
+		Language and Tool Experience (LTEX) & factor & value \\
+		\hline
+		Use of Software Tools (TOOL) & factor & value \\
+		Multisite Development (SITE) & factor & value \\
+		\hline
+		Required Development Schedule (SCED) & factor & value \\
+		\hline \hline
+		\textbf{Total} & & \textbf{total} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%EFFORT EQUATION
+\subsubsection{Effort Equation}
+
+%SCHEDULE ESTIMATION
+\subsubsection{Schedule Estimation}
