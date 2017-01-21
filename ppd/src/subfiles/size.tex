@@ -27,7 +27,7 @@ We use this table to evaluate the weight for every function:
 	\end{tabular}
 \end{center}
 
-\subsubsection{Internal Logic Files (ILFs) (\textit{entities of the system})}
+\subsubsection{Internal Logic Files (ILFs - \textit{entities of the system})}
 ``PowerEnJoy'' application relies on a number of ILFs to store the information it needs to offer the required functionalities. \\
 The system has to store information about \textit{Registered Users} data: id, name, surname, email, password, address, user status (active, insolvent, inactive), phone number, credit card number and driving license number. \\
 It also stores \textit{Administrators} information: name, email and password. \\
@@ -59,19 +59,37 @@ The system needs to know where and which are the \textit{safe areas}, so this in
 	\end{tabular}
 \end{center}
 
-\subsubsection{External Logic Files (ELFs) (\textit{communication between different software})}
+\subsubsection{External Logic Files (ELFs - \textit{communication between different software})}
 
-	\todo{Tommy \textless 3}
+``PowerEnJoy'' application has to manage data from two external services: \textbf{MapService} and \textbf{PaymentService}.
+The data obtained through the services APIs, retuned in JSON or XML format, must be converted to be used by our system.
+Between the system and the \textbf{MapService} there are two main king of interactions :
+\begin{itemize}
+	\item given the coordinates of two locations, get the distance between them;
+	\item given the coordinates, get the corresponding address;
+	\item given an address, get the corresponding pair of coordinates (reverse geocoding);
+\end{itemize}
+The mapping service is also used to provide the graphical representation of the city map to be displayed on the user's device and on the car screen. \\
+\\
+Between the system and the \textbf{PaymentService} there is only one kind of interactions:
+\begin{itemize}
+	\item given the total to be paid and the user payment credentials, get a response about the payment success or failure.
+\end{itemize}
+All the data coming from the considered interactions are classified as \textit{simple} complexity External Logic Files. 
 	
 \begin{center}
+	
 	\begin{tabular}{|l|l|c|}
 		\hline
 		\textbf{ELFs} 	& \textbf{Complexity} 	& \textbf{FPs} \\
 		\hline
-		Boh 	& boh 	& boh \\
-
+		Get distance 	& simple 	& 5 \\
+		Get address 	& simple 	& 5 \\
+		Get coordinates 	& simple 	& 5 \\
+		Graphical representation  	& simple 	& 5 \\
+		Pay 	& simple 	& 5 \\
 		\hline \hline
-		\textbf{Total} 	& 	& \textbf{boh} \\
+		\textbf{Total} 	& 	& \textbf{25} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -126,7 +144,7 @@ Here we summarize the EIs grouping them by actor's category:
 	\end{tabular}
 \end{center}
 
-\subsubsection{External Inquiries (EQs) (\textit{actions that required data retrieval from the database})}
+\subsubsection{External Inquiries (EQs - \textit{actions that required data retrieval from the database})}
 \begin{itemize}
 	\item The ``PowerEnJoy'' application allows \underline{RegisteredUsers} to request:
 		\begin{itemize}
@@ -134,7 +152,6 @@ Here we summarize the EIs grouping them by actor's category:
 			\item the list of all rides and reservation; 
 			\item details of a selected ride or reservation;
 			\item the list of all available cars.
-			\todo{car screen??????}
 			%\item the ride and the safe areas in order to show them on the car screen
 		\end{itemize}
 	\item The application also allows the \underline{Administrators} to request:
@@ -177,7 +194,7 @@ All of these external enquiries can be considered as operation with a \textit{si
 	\end{tabular}
 \end{center}
 
-\subsubsection{External Outputs (EOs) (\textit{things that are created from the system for the user})}
+\subsubsection{External Outputs (EOs - \textit{things created from the system for the user})}
 
 Sometimes the ``PowerEnJoy'' application needs to interact with the users outside the context of an inquiry.
 
@@ -188,7 +205,7 @@ Sometimes the ``PowerEnJoy'' application needs to interact with the users outsid
 	\item \textbf{Notification confirming status changes}: the system sends to the user a notification email when his/her status changes (automatically for insolvent payments or by an administrator's operation), then this is a \textit{simple} complexity operation because requires only the status of the user. 
 	\item \textbf{Notification for payment failure}: the system sends a notification email to the user if the payment is not successful, then this is an operation with \textit{medium} complexity because it requires two entities: User and Payment.
 \end{itemize}
-\todo{car screen???}
+
 \begin{center}
 	\begin{tabular}{|l|l|c|}
 		\hline
@@ -216,7 +233,7 @@ This table is a summary of the number of function points that we have found in o
 		\hline
 		N. Internal Files 	& 2 * \textbf{7} 	& 4 * \textbf{10} 	& 3 * \textbf{15} & 99 \\
 		\hline
-		N. External Files 	& n * \textbf{5} 	& n * \textbf{7} 	& n * \textbf{10} & tot \\
+		N. External Files 	& 5 * \textbf{5} 	& 0 * \textbf{7} 	& 0 * \textbf{10} & 25 \\
 		\hline
 		N. Inputs 	& 2 * \textbf{3} 	& 10 * \textbf{4} 	& 5 * \textbf{6} & 76  \\
 		\hline
@@ -224,7 +241,7 @@ This table is a summary of the number of function points that we have found in o
 		\hline
 		N. Inquiries 	& 13 * \textbf{3} 	& 0 * \textbf{4} 	& 0 * \textbf{6}  & 39\\	
 		\hline \hline
-		\textbf{TOTAL} 	&  	& 	& 	& \textbf{239+tot} \\
+		\textbf{TOTAL} 	&  	& 	& 	& \textbf{264} \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -233,6 +250,11 @@ The value obtained, representing the total number of Function Points, can be use
 \begin{center}
 	\textbf{LOC = AVG * FPs}
 \end{center}
-AVG is a language-dependent factor.
-
-\todo{dobbiamo scegliere un linguaggio??}
+AVG is a language-dependent factor. \\
+\\
+Although in the previous documents (RASD, DD, ITPD) we decided not to select a specific programming language in order to leave more margin of choice to the developers, at this point of the project we have to choose a programming language because we need to calculate a size, effort and cost estimations of the application development.
+We suppose to develop out system using JavaScript, whose average lines of code per FPs is 47.\\
+Then our application source will have approximately 
+\begin{center}
+	47 * 264 = \textbf{12 498} Lines Of Code.
+\end{center}
