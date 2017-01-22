@@ -32,6 +32,13 @@ These are the main tasks:
 	\end{description}
 
 	\item[T4:] Creation of the \textbf{Project Plan Document}, this document.
+	\begin{description}
+		\item[T4.1] Provide a general introduction on the project planning and cost/effort estimation
+		\item[T4.2] Describe and perform the Function Point algorithm to estimate the size of the project providing an approximate number of lines of code number
+		\item[T4.3] Describe and apply the COCOMO II model in order to evaluate the cost and the effort in terms of working months
+		\item[T4.4] Identify the main tasks, provide a possible schedule and allocate the needed resources
+		\item[T4.5] Identify and describe possible risks concerning the project development
+	\end{description}
 	
 	\item[T5:] Preparation of a \textbf{presentation} about the mentioned documents to our client
 	
@@ -40,3 +47,29 @@ These are the main tasks:
 	\item[T7:] Run \textbf{integration testing} on the application following the Integration Test Plan.
 	
 \end{description}
+Tasks T1, T2 had T3 had been completed before the given submission deadlines, that were 13/11/2016 for RASD, 11/12/2016 for DD and 15/01/2017 for ITPD. \\
+Task T4 and T5, that are the submission of this document and the presentation of the entire project documents, will be finished within the established dates; in particular T4 has to be completed before 22/01/2017 and T5 before mid-February. \\
+Concerning tasks T6 and T7, no schedule was given so, according to the COCOMO II estimation, we expect to finish the entire project implementation within about 11.5 months, that means before the end of December 2017. \\ In particular the integration testing will take place during the last month of the project implementation, which means that starts at November 2017.
+The implementation of the ``PwerEnJoy'' application started right after the DD delivery. Unit tests are made in parallel with the development in order to verify the all the functionalities once at a time. \\
+\\
+In this table.. 
+\begin{center}
+	\begin{tabular}{c c c c}
+		\hline
+		\textbf{Task} & \textbf{Effort(person-days)} & \textbf{Duration(days)} & \textbf{Dependencies} \\
+		\hline
+		T1 & tot & 18 & none \\
+		T2 & tot & tot & T1 \\
+		T3 & tot & tot & T1, T2 \\
+		T4 & tot & tot & T1, T2, T3 \\
+		T5 & tot & tot & T1, T2, T3, T4 \\
+		T6 & tot & tot & T1, T2 \\
+		T7 & tot & tot & T1, T2, T3, T4, T6  \\
+		\hline
+	\end{tabular}
+\end{center}
+Here ... 
+\begin{center}
+	\includegraphics[width=\textwidth]{projectplan.png}
+\end{center}
+
