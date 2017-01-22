@@ -52,23 +52,40 @@ Task T4 and T5, that are the submission of this document and the presentation of
 Concerning tasks T6 and T7, no schedule was given so, according to the COCOMO II estimation, we expect to finish the entire project implementation within about 11.5 months, that means before the end of December 2017. \\ In particular the integration testing will take place during the last month of the project implementation, which means that starts at November 2017.
 The implementation of the ``PwerEnJoy'' application started right after the DD delivery. Unit tests are made in parallel with the development in order to verify the all the functionalities once at a time. \\
 \\
-In this table.. 
+%In the following table for each task we are going to show the Duration, expressed in days, the Effort, measured in person-days, and the Dependencies with other tasks.
+%\begin{center}
+%	\begin{tabular}{c c c c}
+%		\hline
+%		\textbf{Task} & \textbf{Effort(person-days)} & \textbf{Duration(days)} & \textbf{Dependencies} \\
+%		\hline
+%		T1 & 18 & 30 & none \\
+%		T2 & 13 & 28 & T1 \\
+%		T3 & 7 & 35 & T1, T2 \\
+%		T4 & tot & 21 & T1, T2 \\
+%		T5 & tot & tot & T1, T2, T3, T4 \\
+%		T6 & tot & 30 & T1, T2 \\
+%		T7 & tot & tot & T1, T2, T3, T4, T6  \\
+%		\hline
+%	\end{tabular}
+%\end{center}
+
+In the following table we are going to show the dependencies between the tasks.
 \begin{center}
-	\begin{tabular}{c c c c}
+	\begin{tabular}{c c}
 		\hline
-		\textbf{Task} & \textbf{Effort(person-days)} & \textbf{Duration(days)} & \textbf{Dependencies} \\
+		\textbf{Task} & \textbf{Dependencies} \\
 		\hline
-		T1 & tot & 18 & none \\
-		T2 & tot & tot & T1 \\
-		T3 & tot & tot & T1, T2 \\
-		T4 & tot & tot & T1, T2, T3 \\
-		T5 & tot & tot & T1, T2, T3, T4 \\
-		T6 & tot & tot & T1, T2 \\
-		T7 & tot & tot & T1, T2, T3, T4, T6  \\
+		T1 & none \\
+		T2 & T1 \\
+		T3 & T1, T2 \\
+		T4 & T1, T2 \\
+		T5 & T1, T2, T3, T4 \\
+		T6 & T1, T2 \\
+		T7 & T1, T2, T3, T4, T6 \\
 		\hline
 	\end{tabular}
 \end{center}
-Here ... 
+Here is the Acrivity bar chart, in which we provide a schedule in order to show when each task has to be done. It's alto highlighted the percentage of working already done until this moment.  
 \begin{center}
 	\includegraphics[width=\textwidth]{projectplan.png}
 \end{center}
