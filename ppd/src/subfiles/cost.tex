@@ -40,7 +40,7 @@ Description of Scale Drivers:
 
 In order to evaluate the values of the scale drivers, we refer to the following official COCOMO II table:
 \begin{center}
-	\includegraphics[width=\textwidth]{ScaleDriver.png}
+	\includegraphics[width=\textwidth]{ScaleDriver}
 \end{center}
 
 The results of our evaluation are:
@@ -71,35 +71,35 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	\item \textbf{Required Software Reliability (RELY)}: this is the measure of the extent to which the software must perform its intended function over a period of time. If the effect of a software failure is only slight inconvenience then RELY is very low. If a failure would risk human life then RELY is very high. \\ Since ``PowerEnJoy'' isn't the only car sharing service in the city, a software failure could lead to important financial losses, then this value is set to \textit{high}.
 \end{itemize}
 	\begin{center}
-		\includegraphics[width=\textwidth]{RELY.png}
+		\includegraphics[width=\textwidth]{RELY}
 	\end{center}
 
 \begin{itemize}
 	\item \textbf{Data Base Size (DATA)}: this measure consider the effective size of our database. this cost driver attempts to capture the effect large test data requirements have on product development. The rating is determined by calculating D/P, the ratio of bytes in the testing database to SLOC in the program. \\ We don't have the ultimate size of the database, but it might be about 1GB. Since the program size is equal to 12498 SLOC, the rate D/P is 80.012, then this value is set to \textit{nominal}. 
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{DATA.png}
+	\includegraphics[width=\textwidth]{DATA}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Product Complexity (CPLX)}: set to \textit{high} according to the new COCOMO II CPLEX rating scale.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{CPLX.png}
+	\includegraphics[width=\textwidth]{CPLX}
 \end{center}	
 
 \begin{itemize}
 	\item \textbf{Developed for Reusability (RUSE)}: this cost driver accounts for the additional effort needed to construct components intended for reuse on current or future projects. This effort is consumed with creating more generic design of software, more elaborate documentation, and more extensive testing to ensure components are ready for use in other applications. \\ In our project there are some reusable components since we tried to design the system as modular as possible. Then the RUSE cost driver is \textit{nominal}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{RUSE.png}
+	\includegraphics[width=\textwidth]{RUSE}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Documentation Match to Life-Cycle Needs (DOCU)}: in COCOMO II, the rating scale for the DOCU cost driver is evaluated in terms of the suitability of the project’s documentation to its life-cycle needs. The rating scale goes from Very Low (many life-cycle needs uncovered) to Very High (very excessive for life-cycle needs). \\ In our case each aspect of the system os already described in the RASD, in the DD and in the ITPD, so the DOCU cost driver is set to \textit{nominal}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{DOCU.png}
+	\includegraphics[width=\textwidth]{DOCU}
 \end{center}
 \textbf{\underline{Platform factors:}}
 
@@ -107,21 +107,21 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	\item \textbf{Execution Time Constraint (TIME)}: this parameter describes the expected amount of CPU usage with respect to the computational capabilities of the hardware. The rating ranges from	nominal, less than 50\% of the execution time resource used, to extra high, 95\% of the execution time resource is consumed. \\Since our application is a complex piece of software, then the TIME value is \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{TIME.png}
+	\includegraphics[width=\textwidth]{TIME}
 \end{center}	
 
 \begin{itemize}
 	\item \textbf{Main Storage Constraint (STOR)}: this parameter describes the expected amount of storage usage with respect to the availability of the hardware. Since our storage availablity is of several terabytes, then the STOR value si \textit{nominal}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{STOR.png}
+	\includegraphics[width=\textwidth]{STOR}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Platform Volatility (PVOL)}: ``Platform'' is used here to mean the complex of hardware and software (OS, DBMS, etc.) the software product calls on to perform its tasks. If the software to be developed is an operating system then the platform is the computer hardware. If a database management system is to be	developed then the platform is the hardware and the operating system. If a network text browser is to be developed then the platform is the network, computer hardware, the operating system, and the distributed information repositories. The platform includes any compilers or assemblers	supporting the development of the software system. This rating ranges from low, where there is	a major change every 12 months, to very high, where there is a major change every two weeks. \\ Since ``PowerEnJoy'' application shouldn't change too often: it could only require some updates once a year. Then the PVOL value is \textit{low}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{PVOL.png}
+	\includegraphics[width=\textwidth]{PVOL}
 \end{center}
 \textbf{\underline{Personnel Factors:}}
 
@@ -130,35 +130,35 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	design makes our application actually useful for the user, providing all the basic functionalities he/she may need. In particular we resolved any ambiguity present in the initial description in the RASD. Then the ACAP value is set to \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{ACAP.png}
+	\includegraphics[width=\textwidth]{ACAP}
 \end{center}	
 
 \begin{itemize}
 	\item \textbf{Programmer Capability (PCAP)}: evaluation should be based on the capability of the programmers as a team rather than as individuals. Major factors which should be considered in the rating are ability, efficiency and thoroughness, and the ability to communicate and cooperate. \\ We set the PCAP value to \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{PCAP.png}
+	\includegraphics[width=\textwidth]{PCAP}
 \end{center}	
 
 \begin{itemize}
 	\item \textbf{Personnel Continuity (PCON)}: the rating scale for PCON is in terms of the project’s annual personnel turnover: from 3\%, very high continuity, to 48\%, very low continuity. \\ Since the time we can spend on this project is limited and also the available time is less than a year, then this value is \textit{nominal}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{PCON.png}
+	\includegraphics[width=\textwidth]{PCON}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Applications Experience (APEX)}: the rating for this cost driver (formerly labeled AEXP) is dependent on the level of applications experience of the project team developing the software system or subsystem. The ratings are defined in terms of the project team's equivalent level of experience with this type of application. A very low rating is for application experience of less than 2 months. A very high rating is for experience of 6 years or more. \\ Since we haven't a lot of experience in this typology of project, then this value is equal to \textit{low}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{APEX.png}
+	\includegraphics[width=\textwidth]{APEX}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Platform Experience (PLEX)}: the Post-Architecture model broadens the productivity influence of platform experience, PLEX (formerly labeled PEXP), by recognizing the importance of understanding the use of more powerful platforms, including more graphic user interface, database, networking, and distributed middleware capabilities. \\ We have some experience with databases, user interfaces and server-side development, so this parameter value is \textit{nominal}. 
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{PLEX.png}
+	\includegraphics[width=\textwidth]{PLEX}
 \end{center}
 
 \begin{itemize}
@@ -166,7 +166,7 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	consistency checking, planning and control, etc. In addition to experience in the project’s	programming language, experience on the project’s supporting tool set also affects development effort. A low rating is given for experience of less than 2 months. A very high rating is given for experience of 6 or more years. \\ Since we have some experiences with JavaScript, databases, user interfaces and server-side development, then this value is \textit{nominal}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{LTEX.png}
+	\includegraphics[width=\textwidth]{LTEX}
 \end{center}
 \textbf{\underline{Project Factors:}}
 
@@ -174,14 +174,14 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	\item \textbf{Use of Software Tools (TOOL)}: the tool rating ranges from simple edit and code, very low, to integrated life-cycle management tools, very high. \\ Since our application environment is complete and well integrated, so this parameter value is \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{TOOL.png}
+	\includegraphics[width=\textwidth]{TOOL}
 \end{center}
 
 \begin{itemize}
 	\item \textbf{Multisite Development (SITE)}: because of multisite development effects are significant, it's important to consider the SITE cost driver. Determining SITE cost driver rating involves the assessment and judgement-based averaging of two factors: site collocation (from fully collocated to international distribution) and communication	support (from surface mail and some phone access to full interactive multimedia). \\ We live in different cities, but we collaborate using phones, email and social networks. So we set this parameter to \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{SITE.png}
+	\includegraphics[width=\textwidth]{SITE}
 \end{center}
 \textbf{\underline{General Factors:}}
 
@@ -190,7 +190,7 @@ The selection of used cost drivers depend on whether we are in the case of post-
 	documentation in parallel. \\ Our effort were well distribuited over the available time, but the requirements and design architecture analysis required a lot of time. Then this parameter value is \textit{high}.
 \end{itemize}
 \begin{center}
-	\includegraphics[width=\textwidth]{SCED.png}
+	\includegraphics[width=\textwidth]{SCED}
 \end{center}
 
 \pagebreak
