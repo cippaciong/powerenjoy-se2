@@ -1,0 +1,105 @@
+\documentclass[a4paper,11pt]{article} 
+
+% ----------------
+% SETTINGS
+% ----------------
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{url}
+\usepackage{soul}
+\usepackage{etoolbox} % if conditionals
+\usepackage[outdir=./]{epstopdf}
+\usepackage{todonotes}
+
+\graphicspath{{figures/}{../figures/}}
+\input{setpath.tex}
+
+% ----------------
+% DOCUMENT
+% ----------------
+\begin{document}
+% ----------------
+% TITLE
+% ----------------
+
+% Include at least the project title, the version of the document, your names and the release date.
+
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE Code Inspection Document}\\[1.5cm] % 
+
+\includegraphics[width=10cm]{PowerEnJoy.png}\\
+\vfill
+\vfill
+\textbf{Version 1.0}\\
+5 February 2017\\[0.5cm]
+\textbf{Authors:}\\
+Patrizia Porati, Tommaso Sardelli\\[2.0cm] 
+
+
+\vfill
+\vfill
+\includegraphics[width=50mm]{polimi.png}\\
+%\textsc{Politecnico Di Milano}
+\end{center}
+\end{titlepage}
+
+% ----------------
+% TABLE OF CONTENTS
+% ----------------
+\tableofcontents
+\pagebreak
+
+% ----------------
+% CLASSES ASSIGNED TO THE GROUP
+% ----------------
+
+% <state the namespace pattern and name of the classes that were assigned to you.>
+
+%\subimport{\CommonPath}{classes.tex}
+
+
+% ----------------
+% FUNCTIONAL ROLE OF ASSIGNED SET OF CLASSES
+% ----------------
+
+% <elaborate on the functional role you have identied for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
+
+%\subimport{\CommonPath}{role.tex}
+
+% ----------------
+% LIST OF ISSUES FOUND BY APPLYING THE CHECKLIST
+% ----------------
+
+%<report the classes/code fragments that do not fulll some points in the check list. Explain which point is not fullled and why.>
+
+%\subimport{\CommonPath}{issues.tex}
+
+% ----------------
+% ANY OTHER PROBLEM YOU HAVE HIGHLIGHTED
+% ----------------
+
+%<list here all the parts of code that you think create or may create a bug and explain why.>
+
+%\subimport{\CommonPath}{other.tex}
+
+%-----------------
+% SOME USEFUL STUFF
+%-----------------
+
+% Working hours
+%\subimport{\CommonPath}{effort.tex}
+
+% References
+%\subimport{\CommonPath}{references.tex}
+
+
+\end{document}	
