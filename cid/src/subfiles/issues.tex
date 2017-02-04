@@ -1,6 +1,8 @@
+\pagebreak
+
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\issue}[3][?]{
-    \paragraph{[#1] #2} \mbox{}\\ #3
+\newcommand{\issue}[2][?]{
+    \paragraph{[#1] #2} \mbox{}\\ 
 }
 
 \section{List of issues}
@@ -9,10 +11,6 @@ Here is a comprehensive list of all issues we have found according to the
 checklist reported in the assignment.
 For the sake of clarity we decided to write down only relevant and 
 meaningful points and to omit the other ones.
-
-\subsection{Naming Conventions}
-
-All naming convenctions are respected.
 
 \subsection{Indentation}
 
@@ -24,17 +22,59 @@ All naming convenctions are respected.
 \issue[10]{Bracing style}
 	The ``Kernighan and Ritchie'' style is consistently used.
 
-\issue[11]{If with one statement}
-	At line 61 there is an if with only one statement that isn't surrounded by curly braces:
+\issue[11]{One statement}
+	All \texttt{if}, \texttt{while}, \texttt{do-while}, \texttt{try-catch} and \texttt{for} statements that have only one statement to execute should be surrounded bu curly braces. \\
+	Line 61 is like this:
 	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
 	if (userLogin == null) return;
 	\end{lstlisting}
-	Instead it's better to use this style:
+	but should be like this:
 	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
 	if (userLogin == null) {
 		return;
 	}
 	\end{lstlisting}
+	In the same way, line 229 should be:
+	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+	if (Debug.verboseOn()) {
+		Debug.logVerbose("Cookies:" + cookies, module);
+	}
+	\end{lstlisting}
+	Line 239 should be:
+	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+	if (Debug.infoOn()) {
+		Debug.logInfo("Found visitorId [" + cookieVisitorId + "] in	cookie", 
+		module);
+	}
+	\end{lstlisting}	
+	And finally line 257 should be:
+	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+	if (Debug.infoOn()) {
+		Debug.logInfo("The visitorId [" + cookieVisitorId + 
+		"] found in cookie was invalid, creating new Visitor with ID [" +
+		visitor.getString("visitorId") + "]", module);
+	}
+	\end{lstlisting}
+
+\subsection{File Organization}
+
+\issue[13]{80 characters limit}
+	There are a lot of line that exceed 80 characters: \\
+	18, 56, 61, 111, 120, 122, 125, 127, 131, 133, 134, 135, 135, 137, 139, 142, 147, 150, 151, 152, 154, 155, 157, 159, 160, 161, 165, 167, 169, 171, 172, 176, 182, 183, 190, 199, 206, 209, 212, 218, 219, 220, 224, 226, 229, 232, 239, 242, 247, 252, 254, 255, 256, 257, 260, 267, 270, 271 and 280. 
+	
+\issue[14]{120 characters limit}
+	There are some lines that also exceed 120 characters: \\
+	131, 142, 150, 151, 152, 169, 209, 224, 239, 252, 254, 257, 260 and 270.
+	
+\subsection{Comments}
+
+\issue[18]{Adeguate comments}
+	In this class there are very few comments that explain methods and blocks of code, but in general the code is comprehensible.
+	
+\subsection{Java Source Files}
+
+\issue[23]{JavaDoc}
+	In this class, there are very few JavaDoc comments and they are inaccurate.
 
 \subsection{Initialization and Declarations}
 
