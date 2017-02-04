@@ -1,2 +1,36 @@
+
+\newcommand{\issue}[2][?]{
+	\paragraph{[#1] #2} \mbox{}\\
+}
+
 \pagebreak
 \section{List of issues}
+In this chapter we are going to identify and describe issues and critical aspets that we found during our inspection activity.
+
+\subsection{Naming Conventions}
+
+All naming convenctions are respected.
+
+\subsection{Indentation}
+
+\issue[9]{Tabs}
+	Four spaces are consistently used to indent except at line 208, where there is a tab.
+
+\subsection{Braces}
+
+\issue[10]{Bracing style}
+	The ``Kernighan and Ritchie'' style is consistently used.
+
+\issue[11]{If with one statement}
+	At line 61 there is an if with only one statement that isn't surrounded by curly braces:
+	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+	if (userLogin == null) return;
+	\end{lstlisting}
+	Instead it's better to use this style:
+	\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+	if (userLogin == null) {
+		return;
+	}
+	\end{lstlisting}
+
+
