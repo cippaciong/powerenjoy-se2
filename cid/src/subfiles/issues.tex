@@ -1,11 +1,14 @@
-
-\newcommand{\issue}[2][?]{
-	\paragraph{[#1] #2} \mbox{}\\
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\issue}[3][?]{
+    \paragraph{[#1] #2} \mbox{}\\ #3
 }
 
-\pagebreak
 \section{List of issues}
-In this chapter we are going to identify and describe issues and critical aspets that we found during our inspection activity.
+
+Here is a comprehensive list of all issues we have found according to the
+checklist reported in the assignment.
+For the sake of clarity we decided to write down only relevant and 
+meaningful points and to omit the other ones.
 
 \subsection{Naming Conventions}
 
@@ -33,4 +36,71 @@ All naming convenctions are respected.
 	}
 	\end{lstlisting}
 
+\subsection{Initialization and Declarations}
 
+\issue[28]{Visibility}
+    \code{VisitHandler} class has only static methods and variables but doesn't
+    have a private constructor.
+
+\issue[33]{Declarations appear at the beginning of blocks}
+\begin{itemize}
+    \item
+        \code{visit} variable declared at line 78 is not at the beginning of the block.\\
+        \begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+    [...]
+74  } catch (GenericEntityException e) {
+75    Debug.logError(e, "Could not update visitor: ", module);
+76  }
+77
+78  GenericValue visit = getVisit(session);
+    [...]
+        \end{lstlisting}
+    \item
+        \code{visitor} variable declared at line 163 is not at the beginning of the block.\\
+        \begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+160  visit.set("clientUser", session.getAttribute("_CLIENT_REMOTE_USER_"));
+161  
+162  // get the visitorId
+163  GenericValue visitor = (GenericValue) session.getAttribute("visitor");
+164  if (visitor != null) {
+        \end{lstlisting}
+\end{itemize}
+
+\subsection{Computation, Comparisons and Assignments}
+
+\issue[44]{"Brutish programming"}
+    The following three lines contain a triple way if statement inside the method
+    invocations itself. This makes the whole line pretty long and the code less readable.
+    It would probably have been better to extract this operation in separate methods
+    with a better interface.
+
+    \begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+150  if (initialRequest != null) visit.set("initialRequest",
+        initialRequest.length() > 250 ? initialRequest.substring(0, 250)
+        : initialRequest);
+151  if (initialReferrer != null) visit.set("initialReferrer",
+        initialReferrer.length() > 250 ? initialReferrer.substring(0, 250)
+        : initialReferrer);
+152  if (initialUserAgent != null) visit.set("initialUserAgent",
+        initialUserAgent.length() > 250 ? initialUserAgent.substring(0, 250)
+        : initialUserAgent);
+    \end{lstlisting}
+
+\subsection{Exceptions}
+
+\issue[53]{Check that the appropriate action are taken for each catch block.}
+    While we think that exceptions are caught properly, some log messages saved
+within this blocks are a bit vague. 
+
+    \begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+74  Debug.logError(e, "Could not update visitor: ", module);
+94  Debug.logError(e, "Could not update visit: ", module);
+190 Debug.logError(e, "Could not create new visit:", module);
+247 Debug.logError(e, "Could not create new visitor:", module);
+    \end{lstlisting}
+
+    Furthermore, a message with a context similar to the previous ones is logged as warning instead of error.
+    \begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible]
+280 Debug.logWarning(new Exception(), "Could not find or create the visitor...", module);
+    \end{lstlisting}
+% subsection authenticate (end)
