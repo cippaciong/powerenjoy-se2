@@ -1,0 +1,17 @@
+\section{Functional roles of the assigned class}
+
+The VisitHandler class is created to expose static methods useful for website statistics.
+As the class name suggests, it is used to store informations in the database about
+users visiting the website.
+It does so inspecting the current HttpSession and extracting a visitor, that is the logged
+user visting the website, and a visit, a record of a single visit by a user.
+
+The two entities are loaded with additional information about the current connection.
+For what concerns the visit, said information includes: webapp name, client locale,
+client request, client referrer and client user agent. Also network information are
+stored, like the client hostname and ip address.
+
+The visitor instead is associated to an existing one using cookies informations or
+a new one is created if no association can be found.
+
+When all informations are collected, the entities as stored in the databse permanently.
