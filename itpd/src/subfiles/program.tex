@@ -2,5 +2,9 @@
 
 % Based on the testing strategy and test design, identify any program stubs or special test data required for each integration step
 
-As we have explained before, we adopted a bottom-up strategy for the integration testing: we have tested integrations starting from the low level components, so that the testing for higher component is easier. Furthermore, our architecture is buil using microservices, that by definition operate independently from each other. In that way, as it is built our architecture, we don't need any `stubs' or `drivers', which are temporary dummy programs that replace uncompleted functionalities or components.
+As we have explained before, we adopted a bottom-up strategy for the integration testing: we have tested integrations starting from the low level components, so that the testing for higher component is easier. Furthermore, our architecture is buil using microservices, that by definition operate independently from each other. In that way, as it is built our architecture, we need a small number `stubs' or `drivers', which are temporary dummy programs that replace uncompleted functionalities or components. \\
+
+In particular, in order to test all ReservationHandler functionalities, we need a stub that replaces some functionalities of the CarHandler (i.e. providing the list of available cars); and to test all RideHandler functionalities, we need a stub that replaces some of the functionalities of PaymentHandler.
+Furthermore, so as to execute all the tests described in the previous sections, we need that the database already exists; otherwise a stub that replace the needed part of the database is required.
+
 

@@ -57,7 +57,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{(UserHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get user position, get distance}{Check if requested information is returned correctly}{}
 
-\Test{RESTful API $ \rightarrow $ UserHandler}{Add an administrator (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs),get administrators list, add a user (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs), delete a user, update user information (valid information, invalid information), change user status, get users list, get user information, get user details, get user position, set user position}{Check if correct functions are called in UserHandler}{}
+\Test{RESTful API (Router) $ \rightarrow $ UserHandler}{Add an administrator (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs),get administrators list, add a user (invalid email, invalid credit card number, invalid driving licence, null input(s), valid inputs), delete a user, update user information (valid information, invalid information), change user status, get users list, get user information, get user details, get user position, set user position}{Check if correct functions are called in UserHandler}{}
 
 % PAYMENT HANDLER
 \subsubsection{PaymentHandler}
@@ -69,7 +69,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{CUDCommands $ \rightarrow $ PaymentAdapter}{Valid inputs, invalid credit card number, tpayment not successful (not enough money to spend)}{Check if correct functions are called in PaymentAdapter}{}
 
-\Test{RESTfull API $ \rightarrow $ PaymentHandler}{Update payment information (valid inputs, invalid credit card number, payment not successful (not enough money to spend), get payment information}{Check if correct functions are called in PaymentHandler}{}
+\Test{RESTfull API (Router) $ \rightarrow $ PaymentHandler}{Update payment information (valid inputs, invalid credit card number, payment not successful (not enough money to spend), get payment information}{Check if correct functions are called in PaymentHandler}{}
 
 % CAR HANDLER
 \subsubsection{CarHandler}
@@ -81,7 +81,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{(CarHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get car position, get distance from power grid}{Check if requested information is returned correctly}{}
 
-\Test{RESTfull API $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car (valid inputs, invalid plate number), update car information (valid inputs, invalid inputs), get cars list, get car details, set car details (valid inputs, invalid inputs), end the ride, unlock the car (valid user position, invalid user position), lock the car}{Check if correct functions are called in CarHandler}{}
+\Test{RESTfull API (Router) $ \rightarrow $ CarHandler}{Delete a car whose status is `in use' or `reserved', delete a car whose status is `available', add a car (valid inputs, invalid plate number), update car information (valid inputs, invalid inputs), get cars list, get car details, set car details (valid inputs, invalid inputs), end the ride, unlock the car (valid user position, invalid user position), lock the car}{Check if correct functions are called in CarHandler}{}
 
 % AREA HANDLER
 \subsubsection{AreaHandler}
@@ -93,7 +93,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{(AreaHandler) CUDCommands $ \rightarrow $ MapAdapter}{Typical inputs for getting Map Informations: get distances, get area position}{Check if requested information is returned correctly}{}
 
-\Test{RESTfull API $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area (valid inputs, invalid inputs), delete a safe area (with cars, with no cars), update safe area information (valid input, invalid input)}{Check if correct functions are called in AreaHandler}{}
+\Test{RESTfull API (Router) $ \rightarrow $ AreaHandler}{Get all safe areas list, get safe area details, get cars parked in the safe area, get safe areas by position, add a new safe area (valid inputs, invalid inputs), delete a safe area (with cars, with no cars), update safe area information (valid input, invalid input)}{Check if correct functions are called in AreaHandler}{}
 
 % RIDE HANDLER
 \subsubsection{RideHandler}
@@ -103,7 +103,10 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{(RideHandler) SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get car details, get ride details}{Check if requested information is returned correctly}{PersistenceLibrary}
 
-\Test{RESTfull API $ \rightarrow $ RideHandler}{Apply possible discounts (check all different cases as input), calculate total ride cost, charge the user, calculate the current cost, set ride details, sent user email containing ride details, end of a ride}{Check if correct functions are called in RideHandler}{}
+\Test{RESTfull API (Router) $ \rightarrow $ RideHandler}{Apply possible discounts (check all different cases as input), calculate total ride cost, charge the user, calculate the current cost, set ride details, sent user email containing ride details, end of a ride}{Check if correct functions are called in RideHandler}{PaymentHandler}
+
+\Test{RideHandler $ \rightarrow $ PaymentHandler}{Inputs for paying the cost of an ended ride and for updating payment details.}{Check if correct functions are called and then check if the amount is correctly paid, the database correctly updated and the confirmation mail is sent}{}
+
 \pagebreak
 % RESERVATION HANDLER
 \subsubsection{ReservationHandler}
@@ -113,7 +116,9 @@ Each subsection contains tests concerning a specific component: there are tests 
 
 \Test{SearchFilters $ \rightarrow $ Database}{Typical inputs for getting information from database: get reservation details, get available cars, get user active reservations, get user status, get user position, get car position}{Check if requested information is returned correctly}{PersistenceLibrary}
 
-\Test{RESTfull API $ \rightarrow $ ReservationHandler}{Reserve more than one car at the same time, reserve only one car, user status isn't `active', user status is `active', reservation expiration, get available cars (no available car, some available cars)}{Check if correct functions are called in Reservation}{}
+\Test{RESTfull API (Router) $ \rightarrow $ ReservationHandler}{Reserve more than one car at the same time, reserve only one car, user status isn't `active', user status is `active', reservation expiration, get available cars (no available car, some available cars)}{Check if correct functions are called in Reservation}{CarHandler}
+
+\Test{ReservationHandler $ \rightarrow $ CarHandler}{Inputs for checking car position, for locking and unlocking the car}{Check if the correct functions are called in CarHandler}{}
 
 %%
 
@@ -181,7 +186,7 @@ Each subsection contains tests concerning a specific component: there are tests 
 		\item can handle RESTful API inputs
 		\item can output requested information to the RESTful API component
 	\end{itemize}
-}{Excecute I3}
+}{Excecute I2}
 
 \subsubsection{CarHandler}
 \Procedure{
@@ -267,6 +272,12 @@ This test procedure verifies whether the SearchFilters subcomponent in the CarHa
 		\item can handle RESTful API inputs
 		\item can output requested information to RESTful API component
 	\end{itemize}
+
+	This test procedure verifies whether the RideHandler component:
+	\begin{itemize}
+		\item can handle PaymentHandler inptus
+		\item can output requests to PaymentHandler components
+	\end{itemize}
 }{Excecute I5}
 
 \pagebreak
@@ -291,5 +302,11 @@ This test procedure verifies whether the SearchFilters subcomponent in the CarHa
 		\item can handle database inputs (through PersistenceLibrary)
 		\item can handle RESTful API inputs
 		\item can output requested information to RESTful API component
+	\end{itemize}
+
+	This test procedure verifies whether the ReservationHandler component:
+	\begin{itemize}
+		\item can handle CarHandler inptus
+		\item can output requests CarHandler components
 	\end{itemize}
 }{Excecute I6}

@@ -13,15 +13,24 @@ There are some conditions on the project development that must be met before sta
 
 
 \subsection{Elements to be Integrated}
+	\begin{tabular}{ p{7 cm} }
+		\hline
+		\multicolumn{1}{ |c| }{\textbf{AreaHandler}} \\
+		\hline
+		AreaHandler  $ \rightarrow $  Database \\ \hline
+		AreaHandler $ \rightarrow $ Map API \\ \hline
+		Router $ \rightarrow $ AreaHandler \\ \hline
+%		RideHandler $ \rightarrow $ AreaHandler \\	\hline
+		\vspace{1mm}
+	\end{tabular}
+	\\
     \begin{tabular}{ p{7 cm} }
       \hline
       \multicolumn{1}{ |c| }{\textbf{UserHandler}} \\
       \hline
       UserHandler  $ \rightarrow $  Database \\ \hline
       UserHandler $ \rightarrow $ Map API \\ \hline
-      UserHandler $ \rightarrow  $ PaymentHandler \\ \hline
-      Router $ \rightarrow $ UserHandler \\
-      \hline
+      Router $ \rightarrow $ UserHandler \\ \hline
       \vspace{1mm}
     \end{tabular}
     \\
@@ -31,8 +40,7 @@ There are some conditions on the project development that must be met before sta
       \hline
       CarHandler $ \rightarrow $ Database \\ \hline
       CarHandler $ \rightarrow $ Map API \\ \hline
-      Router $ \rightarrow $ CarHandler \\
-      \hline
+      Router $ \rightarrow $ CarHandler \\ \hline
       \vspace{1mm}
     \end{tabular}
     \\
@@ -42,8 +50,7 @@ There are some conditions on the project development that must be met before sta
       \hline
       PaymentHandler $ \rightarrow $ Database \\ \hline
       PaymentHandler $ \rightarrow $ Payment API \\ \hline
-      Router $ \rightarrow $ PaymentHandler \\
-      \hline
+      Router $ \rightarrow $ PaymentHandler \\ \hline
       \vspace{1mm}
     \end{tabular}
     \\
@@ -52,21 +59,18 @@ There are some conditions on the project development that must be met before sta
       \multicolumn{1}{ |c| }{\textbf{ReservationHandler}} \\
       \hline
       ReservationHandler $ \rightarrow $ Database \\ \hline
-      ReservationHandler $ \rightarrow $ Payment API \\ \hline
-      Router $ \rightarrow $ ReservationHandler \\
-      \hline
+      Router $ \rightarrow $ ReservationHandler \\ \hline
+      ReservationHandler $ \rightarrow $ CarHandler \\ \hline
       \vspace{1mm}
     \end{tabular}
     \\
     \begin{tabular}{ p{7 cm} }
       \hline
-      \multicolumn{1}{ |c| }{\textbf{RideHandlerHandler}} \\
+      \multicolumn{1}{ |c| }{\textbf{RideHandler}} \\
       \hline
       RideHandler $ \rightarrow $ Database \\ \hline
-      RideHandler $ \rightarrow $ Payment API \\ \hline
-      RideHandler $ \rightarrow $ CarHandler \\ \hline
-      Router $ \rightarrow $ RideHandler \\
-      \hline
+      Router $ \rightarrow $ RideHandler \\ \hline
+      RideHandler $ \rightarrow $ PaymentHandler \\ \hline
       \vspace{1mm}
     \end{tabular}
 
