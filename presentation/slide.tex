@@ -1,0 +1,55 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{import}
+
+\usepackage[outdir=./]{epstopdf}
+\graphicspath{{../figures/}}
+
+%\title{PowerEnJoy}
+%\subtitle{Design Document}
+%\author{Patrizia Porati \\ Tommaso Sardelli}
+%\date{\today}
+%\usetheme{CambridgeUS}
+
+\usetheme[pageofpages=of,% String used between the current page and the total page count.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+         ]{Torino}
+
+%\author{\texorpdfstring{Tommaso Sardelli\newline\tiny\url{tommaso.sardelli[at]mail.polimi.it}}{Author}}
+\author{Patrizia Porati \newline Tommaso Sardelli}
+\title{PowerEnJoy}
+\subtitle{Design Document}
+\institute{Politecnico di Milano}
+\date{\today}
+
+\input{setpath.tex}
+
+\begin{document}
+
+% ----------------
+% Introduction
+% ----------------
+\subimport{\CommonPath}{introduction.tex}
+
+% ----------------
+% Analysis
+% ----------------
+%\subimport{\CommonPath}{analysis.tex}
+
+% ----------------
+% Architecture
+% ----------------
+%\subimport{\CommonPath}{architecture.tex}
+
+% ----------------
+% Testing
+% ----------------
+%\subimport{\CommonPath}{testing.tex}
+
+% ----------------
+% Project Management
+% ----------------
+%\subimport{\CommonPath}{management.tex}
+\end{document}
