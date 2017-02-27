@@ -2,6 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 \usepackage{import}
+\usepackage{advdate}
 
 \usepackage[outdir=./]{epstopdf}
 \graphicspath{{figures/}}
@@ -14,14 +15,15 @@
 
 \usetheme[pageofpages=of,% String used between the current page and the total page count.
           titleline=true,% Show a line below the frame title.
+          titlepagelogo=logo_polimi,% Logo for the first page.
           alternativetitlepage=true,% Use the fancy title page.
          ]{Torino}
 
 %\author{\texorpdfstring{Tommaso Sardelli\newline\tiny\url{tommaso.sardelli[at]mail.polimi.it}}{Author}}
 \author{Patrizia Porati \newline Tommaso Sardelli}
-\title{\includegraphics{PowerEnJoy.png}}
+\title{\includegraphics{logo}}
 \institute{Politecnico di Milano}
-\date{\today}
+\date{\AdvanceDate[+1]\today}
 
 \input{setpath.tex}
 
